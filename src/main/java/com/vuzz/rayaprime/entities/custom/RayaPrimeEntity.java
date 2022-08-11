@@ -75,25 +75,17 @@ public class RayaPrimeEntity extends FlyingEntity {
                 owner = getEntityWorld().getPlayerByUuid(owneruuid);
         }
         if(owner != null) {
-            double distance = Math.sqrt(
-                Math.pow(
-                    getPosX()-owner.getPosX(),2
-                )+
-                Math.pow(
-                    getPosY()-owner.getPosY(),2
-                )
-            );
-            System.out.println(distance);
+            double distance = getDistanceSq(owner);
             lookAt(Type.EYES, owner.getPositionVec());
 
-            if (distance >= 6) {
-                setPosition(owner.getPosX(), owner.getPosY()+1.2, owner.getPosZ());
+            if (distance >= 20) {
+                setPosition(owner.getPosX(), owner.getPosY()+1.1, owner.getPosZ());
             }
-            else if(distance >= 3) {
+            else if(distance >= 10) {
                 setMotion(
                     new Vector3d(
                         -clamp(getPosX()-owner.getPosX(),-speed,speed), 
-                        -clamp(getPosY()-(owner.getPosY()+1.2),-speed,speed), 
+                        -clamp(getPosY()-(owner.getPosY()+1.1),-speed,speed), 
                         -clamp(getPosZ()-owner.getPosZ(),-speed,speed)
                     )
                 );

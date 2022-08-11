@@ -1,3 +1,10 @@
 {
-    
+    "item.rayaprime.inactive_implant" : "Inactive Implant",
+    "item.rayaprime.ai_module" : "AI-Module",
+    "item.rayaprime.fabricator" : "Fabricator",
+    "item.rayaprime.battery" : "Accumulator",
+    "item.rayaprime.lead_ingot" : "Lead Ingot",
+    "item.rayaprime.main_implant" : "Main Implant",
+    "item.rayaprime.screen" : "Screen",
+    "message.rayaprime.addpm" : "OM :"  
 }

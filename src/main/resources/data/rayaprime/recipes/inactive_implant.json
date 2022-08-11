@@ -1,0 +1,32 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "XEA",
+        "#M#",
+        "B#B"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "rayaprime:lead_ingot"
+        },
+        "E" : {
+            "item" : "rayaprime:screen"
+        },
+        "M" : {
+            "item" : "rayaprime:main_implant"
+        },
+        "X" : {
+            "item" : "rayaprime:ai_module"
+        },
+        "A" : {
+            "item" : "rayaprime:fabricator"
+        }
+        ,
+        "B" : {
+            "item" : "rayaprime:battery"
+        }
+    },
+    "result" : {
+        "item" : "rayaprime:inactive_implant"
+    }
+}

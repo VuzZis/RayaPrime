@@ -1,0 +1,9 @@
+{
+    "type" : "minecraft:smelting",
+    "ingredient" : {
+        "item" : "rayaprime:lead_ingot"
+    },
+    "result" : "rayaprime:lead_ingot",
+    "experience" : 1.0,
+    "cookingtime" : 200
+}

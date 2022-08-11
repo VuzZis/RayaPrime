@@ -35,6 +35,11 @@ public class ModEvents {
             Entity killer = event.getSource().getTrueSource();
             if(killer != null && killer instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) killer;
+                if(player.getPersistentData().getInt("try") <= 3) {
+                    player.getPersistentData().putInt("try",player.getPersistentData().getInt("try")+1);
+                    return;
+                }
+                player.getPersistentData().putInt("try",0);
                 float killedHp = event.getEntityLiving().getMaxHealth();
                 float pmRaw = killedHp/2*(event.getEntity().getEntityWorld().getRandom().nextFloat()+0.5f);
                 int pmToGive = (int) pmRaw;
@@ -42,8 +47,8 @@ public class ModEvents {
                 if(capability.resolve().isPresent()) {
                     PM cap = capability.resolve().get();
                     cap.pm += pmToGive;
-                    player.sendMessage(new StringTextComponent("pm give "+pmToGive+" "+cap.pm),Util.DUMMY_UUID);
-                    player.sendStatusMessage(new TranslationTextComponent("com.vuzz."+RayaMod.MOD_ID+".addpm").appendString(" "+pmToGive), true);;
+                    //player.sendMessage(new StringTextComponent("pm give "+pmToGive+" "+cap.pm),Util.DUMMY_UUID);
+                    player.sendStatusMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".addpm").appendString(" "+pmToGive), true);;
                 }
             }
         }
