@@ -6,6 +6,7 @@ import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
 
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.util.math.vector.Vector3d;
 
 // Made with Blockbench 4.3.1
 // Exported for Minecraft version 1.15 - 1.16 with MCP mappings
@@ -13,32 +14,34 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 
 
 public class RayaPrimeModel<T extends RayaPrimeEntity> extends EntityModel<T> {
-	private final ModelRenderer MainBody;
-	private final ModelRenderer UpperAC_r1;
-	private final ModelRenderer LeftEar;
-	private final ModelRenderer RightEar;
-	private final ModelRenderer BackJet;
-	private final ModelRenderer BackJettyFire_r1;
-	private final ModelRenderer BottomJet;
-	private final ModelRenderer BottJetFire_r1;
-	private final ModelRenderer LeftWing;
-	private final ModelRenderer BottomWingL;
-	private final ModelRenderer UpperWingL;
-	private final ModelRenderer RightWing;
-	private final ModelRenderer BottomWingR;
-	private final ModelRenderer UpperWingR;
-	private final ModelRenderer Face;
-	private final ModelRenderer LeftEye;
-	private final ModelRenderer lefteye1;
-	private final ModelRenderer lefteye2;
-	private final ModelRenderer lefteye3;
-	private final ModelRenderer lefteye4;
-	private final ModelRenderer RightEye;
-	private final ModelRenderer righteye1;
-	private final ModelRenderer righteye2;
-	private final ModelRenderer righteye3;
-	private final ModelRenderer righteye4;
-	private final ModelRenderer Mouth;
+	public final ModelRenderer MainBody;
+	public final ModelRenderer UpperAC_r1;
+	public final ModelRenderer LeftEar;
+	public final ModelRenderer RightEar;
+	public final ModelRenderer BackJet;
+	public final ModelRenderer BackJettyFire_r1;
+	public final ModelRenderer BottomJet;
+	public final ModelRenderer BottJetFire_r1;
+	public final ModelRenderer LeftWing;
+	public final ModelRenderer BottomWingL;
+	public final ModelRenderer UpperWingL;
+	public final ModelRenderer RightWing;
+	public final ModelRenderer BottomWingR;
+	public final ModelRenderer UpperWingR;
+	public final ModelRenderer Face;
+	public final ModelRenderer LeftEye;
+	public final ModelRenderer lefteye1;
+	public final ModelRenderer lefteye2;
+	public final ModelRenderer lefteye3;
+	public final ModelRenderer lefteye4;
+	public final ModelRenderer RightEye;
+	public final ModelRenderer righteye1;
+	public final ModelRenderer righteye2;
+	public final ModelRenderer righteye3;
+	public final ModelRenderer righteye4;
+	//public final ModelRenderer Mouth;
+
+	public int anim = 0;
 
 	public RayaPrimeModel() {
 		textureWidth = 128;
@@ -181,20 +184,36 @@ public class RayaPrimeModel<T extends RayaPrimeEntity> extends EntityModel<T> {
 		RightEye.addChild(righteye4);
 		righteye4.setTextureOffset(0, 0).addBox(-3.0F, -9.0F, -4.001F, 2.0F, 2.0F, 1.0F, 0.0F, false);
 
-		Mouth = new ModelRenderer(this);
+		/*Mouth = new ModelRenderer(this);
 		Mouth.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Face.addChild(Mouth);
-		Mouth.setTextureOffset(0, 6).addBox(-2.0F, -6.0F, -6.001F, 4.0F, 1.0F, 1.0F, 0.0F, false);
+		Mouth.setTextureOffset(0, 6).addBox(-2.0F, -6.0F, -6.001F, 4.0F, 1.0F, 1.0F, 0.0F, false);*/
 	}
 
 	@Override
 	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
-		this.MainBody.rotateAngleX = headPitch * ((float)Math.PI/180F);
-		
+		if(anim == 0) 
+		{
+
+			setRotationAngle(BottomWingR, -0.393f, 0f, 0f);
+			setRotationAngle(UpperWingR, 0.349f, 0f, 0f);
+			setRotationAngle(RightWing, 0f, (float) (-0.349f-Math.sin(ageInTicks/4)/4), 0f);
+
+			setRotationAngle(BottomWingL, -0.393f, 0f, 0f);
+			setRotationAngle(UpperWingL, 0.349f, 0f, 0f);
+			setRotationAngle(LeftWing, 0f, (float) (0.349f+Math.sin(ageInTicks/4)/4), 0f);
+
+			setRotationAngle(BottomJet, (float) (0.654f-Math.sin(ageInTicks/4)/4), 0f, 0f);
+
+			setRotationAngle(LeftEar, (float) (-0.349f+Math.sin(ageInTicks/4)/4), 0.26f, 0.26f);
+
+			setRotationAngle(RightEar, (float) (-0.349f+Math.sin(ageInTicks/4)/4), -0.26f, -0.26f);
+
+		}
 	}
 
 	@Override
-	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
 		MainBody.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 

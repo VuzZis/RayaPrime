@@ -10,12 +10,18 @@ import net.minecraftforge.common.capabilities.Capability;
 public class PM {
     public int pm;
 
+    @Nonnull
+    public static PM defaultInstance() {
+        PM pm = new PM();
+        return pm;
+    }
+
     public static final class PMStorage implements Capability.IStorage<PM> {
         @Nonnull
         @Override
-        public INBT writeNBT(Capability<PM> capability, PM instance, Direction side) {
+        public INBT writeNBT(Capability<PM> capability, @Nonnull PM instance, Direction side) {
             CompoundNBT nbt = new CompoundNBT();
-            nbt.putInt("PM", instance.pm);
+            nbt.putInt("pm", instance.pm);
             return nbt;
         }
 
@@ -23,7 +29,7 @@ public class PM {
         public void readNBT(Capability<PM> capability, PM instance, Direction side, INBT nbt) {
             if (!(nbt instanceof CompoundNBT)) return;
             CompoundNBT compound = (CompoundNBT) nbt;
-            instance.pm = compound.getInt("PM");
+            instance.pm = compound.getInt("pm");
         }
     }
 }
