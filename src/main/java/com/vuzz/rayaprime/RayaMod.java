@@ -1,9 +1,13 @@
 package com.vuzz.rayaprime;
 
+import com.vuzz.rayaprime.blocks.ModBlocks;
+import com.vuzz.rayaprime.containers.ModContainers;
 import com.vuzz.rayaprime.entities.ModEntityTypes;
 import com.vuzz.rayaprime.entities.render.RayaPrimeRenderer;
 import com.vuzz.rayaprime.items.ModItems;
+import com.vuzz.rayaprime.screens.RayaPrimeScreen;
 
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -29,12 +33,17 @@ public class RayaMod {
     public RayaMod() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
         ModEntityTypes.register(eventBus);
+        ModContainers.register(eventBus);
         eventBus.addListener(this::doClientStuff);
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.RAYA_PRIME.get(), RayaPrimeRenderer::new);
+        event.enqueueWork(() -> {
+            ScreenManager.registerFactory(ModContainers.RAYA_PRIME_CONTAINER.get(), RayaPrimeScreen::new);
+        });
     }
 
     private void setup(final FMLClientSetupEvent event) {

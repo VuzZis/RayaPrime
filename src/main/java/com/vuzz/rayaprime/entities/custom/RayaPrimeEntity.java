@@ -2,8 +2,7 @@ package com.vuzz.rayaprime.entities.custom;
 
 import java.util.UUID;
 
-import javax.lang.model.type.TypeKind;
-
+import com.vuzz.rayaprime.containers.RayaPrimeContainer;
 import com.vuzz.rayaprime.items.ModItems;
 
 import net.minecraft.command.arguments.EntityAnchorArgument.Type;
@@ -13,12 +12,21 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class RayaPrimeEntity extends FlyingEntity {
 
@@ -37,8 +45,8 @@ public class RayaPrimeEntity extends FlyingEntity {
         return MobEntity.func_233666_p_()
                 .createMutableAttribute(Attributes.MAX_HEALTH,100.0D)
                 .createMutableAttribute(Attributes.FLYING_SPEED, 0.35D)
-                .createMutableAttribute(Attributes.ARMOR,500D)
-                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS,500D)
+                .createMutableAttribute(Attributes.ARMOR,5000000D)
+                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS,5000000D)
                 .createMutableAttribute(Attributes.MOVEMENT_SPEED,0.35D);
 
     }
@@ -52,24 +60,65 @@ public class RayaPrimeEntity extends FlyingEntity {
         return Math.max(min,Math.min(max,val));
     }
 
-    
+    @Override
+    protected ActionResultType getEntityInteractionResult(PlayerEntity player, Hand hand) {
+        if(player.isSneaking()) {
+            CompoundNBT nbt = getPersistentData();
+            if(owner == player) {
+                ItemStack item = new ItemStack(ModItems.INACTIVE_IMPLANT.get());
+                item.setTag(nbt);
+                player.addItemStackToInventory(item);
+                player.getPersistentData().putBoolean("hasraya", false);
+                remove();
+            }
+        } else {
+            CompoundNBT nbt = getPersistentData();
+            if(owner == player) {
+                INamedContainerProvider containerProvider = createContainerProvider(player.getEntityWorld(),player.getPosition());
+
+                NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider,getPosition());
+            }
+        }
+        return super.getEntityInteractionResult(player, hand);
+    }
+
+    private INamedContainerProvider createContainerProvider(World worldIn, BlockPos pos) {
+
+        return new INamedContainerProvider() {
+
+            @Override
+            public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+                return new RayaPrimeContainer(i,worldIn,pos,playerInventory,playerEntity);
+            }
+
+            @Override
+            public ITextComponent getDisplayName() {
+                return new TranslationTextComponent(" ");
+            }
+            
+        };
+    }
 
     @Override
     public void tick() {
         super.tick();   
         CompoundNBT nbt = getPersistentData();
         energy = nbt.getFloat("energy");
+        if(nbt.getBoolean("canUseEnergy")) {
+            owneruuid = nbt.getUniqueId("owneruuid");
+        }
+        
         setHealth(100f);
-        /*if(energy < -2) {
-            setHealth(-50f);
+        if(energy <= 0 && nbt.getBoolean("canUseEnergy")) {
+            remove();
             if(owner instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) owner;
                 ItemStack item = new ItemStack(ModItems.INACTIVE_IMPLANT.get());
                 item.setTag(nbt);
                 player.addItemStackToInventory(item);
-                System.out.println("medeing");
+                player.getPersistentData().putBoolean("hasraya", false);
             }
-        }*/
+        }
         if(owneruuid instanceof UUID) {
             if(getEntityWorld().getPlayerByUuid(owneruuid) instanceof PlayerEntity)
                 owner = getEntityWorld().getPlayerByUuid(owneruuid);

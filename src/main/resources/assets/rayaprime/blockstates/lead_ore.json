@@ -1,0 +1,5 @@
+{
+    "variants" : {
+        "": { "model" : "rayaprime:block/lead_ore" }
+    }
+}

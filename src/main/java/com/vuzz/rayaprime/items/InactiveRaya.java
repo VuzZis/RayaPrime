@@ -15,6 +15,8 @@ import net.minecraft.item.Rarity;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Util;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
@@ -48,21 +50,28 @@ public class InactiveRaya extends Item {
     public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
         if(context.getWorld().isRemote) return super.onItemUseFirst(stack, context);
 
-        if(net.minecraft.client.gui.screen.Screen.hasShiftDown()) 
+        if(context.getPlayer().isSneaking()) 
         {
 
         } 
         else 
         {
             if(!stack.hasTag()) stack.setTag(new CompoundNBT());
-            EntityType<RayaPrimeEntity> raya = ModEntityTypes.RAYA_PRIME.get();
-            RayaPrimeEntity rayaEntity = (RayaPrimeEntity) raya.spawn((ServerWorld) context.getWorld(), stack, context.getPlayer(), context.getPlayer().getPosition(), 
-                SpawnReason.DISPENSER, false, false);
-            rayaEntity.getPersistentData().putFloat("energy", stack.getTag().getFloat("energy"));
-            rayaEntity.owner = context.getPlayer();
-            rayaEntity.owneruuid = context.getPlayer().getUniqueID();
-            System.out.println("mespawning");
-            stack.shrink(1);
+            if(context.getPlayer().getPersistentData().getBoolean("hasraya")) {
+                context.getPlayer().sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".no_two_rayas"),Util.DUMMY_UUID);
+            } else 
+            {
+                EntityType<RayaPrimeEntity> raya = ModEntityTypes.RAYA_PRIME.get();
+                RayaPrimeEntity rayaEntity = (RayaPrimeEntity) raya.spawn((ServerWorld) context.getWorld(), stack, context.getPlayer(), context.getPlayer().getPosition(), 
+                    SpawnReason.DISPENSER, false, false);
+                context.getPlayer().getPersistentData().putBoolean("hasraya", true);
+                rayaEntity.getPersistentData().putFloat("energy", stack.getTag().getFloat("energy"));
+                rayaEntity.owner = context.getPlayer();
+                rayaEntity.owneruuid = context.getPlayer().getUniqueID();
+                rayaEntity.getPersistentData().putUniqueId("owneruuid", context.getPlayer().getUniqueID());
+                rayaEntity.getPersistentData().putBoolean("canUseEnergy", true);
+                stack.shrink(1);
+            }
         }
         return super.onItemUseFirst(stack, context);
     }
