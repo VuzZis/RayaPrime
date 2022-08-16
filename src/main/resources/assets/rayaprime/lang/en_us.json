@@ -6,5 +6,8 @@
     "item.rayaprime.lead_ingot" : "Lead Ingot",
     "item.rayaprime.main_implant" : "Main Implant",
     "item.rayaprime.screen" : "Screen",
-    "message.rayaprime.addpm" : "OM :"  
+    "message.rayaprime.addpm" : "OM :",
+    "message.rayaprime.lowenergy" : "§b[Raya-Prime]§r Warning: Low Battery, please charge.",
+    "message.rayaprime.lowfood" : "§b[Raya-Prime]§r Calories are almost at zero, I advise you to eat.",
+    "message.rayaprime.lowdurability" : "§b[Raya-Prime]§r Time for an update!"  
 }
