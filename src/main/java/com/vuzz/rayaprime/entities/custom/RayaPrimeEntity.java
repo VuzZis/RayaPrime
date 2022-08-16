@@ -42,7 +42,6 @@ public class RayaPrimeEntity extends FlyingEntity {
     private int ticks = 0;
     private int lastHungerCheck = 0;
     private int lastDurabilityCheck = 0;
-    public IInventory shopInv = new Inventory(15);
 
     public LivingEntity owner;
     public UUID owneruuid;
@@ -98,7 +97,7 @@ public class RayaPrimeEntity extends FlyingEntity {
 
             @Override
             public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-                return new RayaPrimeContainer(i,worldIn,pos,playerInventory,playerEntity,entity);
+                return new RayaPrimeContainer(i,worldIn,pos,playerInventory,playerEntity);
             }
 
             @Override
@@ -118,9 +117,7 @@ public class RayaPrimeEntity extends FlyingEntity {
             owneruuid = nbt.getUniqueId("owneruuid");
         }
         setHealth(100f);
-        ItemStack apples = new ItemStack(Items.APPLE);
-        apples.setCount(16);
-        shopInv.setInventorySlotContents(0, apples);
+
         if(energy <= 0 && nbt.getBoolean("canUseEnergy")) {
             remove();
             if(owner instanceof PlayerEntity) {
@@ -138,7 +135,6 @@ public class RayaPrimeEntity extends FlyingEntity {
         if(owner != null) {
             double distance = getDistanceSq(owner);
             lookAt(Type.EYES, owner.getPositionVec());
-            owner.getPersistentData().putInt("rayaid",);
             if(energy == 60 || energy == 59) {
                 owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".lowbattery"),Util.DUMMY_UUID);
             }

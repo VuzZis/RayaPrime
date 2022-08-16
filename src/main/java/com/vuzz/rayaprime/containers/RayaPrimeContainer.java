@@ -15,27 +15,33 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 public class RayaPrimeContainer extends Container {
 
     private final PlayerEntity playerEntity;
     private final PlayerInventory playerInventory;
-    private final RayaPrimeEntity raya;
+    private final IInventory shopInv = new Inventory(15);
 
-    public RayaPrimeContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player, RayaPrimeEntity raya) {
+    public RayaPrimeContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
         super(ModContainers.RAYA_PRIME_CONTAINER.get(), windowId);
         this.playerEntity = player;
         this.playerInventory = playerInventory;
-        this.raya = raya;
         for(int i = 0; i < 15; i++) {
             int xBox = i % 5;
-            int yBox = (int) Math.floor(i/3);
+            int yBox = (int) Math.floor(i/5);
             xBox = (int) xBox * 47;
             yBox = (int) yBox * 46;
             addSlot(
-                new Slot(raya.shopInv,i,11+xBox-40,11+yBox-40)
+                new SlotLocked(shopInv,i,11+xBox-40+1,6+yBox+6)
             );
         };
+        ItemStack apples = new ItemStack(Items.APPLE);
+        apples.setCount(16);
+        shopInv.setInventorySlotContents(0, apples);
     }
 
     @Override

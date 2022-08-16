@@ -17,7 +17,7 @@ public class ModContainers {
     public static final RegistryObject<ContainerType<RayaPrimeContainer>> RAYA_PRIME_CONTAINER = CONTAINERS.register("raya_prime_container", () -> IForgeContainerType.create((windowId,inv,data) -> {
         BlockPos pos = data.readBlockPos();
         World world = inv.player.getEntityWorld();
-        return new RayaPrimeContainer(windowId,world,pos,inv,inv.player,world.getEntity);
+        return new RayaPrimeContainer(windowId,world,pos,inv,inv.player);
     }));
 
     public static void register(IEventBus eventbus) {
