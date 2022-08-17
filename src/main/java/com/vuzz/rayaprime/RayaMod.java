@@ -1,11 +1,11 @@
 package com.vuzz.rayaprime;
 
 import com.vuzz.rayaprime.blocks.ModBlocks;
-import com.vuzz.rayaprime.containers.ModContainers;
 import com.vuzz.rayaprime.entities.ModEntityTypes;
 import com.vuzz.rayaprime.entities.render.RayaPrimeRenderer;
+import com.vuzz.rayaprime.gui.containers.ModContainers;
+import com.vuzz.rayaprime.gui.screens.RayaPrimeScreen;
 import com.vuzz.rayaprime.items.ModItems;
-import com.vuzz.rayaprime.screens.RayaPrimeScreen;
 
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.ItemGroup;

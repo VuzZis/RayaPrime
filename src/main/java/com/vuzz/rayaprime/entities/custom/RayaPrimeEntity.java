@@ -3,7 +3,7 @@ package com.vuzz.rayaprime.entities.custom;
 import java.util.UUID;
 
 import com.vuzz.rayaprime.RayaMod;
-import com.vuzz.rayaprime.containers.RayaPrimeContainer;
+import com.vuzz.rayaprime.gui.containers.RayaPrimeContainer;
 import com.vuzz.rayaprime.items.ModItems;
 
 import net.minecraft.command.arguments.EntityAnchorArgument.Type;

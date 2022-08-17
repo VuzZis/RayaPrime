@@ -1,6 +1,12 @@
-package com.vuzz.rayaprime.containers;
+package com.vuzz.rayaprime.gui.containers;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
+import com.vuzz.rayaprime.gui.ShopButton;
+import com.vuzz.rayaprime.gui.SlotLocked;
+import com.vuzz.rayaprime.shop.ShopItems;
 
 import net.minecraft.client.gui.screen.SettingsScreen;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,26 +28,32 @@ import net.minecraft.item.Items;
 
 public class RayaPrimeContainer extends Container {
 
-    private final PlayerEntity playerEntity;
+    public final PlayerEntity playerEntity;
     private final PlayerInventory playerInventory;
     private final IInventory shopInv = new Inventory(15);
+    public final ArrayList<ItemStack> shopItems = ShopItems.getItems();
+    public final ArrayList<Number> shopPrices = ShopItems.getPrices();
 
     public RayaPrimeContainer(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
         super(ModContainers.RAYA_PRIME_CONTAINER.get(), windowId);
         this.playerEntity = player;
         this.playerInventory = playerInventory;
+
         for(int i = 0; i < 15; i++) {
             int xBox = i % 5;
             int yBox = (int) Math.floor(i/5);
             xBox = (int) xBox * 47;
             yBox = (int) yBox * 46;
+            SlotLocked slot = new SlotLocked(shopInv,i,11+xBox-40+1,6+yBox+6);
+            if(i < shopItems.size()) {
+                ItemStack stackForShop = shopItems.get(i);
+                slot.putStack(stackForShop);
+            }
             addSlot(
-                new SlotLocked(shopInv,i,11+xBox-40+1,6+yBox+6)
+                slot
             );
         };
-        ItemStack apples = new ItemStack(Items.APPLE);
-        apples.setCount(16);
-        shopInv.setInventorySlotContents(0, apples);
+        
     }
 
     @Override

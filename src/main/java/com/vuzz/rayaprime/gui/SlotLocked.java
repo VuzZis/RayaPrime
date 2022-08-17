@@ -1,9 +1,10 @@
-package com.vuzz.rayaprime.containers;
+package com.vuzz.rayaprime.gui;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 
 public class SlotLocked extends Slot {
 

@@ -1,4 +1,4 @@
-package com.vuzz.rayaprime.containers;
+package com.vuzz.rayaprime.gui.containers;
 
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.util.math.BlockPos;
