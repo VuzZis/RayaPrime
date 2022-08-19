@@ -1,0 +1,25 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "OOO",
+        "AAA",
+        "O#O"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "rayaprime:microscheme"
+        },
+        "E" : {
+            "item" : "minecraft:flint"
+        },
+        "A" : {
+            "item" : "minecraft:gold_ingot"
+        },
+        "O" : {
+            "item" : "minecraft:redstone"
+        }
+    },
+    "result" : {
+        "item" : "rayaprime:battery"
+    }
+}

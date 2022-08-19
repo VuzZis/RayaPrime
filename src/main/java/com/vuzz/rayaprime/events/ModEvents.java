@@ -1,5 +1,7 @@
 package com.vuzz.rayaprime.events;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
@@ -24,6 +26,27 @@ import com.vuzz.rayaprime.RayaMod;
 public class ModEvents {
 
     @SubscribeEvent
+    public static void onPlayerWakeUpEvent(PlayerWakeUpEvent event) {
+        if(!event.getEntity().getEntityWorld().isRemote) {
+            PlayerEntity player = (PlayerEntity) event.getEntity();
+            if(player.getPersistentData().getBoolean("hasraya")) {
+                player.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".wakeup"),Util.DUMMY_UUID);
+            }
+        }
+    }
+
+
+    @SubscribeEvent
+    public static void onPlayerDestroyItemEvent(PlayerDestroyItemEvent event) {
+        if(!event.getEntity().getEntityWorld().isRemote) {
+            PlayerEntity player = (PlayerEntity) event.getEntity();
+            if(player.getPersistentData().getBoolean("hasraya")) {
+                //player.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".itembroke"),Util.DUMMY_UUID);
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void onLivingDeathEvent(LivingDeathEvent event) {
         event.getEntityLiving().getMaxHealth();
         if(!event.getEntity().getEntityWorld().isRemote) {
@@ -38,9 +61,11 @@ public class ModEvents {
                 float killedHp = event.getEntityLiving().getMaxHealth();
                 float pmRaw = killedHp/2*(event.getEntity().getEntityWorld().getRandom().nextFloat()+0.5f);
                 int pmToGive = (int) pmRaw;
+                player.getPersistentData().putInt("pm",Minecraft.getInstance().player.getPersistentData().getInt("pm"));
                 player.getPersistentData().putInt("pm",player.getPersistentData().getInt("pm")+pmToGive);
+                Minecraft.getInstance().player.getPersistentData().putInt("pm", player.getPersistentData().getInt("pm"));
                 //player.sendMessage(new StringTextComponent("pm give "+pmToGive+" "+cap.pm),Util.DUMMY_UUID);
-                player.sendStatusMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".addpm").appendString(" "+pmToGive), true);;
+                player.sendStatusMessage(new StringTextComponent("§b+"+pmToGive+" "+new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()), true);;
             }
         }
     }

@@ -1,0 +1,25 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "OOO",
+        "EEE",
+        "A#A"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "rayaprime:microscheme"
+        },
+        "E" : {
+            "item" : "minecraft:flint"
+        },
+        "A" : {
+            "item" : "minecraft:crafting_table"
+        },
+        "O" : {
+            "item" : "minecraft:diamond"
+        }
+    },
+    "result" : {
+        "item" : "rayaprime:fabricator"
+    }
+}

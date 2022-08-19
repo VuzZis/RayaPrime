@@ -20,4 +20,6 @@ public class RayaPrimeRenderer extends MobRenderer<RayaPrimeEntity,RayaPrimeMode
     @Override
     public ResourceLocation getEntityTexture(RayaPrimeEntity entity) {return TEXTURE;}
 
+
+
 }

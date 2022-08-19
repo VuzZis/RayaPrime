@@ -14,7 +14,8 @@ import com.vuzz.rayaprime.RayaMod;
 public class ModContainers {
     private final static String MODID = RayaMod.MOD_ID;
     public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, MODID);
-    public static final RegistryObject<ContainerType<RayaPrimeContainer>> RAYA_PRIME_CONTAINER = CONTAINERS.register("raya_prime_container", () -> IForgeContainerType.create((windowId,inv,data) -> {
+    public static final RegistryObject<ContainerType<RayaPrimeContainer>> RAYA_PRIME_CONTAINER = CONTAINERS.register("raya_prime_container", 
+    () -> IForgeContainerType.create((windowId,inv,data) -> {
         BlockPos pos = data.readBlockPos();
         World world = inv.player.getEntityWorld();
         return new RayaPrimeContainer(windowId,world,pos,inv,inv.player);

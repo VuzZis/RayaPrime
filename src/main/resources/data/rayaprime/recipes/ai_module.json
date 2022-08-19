@@ -1,0 +1,19 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "###",
+        "EEE",
+        "   "
+    ],
+    "key" : {
+        "#" : {
+            "item" : "rayaprime:microscheme"
+        },
+        "E" : {
+            "item" : "minecraft:gold_ingot"
+        }
+    },
+    "result" : {
+        "item" : "rayaprime:ai_module"
+    }
+}

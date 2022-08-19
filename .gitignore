@@ -5,3 +5,4 @@ bin/
 build/
 run/
 gradle.properties
+hs_err_pid7084.log

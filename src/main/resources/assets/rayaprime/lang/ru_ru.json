@@ -1,0 +1,20 @@
+{
+    "item.rayaprime.inactive_implant" : "Неактивный модуль П.Е.Р.С.И.К.",
+    "item.rayaprime.ai_module" : "ИИ Модуль",
+    "item.rayaprime.fabricator" : "Фабрикатор",
+    "item.rayaprime.battery" : "Аккумулятор",
+    "item.rayaprime.lead_ingot" : "Свинцовый слиток",
+    "item.rayaprime.main_implant" : "Главный имплант",
+    "item.rayaprime.screen" : "Экран",
+    "item.rayaprime.lead_plate" : "Свинцовая пластина",
+    "item.rayaprime.iron_plate" : "Железная пластина",
+    "item.rayaprime.coal_plate" : "Угольная пластина",
+    "item.rayaprime.clsc" : "У.С.Ж.К.",
+    "itemGroup.rayaprime" : "Райя-Прайм",
+    "message.rayaprime.lowenergy" : "§b[Райя-Прайм]§r Warning: Low Battery, please charge.",
+    "message.rayaprime.lowfood" : "§b[Райя-Прайм]§r Калории почти на нуле, советую тебе поесть.",
+    "message.rayaprime.lowdurability" : "§b[Райя-Прайм]§r Пора сходить за обновкой!",
+    "message.rayaprime.wakeup" : "§b[Райя-Прайм]§r Доброе утро!",
+    "message.rayaprime.itembroke" : "§b[Райя-Прайм]§r Оу, похоже тебе нужна новая.",
+    "title.rayaprime.pm" : "ПМ"   
+}
