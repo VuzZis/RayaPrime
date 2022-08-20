@@ -27,6 +27,7 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -68,6 +69,11 @@ public class RayaPrimeEntity extends FlyingEntity {
 		super.registerGoals();
 	}
 
+    @Override
+    public boolean attackEntityFrom(DamageSource p_70097_1_, float p_70097_2_) {
+        return false;
+    }
+
     protected double clamp(double val,double min,double max) {
         return Math.max(min,Math.min(max,val));
     }
@@ -84,7 +90,7 @@ public class RayaPrimeEntity extends FlyingEntity {
                     player.getPersistentData().putBoolean("hasraya", false);
                     remove();
                 } else {
-                    player.sendStatusMessage(new StringTextComponent("§c+"+new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace").getString()), true);
+                    player.sendStatusMessage(new StringTextComponent("§c"+new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace").getString()), true);
                 }
             } 
         } else {
@@ -149,7 +155,7 @@ public class RayaPrimeEntity extends FlyingEntity {
                     player.addItemStackToInventory(item);
                     player.getPersistentData().putBoolean("hasraya", false);
                 } else {
-                    player.sendStatusMessage(new StringTextComponent("§c+"+new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace").getString()), true);
+                    player.sendStatusMessage(new StringTextComponent("§c"+new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace").getString()), true);
                 }
                 
             }

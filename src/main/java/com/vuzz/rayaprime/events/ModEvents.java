@@ -59,9 +59,11 @@ public class ModEvents {
                 }
                 player.getPersistentData().putInt("try",0);
                 float killedHp = event.getEntityLiving().getMaxHealth();
-                float pmRaw = killedHp/2*(event.getEntity().getEntityWorld().getRandom().nextFloat()+0.5f);
+                float pmRaw = (float) (killedHp/2.25*(event.getEntity().getEntityWorld().getRandom().nextFloat()+0.5f));
                 int pmToGive = (int) pmRaw;
-                player.getPersistentData().putInt("pm",Minecraft.getInstance().player.getPersistentData().getInt("pm"));
+                if( Minecraft.getInstance().player.getPersistentData().getInt("pm") != 0 && 
+                    Minecraft.getInstance().player.getPersistentData().getInt("pm") != player.getPersistentData().getInt("pm")
+                ) player.getPersistentData().putInt("pm",Minecraft.getInstance().player.getPersistentData().getInt("pm"));
                 player.getPersistentData().putInt("pm",player.getPersistentData().getInt("pm")+pmToGive);
                 Minecraft.getInstance().player.getPersistentData().putInt("pm", player.getPersistentData().getInt("pm"));
                 //player.sendMessage(new StringTextComponent("pm give "+pmToGive+" "+cap.pm),Util.DUMMY_UUID);

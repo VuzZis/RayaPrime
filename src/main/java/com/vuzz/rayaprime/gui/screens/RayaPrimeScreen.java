@@ -104,10 +104,10 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
             int a = i;
             int price = (int) shopPrices.get(pageMultiplier+a);
             drawString(matrixStack, Minecraft.getInstance().fontRenderer, 
-            new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+price, 
+            new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+price, 
             xBox-31, yBox+38, Integer.parseInt("FFFFFF",16));
         }
-        drawString(matrixStack, Minecraft.getInstance().fontRenderer, new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+player.getPersistentData().getInt("pm"), -24, 154, Integer.parseInt("FFFFFF",16));
+        drawString(matrixStack, Minecraft.getInstance().fontRenderer, new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+player.getPersistentData().getInt("pm"), -24, 154, Integer.parseInt("FFFFFF",16));
 	}
 
     @Override

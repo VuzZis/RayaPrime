@@ -16,5 +16,6 @@
     "message.rayaprime.lowdurability" : "§b[Raya-Prime]§r Time for an update!",
     "message.rayaprime.wakeup" : "§b[Raya-Prime]§r Good morning!",
     "message.rayaprime.itembroke" : "§b[Raya-Prime]§r Oh well, I guess you need to get a new one.",
+    "warning.rayaprime.nospace" : "NOT ENOUGH SPACE",
     "title.rayaprime.pm" : "OM"      
 }

@@ -47,6 +47,11 @@ public class InactiveRaya extends Item {
     }
 
     @Override
+    public boolean isDamageable() {
+        return false;
+    }
+
+    @Override
     public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
         if(context.getWorld().isRemote) return super.onItemUseFirst(stack, context);
 

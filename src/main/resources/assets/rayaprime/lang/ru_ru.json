@@ -16,5 +16,6 @@
     "message.rayaprime.lowdurability" : "§b[Райя-Прайм]§r Пора сходить за обновкой!",
     "message.rayaprime.wakeup" : "§b[Райя-Прайм]§r Доброе утро!",
     "message.rayaprime.itembroke" : "§b[Райя-Прайм]§r Оу, похоже тебе нужна новая.",
+    "warning.rayaprime.nospace" : "НЕДОСТАТОЧНО МЕСТА",
     "title.rayaprime.pm" : "ПМ"   
 }
