@@ -1,5 +1,9 @@
 {
     "variants" : {
-        "": { "model" : "rayaprime:block/mrtomato_gold" }
+        "" : { "model" : "rayaprime:block/mrtomato_gold" },
+        "facing=north": { "model" : "rayaprime:block/mrtomato_gold" },
+        "facing=east": { "model" : "rayaprime:block/mrtomato_gold", "y" : 90 },
+        "facing=south": { "model" : "rayaprime:block/mrtomato_gold", "y" : 180 },
+        "facing=west": { "model" : "rayaprime:block/mrtomato_gold", "y" : 270 }
     }
 }

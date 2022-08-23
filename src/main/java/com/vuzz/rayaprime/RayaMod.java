@@ -10,8 +10,9 @@ import com.vuzz.rayaprime.networking.ClientProxy;
 import com.vuzz.rayaprime.networking.ServerProxy;
 import com.vuzz.rayaprime.networking.IProxy;
 import com.vuzz.rayaprime.networking.Networking;
-
 import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -54,8 +55,9 @@ public class RayaMod {
         });
     }
 
-    private void setup(final FMLClientSetupEvent event) {
-
+    private void clientSetup(final FMLClientSetupEvent event) {
+        RenderTypeLookup.setRenderLayer(ModBlocks.MR_TOMATO.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.MR_TOMATO_GOLD.get(), RenderType.getCutout());
     }
 
 }

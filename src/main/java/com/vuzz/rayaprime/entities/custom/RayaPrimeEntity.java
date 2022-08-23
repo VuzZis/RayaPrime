@@ -134,6 +134,8 @@ public class RayaPrimeEntity extends FlyingEntity {
         super.tick();   
         stopRiding();
         CompoundNBT nbt = getPersistentData();
+        if(ticks % 1000 == 0) nbt.putInt("anim", nbt.getInt("anim")+1);
+        if(nbt.getInt("anim") > 10) nbt.putInt("anim",0);
         energy = nbt.getFloat("energy");
         if(nbt.getBoolean("canUseEnergy")) {
             owneruuid = nbt.getUniqueId("owneruuid");

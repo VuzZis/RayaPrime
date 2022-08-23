@@ -4,14 +4,15 @@ license="All rights reserved"
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
 [[mods]] #mandatory
 modId="rayaprime" #mandatory
-version="1.0" #mandatory
-displayName="Raya-Prime" #mandatory
+version="0.0" #mandatory
+displayName="Raya-Innovation" #mandatory
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 #logoFile="examplemod.png" #optional
-credits="Thanks for idea" #optional
-authors="VuzZ and MW-creators" #optional
+credits="" #optional
+authors="VuzZ" #optional
 description='''
+Mod fully belongs to Lololowka's Team.
 '''
 [[dependencies.rayaprime]] #optional
     modId="forge" #mandatory

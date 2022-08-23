@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 public class RayaPrimeRenderer extends MobRenderer<RayaPrimeEntity,RayaPrimeModel<RayaPrimeEntity>> 
 {
     
-    protected static final ResourceLocation TEXTURE = new ResourceLocation(RayaMod.MOD_ID,"textures/entity/raya_prime.png");
+    protected static final ResourceLocation TEXTURE = new ResourceLocation(RayaMod.MOD_ID,"textures/entity/raya.png");
 
     public RayaPrimeRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn,new RayaPrimeModel<>(),0.75F);

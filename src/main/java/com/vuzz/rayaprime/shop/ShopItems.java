@@ -2,6 +2,8 @@ package com.vuzz.rayaprime.shop;
 
 import java.util.ArrayList;
 
+import com.vuzz.rayaprime.items.ModItems;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
@@ -58,6 +60,14 @@ public class ShopItems {
         ItemStack redstone = new ItemStack(Items.REDSTONE); //12
                 redstone.setCount(16);
         shopItems.add(redstone);
+
+        ItemStack mrtomato = new ItemStack(ModItems.MR_TOMATO.get()); //13
+                mrtomato.setCount(1);
+        shopItems.add(mrtomato);
+
+        ItemStack mrtomato_gold = new ItemStack(ModItems.MR_TOMATO_GOLD.get()); //14
+                mrtomato_gold.setCount(1);
+        shopItems.add(mrtomato_gold);
 
         return shopItems;
     }
