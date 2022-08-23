@@ -1,7 +1,5 @@
 package com.vuzz.rayaprime.gui;
 
-import java.util.ArrayList;
-
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.vuzz.rayaprime.RayaMod;
 
@@ -9,7 +7,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 
 public class ShopButton extends Button {

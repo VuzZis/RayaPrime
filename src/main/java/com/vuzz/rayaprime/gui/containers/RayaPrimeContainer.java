@@ -1,30 +1,16 @@
 package com.vuzz.rayaprime.gui.containers;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
-import com.vuzz.rayaprime.gui.ShopButton;
 import com.vuzz.rayaprime.gui.SlotLocked;
 import com.vuzz.rayaprime.shop.ShopItems;
-
-import net.minecraft.client.gui.screen.SettingsScreen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.SlotItemHandler;
-import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 
 public class RayaPrimeContainer extends Container {
 

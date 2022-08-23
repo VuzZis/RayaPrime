@@ -9,6 +9,7 @@
     "item.rayaprime.lead_plate" : "Lead Plate",
     "item.rayaprime.iron_plate" : "Iron Plate",
     "item.rayaprime.coal_plate" : "Coal Plate",
+    "item.rayaprime.microscheme" : "Microscheme",
     "item.rayaprime.clsc" : "C.L.S.C.",
     "itemGroup.rayaprime" : "Raya-Prime",
     "message.rayaprime.lowenergy" : "§b[Raya-Prime]§r Warning: Low Battery, please charge.",
@@ -16,6 +17,7 @@
     "message.rayaprime.lowdurability" : "§b[Raya-Prime]§r Time for an update!",
     "message.rayaprime.wakeup" : "§b[Raya-Prime]§r Good morning!",
     "message.rayaprime.itembroke" : "§b[Raya-Prime]§r Oh well, I guess you need to get a new one.",
-    "warning.rayaprime.nospace" : "NOT ENOUGH SPACE",
-    "title.rayaprime.pm" : "OM"      
+    "warning.rayaprime.nospace" : "§cNOT ENOUGH SPACE§r",
+    "title.rayaprime.pm" : "OM",
+    "title.rayaprime.ablob" : "§b+"      
 }

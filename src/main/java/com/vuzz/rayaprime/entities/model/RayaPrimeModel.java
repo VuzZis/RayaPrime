@@ -6,7 +6,6 @@ import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
 
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.util.math.vector.Vector3d;
 
 // Made with Blockbench 4.3.1
 // Exported for Minecraft version 1.15 - 1.16 with MCP mappings

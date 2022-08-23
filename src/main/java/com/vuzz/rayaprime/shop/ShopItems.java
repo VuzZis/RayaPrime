@@ -77,6 +77,8 @@ public class ShopItems {
         shopPrices.add(25); //10
         shopPrices.add(120); //11
         shopPrices.add(30); //12
+        shopPrices.add(70); //13
+        shopPrices.add(120); //14
 
         return shopPrices;
     }

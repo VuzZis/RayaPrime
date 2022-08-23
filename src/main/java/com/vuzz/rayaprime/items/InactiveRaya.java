@@ -3,8 +3,6 @@ package com.vuzz.rayaprime.items;
 import com.vuzz.rayaprime.RayaMod;
 import com.vuzz.rayaprime.entities.ModEntityTypes;
 import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
-
-import javafx.stage.Screen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -12,7 +10,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.Rarity;
-import net.minecraft.item.SpawnEggItem;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Util;

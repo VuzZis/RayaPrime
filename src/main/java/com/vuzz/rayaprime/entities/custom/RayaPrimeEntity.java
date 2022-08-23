@@ -18,14 +18,10 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.server.management.PlayerList;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
@@ -90,7 +86,7 @@ public class RayaPrimeEntity extends FlyingEntity {
                     player.getPersistentData().putBoolean("hasraya", false);
                     remove();
                 } else {
-                    player.sendStatusMessage(new StringTextComponent("§c"+new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace").getString()), true);
+                    player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
                 }
             } 
         } else {
@@ -155,7 +151,7 @@ public class RayaPrimeEntity extends FlyingEntity {
                     player.addItemStackToInventory(item);
                     player.getPersistentData().putBoolean("hasraya", false);
                 } else {
-                    player.sendStatusMessage(new StringTextComponent("§c"+new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace").getString()), true);
+                    player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
                 }
                 
             }

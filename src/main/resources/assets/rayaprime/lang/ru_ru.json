@@ -10,12 +10,13 @@
     "item.rayaprime.iron_plate" : "Железная пластина",
     "item.rayaprime.coal_plate" : "Угольная пластина",
     "item.rayaprime.clsc" : "У.С.Ж.К.",
+    "item.rayaprime.microscheme" : "Микросхема",
     "itemGroup.rayaprime" : "Райя-Прайм",
     "message.rayaprime.lowenergy" : "§b[Райя-Прайм]§r Warning: Low Battery, please charge.",
     "message.rayaprime.lowfood" : "§b[Райя-Прайм]§r Калории почти на нуле, советую тебе поесть.",
     "message.rayaprime.lowdurability" : "§b[Райя-Прайм]§r Пора сходить за обновкой!",
     "message.rayaprime.wakeup" : "§b[Райя-Прайм]§r Доброе утро!",
     "message.rayaprime.itembroke" : "§b[Райя-Прайм]§r Оу, похоже тебе нужна новая.",
-    "warning.rayaprime.nospace" : "НЕДОСТАТОЧНО МЕСТА",
+    "warning.rayaprime.nospace" : "§cНЕДОСТАТОЧНО МЕСТА§r",
     "title.rayaprime.pm" : "ПМ"   
 }

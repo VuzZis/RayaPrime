@@ -7,20 +7,21 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.vuzz.rayaprime.RayaMod;
 import com.vuzz.rayaprime.gui.ShopButton;
 import com.vuzz.rayaprime.gui.containers.RayaPrimeContainer;
+import com.vuzz.rayaprime.networking.Networking;
+import com.vuzz.rayaprime.networking.PacketItemStack;
+import com.vuzz.rayaprime.networking.PacketPM;
 import com.vuzz.rayaprime.shop.ShopItems;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
-import net.minecraft.client.gui.widget.button.Button;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraftforge.fml.network.PacketDistributor;
 
 public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
 
@@ -60,7 +61,9 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
                     int pm = playera.getPersistentData().getInt("pm");
                     if(pm >= price) {
                         playera.getPersistentData().putInt("pm", pm-price);
-                        playera.addItemStackToInventory(stack.copy());
+                        ItemStack stcopy = stack.copy();
+                        Networking.CHANNEL.send(PacketDistributor.SERVER.noArg(), new PacketPM(pm-price));
+                        Networking.CHANNEL.send(PacketDistributor.SERVER.noArg(), new PacketItemStack(stcopy));
                     }
                 }
             }, e);

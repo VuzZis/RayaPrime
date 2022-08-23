@@ -1,7 +1,5 @@
 package com.vuzz.rayaprime.events;
 
-import net.minecraft.entity.EntityType;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
