@@ -3,11 +3,13 @@ package com.vuzz.rayaprime.events;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.Util;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -16,6 +18,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import com.google.common.eventbus.Subscribe;
 import com.vuzz.rayaprime.RayaMod;
+import com.vuzz.rayaprime.capability.PM;
 import com.vuzz.rayaprime.world.gen.ModOreGeneration;
 
 @Mod.EventBusSubscriber(modid = RayaMod.MOD_ID)
@@ -67,10 +70,12 @@ public class ModEvents {
                 float killedHp = event.getEntityLiving().getMaxHealth();
                 float pmRaw = (float) (killedHp/2.25*(event.getEntity().getEntityWorld().getRandom().nextFloat()+0.5f));
                 int pmToGive = (int) pmRaw;
-                int pmClient = Minecraft.getInstance().player.getPersistentData().getInt("pm");
-                int pmServer = player.getPersistentData().getInt("pm");
-                player.getPersistentData().putInt("pm", pmServer+pmToGive);
-                Minecraft.getInstance().player.getPersistentData().putInt("pm", pmServer+pmToGive);
+                LazyOptional<PM> capability =  PM.get(player);
+                if(capability.resolve().isPresent()) {
+                    PM cap = capability.resolve().get();
+                    cap.setPm(cap.getPm()+pmToGive);
+                    cap.sync((ServerPlayerEntity) player);
+                }
                 //player.sendMessage(new StringTextComponent("pm give "+pmToGive+" "+cap.pm),Util.DUMMY_UUID);
                 String ablob = new TranslationTextComponent("title."+RayaMod.MOD_ID+".ablob").getString();
                 player.sendStatusMessage(new StringTextComponent(ablob+pmToGive+" "+new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()), true);

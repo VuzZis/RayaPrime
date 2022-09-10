@@ -1,6 +1,7 @@
 package com.vuzz.rayaprime;
 
 import com.vuzz.rayaprime.blocks.ModBlocks;
+import com.vuzz.rayaprime.effects.ModEffects;
 import com.vuzz.rayaprime.entities.ModEntityTypes;
 import com.vuzz.rayaprime.entities.render.RayaPrimeRenderer;
 import com.vuzz.rayaprime.entities.render.BeyondtoRenderer;
@@ -52,7 +53,7 @@ public class RayaMod {
         ModBlocks.register(eventBus);
         ModEntityTypes.register(eventBus);
         ModContainers.register(eventBus);
-        
+        ModEffects.register(eventBus);
         eventBus.addListener(this::doClientStuff);
     }
 

@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.vuzz.rayaprime.RayaMod;
+import com.vuzz.rayaprime.capability.PM;
 import com.vuzz.rayaprime.gui.ShopButton;
 import com.vuzz.rayaprime.gui.containers.RayaPrimeContainer;
 import com.vuzz.rayaprime.networking.Networking;
 import com.vuzz.rayaprime.networking.PacketItemStack;
-import com.vuzz.rayaprime.networking.PacketPM;
+import com.vuzz.rayaprime.networking.PMUpdatePacket;
 import com.vuzz.rayaprime.shop.ShopItems;
 
 import net.minecraft.client.Minecraft;
@@ -22,6 +23,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.network.PacketDistributor;
 
 public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
@@ -59,13 +61,18 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
                 if(shopItems.size() > pageMultiplier+a) {
                     ItemStack stack = shopItems.get(pageMultiplier+a);
                     int price = (int) shopPrices.get(pageMultiplier+a);
-                    int pm = playera.getPersistentData().getInt("pm");
-                    if(pm >= price) {
-                        playera.getPersistentData().putInt("pm", pm-price);
-                        ItemStack stcopy = stack.copy();
-                        Networking.CHANNEL.send(PacketDistributor.SERVER.noArg(), new PacketPM(pm-price));
-                        Networking.CHANNEL.send(PacketDistributor.SERVER.noArg(), new PacketItemStack(stcopy));
+                    LazyOptional<PM> capability =  PM.get(playera);
+                    if(capability.resolve().isPresent()) {
+                        PM cap = capability.resolve().get();
+                        int pm = cap.getPm();
+                        if(pm >= price) {
+                            cap.setPm(pm-price);
+                            cap.sync((ClientPlayerEntity) player);
+                            ItemStack stcopy = stack.copy();
+                            Networking.CHANNEL.send(PacketDistributor.SERVER.noArg(), new PacketItemStack(stcopy));
+                        }
                     }
+                    
                 }
             }, e);
             addButton(btn);
@@ -111,7 +118,11 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
             new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+price, 
             xBox-31, yBox+38, Integer.parseInt("FFFFFF",16));
         }
-        drawString(matrixStack, Minecraft.getInstance().fontRenderer, new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+player.getPersistentData().getInt("pm"), -24, 154, Integer.parseInt("FFFFFF",16));
+        LazyOptional<PM> capability =  PM.get(player);
+        if(capability.resolve().isPresent()) {
+            PM cap = capability.resolve().get();
+            drawString(matrixStack, Minecraft.getInstance().fontRenderer, new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+cap.getPm(), -24, 154, Integer.parseInt("FFFFFF",16));
+        }
 	}
 
     @Override

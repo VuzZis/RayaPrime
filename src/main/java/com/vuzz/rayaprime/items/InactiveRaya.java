@@ -20,6 +20,8 @@ import net.minecraft.world.server.ServerWorld;
 
 public class InactiveRaya extends Item {
 
+    public int ticks = 0;
+
 	public InactiveRaya() {
 		super(
             new Item.Properties()
@@ -33,13 +35,13 @@ public class InactiveRaya extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int tick, boolean bool) {
-        
+        ticks++;
         if(!stack.hasTag()) stack.setTag(new CompoundNBT());
         stack.getTag().putFloat("max_energy",19998f);
         PlayerEntity player = (PlayerEntity) entity;
         if(player.getFoodStats().getFoodLevel() > 1) {
-            if(tick % 300 == 0) {
-                stack.getTag().putFloat("energy",stack.getTag().getFloat("energy")+3f);
+            if(ticks % 400 == 0) {
+                stack.getTag().putFloat("energy",stack.getTag().getFloat("energy")+70f);
                 player.getFoodStats().setFoodLevel(player.getFoodStats().getFoodLevel()-1);
             }
         }

@@ -48,7 +48,7 @@ public class InactiveBeyondto extends Item {
         }
         if(stack.getTag().getFloat("energy") > stack.getTag().getFloat("max_energy")) stack.getTag().putFloat("energy",stack.getTag().getFloat("max_energy"));
         if(stack.getTag().getFloat("energy") < 0) stack.getTag().putFloat("energy",0);
-        stack.setDamage(20000-((int) stack.getTag().getFloat("energy")+1));
+        stack.setDamage(30000-((int) stack.getTag().getFloat("energy")+1));
 
 
         super.inventoryTick(stack, world, entity, tick, bool);
