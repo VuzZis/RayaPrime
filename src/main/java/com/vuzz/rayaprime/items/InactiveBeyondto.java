@@ -2,6 +2,7 @@ package com.vuzz.rayaprime.items;
 
 import com.vuzz.rayaprime.RayaMod;
 import com.vuzz.rayaprime.entities.ModEntityTypes;
+import com.vuzz.rayaprime.entities.custom.BeyondtoEntity;
 import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -18,14 +19,16 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class InactiveRaya extends Item {
+public class InactiveBeyondto extends Item {
 
-	public InactiveRaya() {
+    public int ticks = 0;
+
+	public InactiveBeyondto() {
 		super(
             new Item.Properties()
             .group(RayaMod.MOD_GROUP)
-            .defaultMaxDamage(20000)
-            .maxDamage(20000)
+            .defaultMaxDamage(30000)
+            .maxDamage(30000)
             .setNoRepair()
             .rarity(Rarity.EPIC)
         );
@@ -33,13 +36,13 @@ public class InactiveRaya extends Item {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int tick, boolean bool) {
-        
+        ticks++;
         if(!stack.hasTag()) stack.setTag(new CompoundNBT());
-        stack.getTag().putFloat("max_energy",19998f);
+        stack.getTag().putFloat("max_energy",29998f);
         PlayerEntity player = (PlayerEntity) entity;
         if(player.getFoodStats().getFoodLevel() > 1) {
-            if(tick % 300 == 0) {
-                stack.getTag().putFloat("energy",stack.getTag().getFloat("energy")+3f);
+            if(ticks % 300 == 0) {
+                stack.getTag().putFloat("energy",stack.getTag().getFloat("energy")+50f);
                 player.getFoodStats().setFoodLevel(player.getFoodStats().getFoodLevel()-1);
             }
         }
@@ -70,11 +73,10 @@ public class InactiveRaya extends Item {
                     context.getPlayer().sendStatusMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".notenoughenergy"), true);
                     return super.onItemUseFirst(stack, context);
                 }
-                EntityType<RayaPrimeEntity> raya = ModEntityTypes.RAYA_PRIME.get();
-                RayaPrimeEntity rayaEntity = (RayaPrimeEntity) raya.spawn((ServerWorld) context.getWorld(), stack, context.getPlayer(), context.getPlayer().getPosition(), 
+                EntityType<com.vuzz.rayaprime.entities.custom.BeyondtoEntity> raya = ModEntityTypes.BEYONDTO.get();
+                BeyondtoEntity rayaEntity = (BeyondtoEntity) raya.spawn((ServerWorld) context.getWorld(), stack, context.getPlayer(), context.getPlayer().getPosition(), 
                     SpawnReason.DISPENSER, false, false);
-                    
-                context.getPlayer().getPersistentData().putBoolean("hasraya", true);
+                context.getPlayer().getPersistentData().putBoolean("hasbeyondto", true);
                 rayaEntity.getPersistentData().putFloat("energy", stack.getTag().getFloat("energy"));
                 rayaEntity.getPersistentData().putFloat("max_energy", stack.getTag().getFloat("max_energy"));
                 rayaEntity.owner = context.getPlayer();

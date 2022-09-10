@@ -15,11 +15,13 @@
     "block.rayaprime.mrtomato" : "Мистер Помидорка",
     "block.rayaprime.mrtomato_gold" : "Золотой Мистер Помидорка",
     "itemGroup.rayaprime" : "Райя-Прайм",
+    "message.rayaprime.notenoughenergy" : "§cНЕДОСТАТОЧНО ЭНЕРГИИ§r",
     "message.rayaprime.lowenergy" : "§b[Райя-Прайм]§r Warning: Low Battery, please charge.",
     "message.rayaprime.lowfood" : "§b[Райя-Прайм]§r Калории почти на нуле, советую тебе поесть.",
     "message.rayaprime.lowdurability" : "§b[Райя-Прайм]§r Пора сходить за обновкой!",
     "message.rayaprime.wakeup" : "§b[Райя-Прайм]§r Доброе утро!",
     "message.rayaprime.itembroke" : "§b[Райя-Прайм]§r Оу, похоже тебе нужна новая.",
+    "message.rayaprime.disabling" : "§с[Райя-Прайм]§r Критический уровень температуры внешнего модуля, отключаюсь.",
     "warning.rayaprime.nospace" : "§cНЕДОСТАТОЧНО МЕСТА§r",
     "title.rayaprime.pm" : "ПМ"   
 }

@@ -3,6 +3,7 @@ package com.vuzz.rayaprime;
 import com.vuzz.rayaprime.blocks.ModBlocks;
 import com.vuzz.rayaprime.entities.ModEntityTypes;
 import com.vuzz.rayaprime.entities.render.RayaPrimeRenderer;
+import com.vuzz.rayaprime.entities.render.BeyondtoRenderer;
 import com.vuzz.rayaprime.gui.containers.ModContainers;
 import com.vuzz.rayaprime.gui.screens.RayaPrimeScreen;
 import com.vuzz.rayaprime.items.ModItems;
@@ -36,6 +37,13 @@ public class RayaMod {
         }
         
     };
+
+    /*public static final ItemGroup CLOTHS_GROUP = new ItemGroup(MOD_ID+"clothes") {
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(ModItems.INACTIVE_IMPLANT.get());
+        }
+    };*/
     
     public RayaMod() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -50,6 +58,7 @@ public class RayaMod {
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.RAYA_PRIME.get(), RayaPrimeRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.BEYONDTO.get(), BeyondtoRenderer::new);
         event.enqueueWork(() -> {
             ScreenManager.registerFactory(ModContainers.RAYA_PRIME_CONTAINER.get(), RayaPrimeScreen::new);
         });

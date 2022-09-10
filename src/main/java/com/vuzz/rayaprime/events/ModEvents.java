@@ -10,11 +10,26 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+
+import com.google.common.eventbus.Subscribe;
 import com.vuzz.rayaprime.RayaMod;
+import com.vuzz.rayaprime.world.gen.ModOreGeneration;
 
 @Mod.EventBusSubscriber(modid = RayaMod.MOD_ID)
 public class ModEvents {
+
+    @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+
+    }
+
+    @SubscribeEvent
+    public static void biomeLoadingEvent(final BiomeLoadingEvent event) {
+        ModOreGeneration.generateOres(event);
+    }
 
     @SubscribeEvent
     public static void onPlayerWakeUpEvent(PlayerWakeUpEvent event) {

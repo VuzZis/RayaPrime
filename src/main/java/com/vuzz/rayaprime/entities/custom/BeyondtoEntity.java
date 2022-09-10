@@ -34,19 +34,18 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class RayaPrimeEntity extends FlyingEntity {
+public class BeyondtoEntity extends FlyingEntity {
 
     public static int animation = 0;
-    public static final float speed = 0.1f;
+    public static final float speed = 0.2f;
     private float energy = 0;
     private int ticks = 0;
     private int lastHungerCheck = 0;
-    private int lastDurabilityCheck = 0;
 
     public LivingEntity owner;
     public UUID owneruuid;
 
-    public RayaPrimeEntity(EntityType<? extends FlyingEntity> type, World worldIn) {
+    public BeyondtoEntity(EntityType<? extends FlyingEntity> type, World worldIn) {
         super(type, worldIn);
     }
 
@@ -70,8 +69,8 @@ public class RayaPrimeEntity extends FlyingEntity {
         if(damageSource == DamageSource.OUT_OF_WORLD) return true;
         CompoundNBT nbt = getPersistentData();
         energy = nbt.getFloat("energy");
-        if(energy > damage*2) {
-            nbt.putFloat("energy",energy-damage*2);
+        if(energy > damage) {
+            nbt.putFloat("energy",energy-damage);
             return false;
         }
         return true;
@@ -86,11 +85,11 @@ public class RayaPrimeEntity extends FlyingEntity {
         if(player.isSneaking()) {
             CompoundNBT nbt = getPersistentData();
             if(owner == player) {
-                ItemStack item = new ItemStack(ModItems.INACTIVE_IMPLANT.get());
+                ItemStack item = new ItemStack(ModItems.INACTIVE_BEYONDTO.get());
                 if(player.canPickUpItem(item)) {
                     item.setTag(nbt);
                     player.addItemStackToInventory(item);
-                    player.getPersistentData().putBoolean("hasraya", false);
+                    player.getPersistentData().putBoolean("hasbeyondto", false);
                     remove();
                 } else {
                     player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
@@ -101,16 +100,16 @@ public class RayaPrimeEntity extends FlyingEntity {
             CompoundNBT nbt = getPersistentData(); 
             energy = nbt.getFloat("energy");
             if(owner == player && energy >= 0 && nbt.getBoolean("canUseEnergy")) {
-                INamedContainerProvider containerProvider = createContainerProvider(player.getEntityWorld(),player.getPosition());
+                //INamedContainerProvider containerProvider = createContainerProvider(player.getEntityWorld(),player.getPosition());
 
-                NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider,getPosition());
+                //NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider,getPosition());
             }
         }
         return super.getEntityInteractionResult(player, hand);
     }
 
     private INamedContainerProvider createContainerProvider(World worldIn, BlockPos pos) {
-        RayaPrimeEntity entity = this;
+        BeyondtoEntity entity = this;
         return new INamedContainerProvider() {
 
             @Override
@@ -151,12 +150,12 @@ public class RayaPrimeEntity extends FlyingEntity {
             
             if(owner instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) owner;
-                ItemStack item = new ItemStack(ModItems.INACTIVE_IMPLANT.get());
+                ItemStack item = new ItemStack(ModItems.INACTIVE_BEYONDTO.get());
                 if(player.canPickUpItem(item)) {
                     remove();
                     item.setTag(nbt);
                     player.addItemStackToInventory(item);
-                    player.getPersistentData().putBoolean("hasraya", false);
+                    player.getPersistentData().putBoolean("hasbeyondto", false);
                 } else {
                     player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
                 }
@@ -172,42 +171,44 @@ public class RayaPrimeEntity extends FlyingEntity {
             if(owner.getEntityWorld() != getEntityWorld()) setWorld(owner.getEntityWorld());
             if(getEntityWorld().isRemote) {
                 ClientPlayerEntity player = Minecraft.getInstance().player;
-                player.getPersistentData().putInt("pm", owner.getPersistentData().getInt("pm"));
             }
             double distance = getDistanceSq(owner);
             lookAt(Type.EYES, owner.getPositionVec());
-            if(energy == 60 || energy == 59) {
-                owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".lowbattery"),Util.DUMMY_UUID);
-            }
+
             PlayerEntity player = (PlayerEntity) owner;
-            if((ticks - lastHungerCheck >= 600) && player.getFoodStats().getFoodLevel() < 10) {
+            if((ticks - lastHungerCheck >= 1200) && player.getFoodStats().getFoodLevel() < 10) {
                 owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".lowfood"),Util.DUMMY_UUID);
                 lastHungerCheck = ticks;
-            }
-            ItemStack stackForCheck = player.getHeldItemMainhand();
-            
-            if((ticks - lastDurabilityCheck >= 300) && (stackForCheck.getDamage()*100/(stackForCheck.getMaxDamage()+1)) >= 90) {
-                owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".lowdurability"),Util.DUMMY_UUID);
-                lastDurabilityCheck = ticks;
             }
 
 
             if(energy <= 0 && nbt.getBoolean("canUseEnergy")) return;
-            if (distance >= 30) {
-                setPosition(owner.getPosX(), owner.getPosY()+1.1, owner.getPosZ());
+            if(player.getHealth() <= 10) {
+                nbt.putInt("phase", 1);
+                double step = 360/20;
+                double angle = ticks % 20;
+                double x = (double) (owner.getPosX()+Math.sin(Math.toRadians(angle*step))*1.2);
+                double z = (double) (owner.getPosZ()+Math.cos(Math.toRadians(angle*step))*1.2);
+                setPosition(x,owner.getPosY()+0.7,z);
             }
-            else if(distance >= 10) {
-                setMotion(
-                    new Vector3d(
-                        -clamp(getPosX()-owner.getPosX(),-speed,speed), 
-                        -clamp(getPosY()-(owner.getPosY()+1.1+Math.sin(ticks/20)*3),-speed,speed), 
-                        -clamp(getPosZ()-owner.getPosZ(),-speed,speed)
-                    )
-                );
-            } 
+            else {
+                nbt.putInt("phase", 0);
+                if (distance >= 60) {
+                    setPosition(owner.getPosX(), owner.getPosY()+1.1, owner.getPosZ());
+                }
+                else if(distance >= 20) {
+                    setMotion(
+                        new Vector3d(
+                            -clamp(getPosX()-owner.getPosX(),-speed,speed), 
+                            -clamp(getPosY()-(owner.getPosY()+1.0+Math.sin(ticks/40)/1.25),-speed,speed), 
+                            -clamp(getPosZ()-owner.getPosZ(),-speed,speed)
+                        )
+                    );
+                } 
+            }
         }
         if(energy >= 0 && nbt.getBoolean("canUseEnergy")) {
-            energy -= 0.1f;
+            energy -= 0.125f;
             
         }
         nbt.putFloat("energy", energy);

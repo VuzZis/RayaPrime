@@ -1,6 +1,7 @@
 package com.vuzz.rayaprime.entities;
 
 import com.vuzz.rayaprime.RayaMod;
+import com.vuzz.rayaprime.entities.custom.BeyondtoEntity;
 import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
 
 import net.minecraft.entity.EntityClassification;
@@ -20,6 +21,12 @@ public class ModEntityTypes {
             () -> EntityType.Builder.create(RayaPrimeEntity::new,
                     EntityClassification.AMBIENT).size(0.75f,0.75f)
                 .build(new ResourceLocation(RayaMod.MOD_ID, "raya_prime").toString()));
+
+    public static final RegistryObject<EntityType<BeyondtoEntity>> BEYONDTO =
+    ENTITY_TYPES.register("beyondto",
+        () -> EntityType.Builder.create(BeyondtoEntity::new,
+                EntityClassification.AMBIENT).size(0.55f,1.5f)
+            .build(new ResourceLocation(RayaMod.MOD_ID, "beyondto").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
