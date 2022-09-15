@@ -6,7 +6,7 @@
             "entries" : [
                 {
                     "type" : "minecraft:item",
-                    "name" : "rayaprime:lead_ore"
+                    "name" : "storymoding:lead_ore"
                 }
             ]
         }

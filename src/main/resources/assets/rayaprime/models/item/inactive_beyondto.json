@@ -1,6 +1,6 @@
 {
     "parent" : "item/generated",
     "textures" : {
-        "layer0" : "rayaprime:item/inactive_beyondto"
+        "layer0" : "storymoding:item/inactive_beyondto"
     }
 }

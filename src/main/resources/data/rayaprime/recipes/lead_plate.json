@@ -7,10 +7,10 @@
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:lead_ingot"
+            "item" : "storymoding:lead_ingot"
         }
     },
     "result" : {
-        "item" : "rayaprime:lead_plate"
+        "item" : "storymoding:lead_plate"
     }
 }

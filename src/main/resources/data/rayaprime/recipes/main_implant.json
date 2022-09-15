@@ -7,10 +7,10 @@
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:microscheme"
+            "item" : "storymoding:microscheme"
         }
     },
     "result" : {
-        "item" : "rayaprime:main_implant"
+        "item" : "storymoding:main_implant"
     }
 }

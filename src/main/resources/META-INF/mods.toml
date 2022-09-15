@@ -3,7 +3,7 @@ loaderVersion="[36,)" #mandatory This is typically bumped every Minecraft versio
 license="All rights reserved"
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
 [[mods]] #mandatory
-modId="rayaprime" #mandatory
+modId="storymoding" #mandatory
 version="0.1" #mandatory
 displayName="Raya-Innovation" #mandatory
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
@@ -14,13 +14,13 @@ authors="VuzZ, DeadBlack" #optional
 description='''
 Mod fully belongs to Lololowka's Team.
 '''
-[[dependencies.rayaprime]] #optional
+[[dependencies.storymoding]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
     versionRange="[36,)" #mandatory
     ordering="NONE"
     side="BOTH"
-[[dependencies.rayaprime]]
+[[dependencies.storymoding]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.16.5,1.17)"

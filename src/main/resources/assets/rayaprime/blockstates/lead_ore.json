@@ -1,5 +1,5 @@
 {
     "variants" : {
-        "": { "model" : "rayaprime:block/lead_ore" }
+        "": { "model" : "storymoding:block/lead_ore" }
     }
 }

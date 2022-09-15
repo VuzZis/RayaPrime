@@ -1,6 +1,6 @@
 {
     "parent" : "item/generated",
     "textures" : {
-        "layer0" : "rayaprime:item/battery"
+        "layer0" : "storymoding:item/battery"
     }
 }

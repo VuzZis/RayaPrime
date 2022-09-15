@@ -7,7 +7,7 @@
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:microscheme"
+            "item" : "storymoding:microscheme"
         },
         "E" : {
             "item" : "minecraft:flint"
@@ -20,6 +20,6 @@
         }
     },
     "result" : {
-        "item" : "rayaprime:screen"
+        "item" : "storymoding:screen"
     }
 }

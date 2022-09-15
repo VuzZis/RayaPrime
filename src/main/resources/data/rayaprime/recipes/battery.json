@@ -7,7 +7,7 @@
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:microscheme"
+            "item" : "storymoding:microscheme"
         },
         "A" : {
             "item" : "minecraft:gold_ingot"
@@ -17,6 +17,6 @@
         }
     },
     "result" : {
-        "item" : "rayaprime:battery"
+        "item" : "storymoding:battery"
     }
 }

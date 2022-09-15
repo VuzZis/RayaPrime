@@ -1,6 +1,6 @@
 {
     "parent" : "item/generated",
     "textures" : {
-        "layer0" : "rayaprime:item/ai_module"
+        "layer0" : "storymoding:item/ai_module"
     }
 }

@@ -7,16 +7,16 @@
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:coal_plate"
+            "item" : "storymoding:coal_plate"
         },
         "A" : {
-            "item" : "rayaprime:iron_plate"
+            "item" : "storymoding:iron_plate"
         },
         "E" : {
-            "item" : "rayaprime:lead_plate"
+            "item" : "storymoding:lead_plate"
         }
     },
     "result" : {
-        "item" : "rayaprime:clsc"
+        "item" : "storymoding:clsc"
     }
 }

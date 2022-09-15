@@ -7,13 +7,13 @@
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:microscheme"
+            "item" : "storymoding:microscheme"
         },
         "E" : {
             "item" : "minecraft:gold_ingot"
         }
     },
     "result" : {
-        "item" : "rayaprime:ai_module"
+        "item" : "storymoding:ai_module"
     }
 }

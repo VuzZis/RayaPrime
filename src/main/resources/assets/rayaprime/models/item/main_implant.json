@@ -1,6 +1,6 @@
 {
     "parent" : "item/generated",
     "textures" : {
-        "layer0" : "rayaprime:item/main_implant"
+        "layer0" : "storymoding:item/main_implant"
     }
 }

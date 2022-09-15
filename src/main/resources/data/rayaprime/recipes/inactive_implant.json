@@ -7,26 +7,26 @@
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:clsc"
+            "item" : "storymoding:clsc"
         },
         "E" : {
-            "item" : "rayaprime:screen"
+            "item" : "storymoding:screen"
         },
         "M" : {
-            "item" : "rayaprime:main_implant"
+            "item" : "storymoding:main_implant"
         },
         "X" : {
-            "item" : "rayaprime:ai_module"
+            "item" : "storymoding:ai_module"
         },
         "A" : {
-            "item" : "rayaprime:fabricator"
+            "item" : "storymoding:fabricator"
         }
         ,
         "B" : {
-            "item" : "rayaprime:battery"
+            "item" : "storymoding:battery"
         }
     },
     "result" : {
-        "item" : "rayaprime:inactive_implant"
+        "item" : "storymoding:inactive_implant"
     }
 }

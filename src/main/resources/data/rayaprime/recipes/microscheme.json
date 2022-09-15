@@ -7,13 +7,13 @@
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:coal_plate"
+            "item" : "storymoding:coal_plate"
         },
         "E" : {
             "item" : "minecraft:green_dye"
         }
     },
     "result" : {
-        "item" : "rayaprime:microscheme"
+        "item" : "storymoding:microscheme"
     }
 }

@@ -3,8 +3,8 @@
 	"parent": "mrtomato",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "rayaprime:block/mrtomato/gold",
-		"particle": "rayaprime:/block/mrtomato/gold"
+		"1": "storymoding:block/mrtomato/gold",
+		"particle": "storymoding:/block/mrtomato/gold"
 	},
 	"elements": [
 		{
