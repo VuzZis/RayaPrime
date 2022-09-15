@@ -48,12 +48,12 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
         Minecraft mc = Minecraft.getInstance();
         ClientPlayerEntity player = mc.player;
         for(int i = 0; i < 15; i++) {
-            int xBox = i % 5;
-            int yBox = (int) Math.floor(i/5);
+            int xBox = i % 8;
+            int yBox = (int) Math.floor(i/8);
             xBox = (int) xBox * 47;
             yBox = (int) yBox * 46;
             int e = i;
-            ShopButton btn = new ShopButton(46, 44, b+6+xBox-40, j+6+yBox, player, $ -> {
+            ShopButton btn = new ShopButton(46, 44, b+6+xBox-90, j+6+yBox, player, $ -> {
                 Minecraft mca = Minecraft.getInstance();
                 int a = e;
                 ClientPlayerEntity playera = mca.player;
@@ -107,8 +107,8 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
             int j = (this.height) / 2;
             //int b = x - 88;
             //int j = y - 83;
-            int xBox = i % 5;
-            int yBox = (int) Math.floor(i/5);
+            int xBox = i % 8;
+            int yBox = (int) Math.floor(i/8);
             xBox = (int) xBox * 47;
             yBox = (int) yBox * 46;
             int pageMultiplier = (15*(page-1));
@@ -116,12 +116,12 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
             int price = (int) shopPrices.get(pageMultiplier+a);
             drawString(matrixStack, Minecraft.getInstance().fontRenderer, 
             new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+price, 
-            xBox-31, yBox+38, Integer.parseInt("FFFFFF",16));
+            xBox-31-40, yBox+38, Integer.parseInt("FFFFFF",16));
         }
         LazyOptional<PM> capability =  PM.get(player);
         if(capability.resolve().isPresent()) {
             PM cap = capability.resolve().get();
-            drawString(matrixStack, Minecraft.getInstance().fontRenderer, new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+cap.getPm(), -24, 154, Integer.parseInt("FFFFFF",16));
+            drawString(matrixStack, Minecraft.getInstance().fontRenderer, new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+cap.getPm(), -64, 124, Integer.parseInt("FFFFFF",16));
         }
 	}
 
@@ -131,13 +131,13 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
         this.minecraft.getTextureManager().bindTexture(GUI);
         int i = this.guiLeft;
         int j = this.guiTop;
-        this.blit(arg0,i-40,j,0,0,256,168);
+        this.blit(arg0,i-90,j,0,0,356,168);
         for(int q = 0; q < 15; q++) {
-            int xBox = q % 5;
-            int yBox = (int) Math.floor(q/5);
+            int xBox = q % 8;
+            int yBox = (int) Math.floor(q/8);
             xBox = (int) xBox * 47;
             yBox = (int) yBox * 46;
-            this.blit(arg0,i+6+xBox-40,j+6+yBox,0,170,46,44);
+            this.blit(arg0,i+6+xBox-90,j+6+yBox,0,170,46,44);
         }
     }
     

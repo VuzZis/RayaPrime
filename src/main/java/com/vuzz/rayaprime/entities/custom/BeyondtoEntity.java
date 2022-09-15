@@ -3,6 +3,7 @@ package com.vuzz.rayaprime.entities.custom;
 import java.util.UUID;
 
 import com.vuzz.rayaprime.RayaMod;
+import com.vuzz.rayaprime.effects.ModEffects;
 import com.vuzz.rayaprime.gui.containers.RayaPrimeContainer;
 import com.vuzz.rayaprime.items.ModItems;
 
@@ -22,6 +23,8 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
@@ -92,7 +95,10 @@ public class BeyondtoEntity extends FlyingEntity {
                     player.getPersistentData().putBoolean("hasbeyondto", false);
                     remove();
                 } else {
-                    player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
+                    remove();
+                    item.setTag(nbt);
+                    player.dropItem(item, false);
+                    player.getPersistentData().putBoolean("hasbeyondto", false);
                 }
             } 
         } else {
@@ -126,13 +132,15 @@ public class BeyondtoEntity extends FlyingEntity {
     }
 
     @Override
-    public boolean isInvulnerable() {
-        return true;
+    public boolean canDespawn(double p_213397_1_) {
+        return false;
     }
 
     @Override
-    public boolean canDespawn(double p_213397_1_) {
-        return false;
+    public void onRemovedFromWorld() {
+        if(owner != null) {
+            setWorld(owner.getEntityWorld());
+        }
     }
 
     @Override
@@ -144,7 +152,6 @@ public class BeyondtoEntity extends FlyingEntity {
         if(nbt.getBoolean("canUseEnergy")) {
             owneruuid = nbt.getUniqueId("owneruuid");
         }
-        setHealth(100f);
 
         if(energy <= 0 && nbt.getBoolean("canUseEnergy")) {
             
@@ -157,7 +164,10 @@ public class BeyondtoEntity extends FlyingEntity {
                     player.addItemStackToInventory(item);
                     player.getPersistentData().putBoolean("hasbeyondto", false);
                 } else {
-                    player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
+                    remove();
+                    item.setTag(nbt);
+                    player.dropItem(item, false);
+                    player.getPersistentData().putBoolean("hasbeyondto", false);
                 }
                 
             }
@@ -168,6 +178,23 @@ public class BeyondtoEntity extends FlyingEntity {
                 owner = getEntityWorld().getPlayerByUuid(owneruuid);
         }
         if(owner != null) {
+            if(owner instanceof PlayerEntity && owner.isPotionActive(ModEffects.HYBERNATION.get())) {
+                PlayerEntity player = (PlayerEntity) owner;
+                ItemStack item = new ItemStack(ModItems.INACTIVE_BEYONDTO.get());
+                owner.sendMessage(new TranslationTextComponent("message."+"beyondto"+".disabling"),Util.DUMMY_UUID);
+                if(player.canPickUpItem(item)) {
+                    remove();
+                    item.setTag(nbt);
+                    player.addItemStackToInventory(item);
+                    player.getPersistentData().putBoolean("hasbeyondto", false);
+                } else {
+                    remove();
+                    item.setTag(nbt);
+                    player.dropItem(item, false);
+                    player.getPersistentData().putBoolean("hasbeyondto", false);
+                }
+                
+            }
             if(owner.getEntityWorld() != getEntityWorld()) setWorld(owner.getEntityWorld());
             if(getEntityWorld().isRemote) {
                 ClientPlayerEntity player = Minecraft.getInstance().player;
@@ -177,20 +204,35 @@ public class BeyondtoEntity extends FlyingEntity {
 
             PlayerEntity player = (PlayerEntity) owner;
             if((ticks - lastHungerCheck >= 1200) && player.getFoodStats().getFoodLevel() < 10) {
-                owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".lowfood"),Util.DUMMY_UUID);
+                owner.sendMessage(new TranslationTextComponent("message."+"beyondto"+".lowfood"),Util.DUMMY_UUID);
                 lastHungerCheck = ticks;
             }
 
 
             if(energy <= 0 && nbt.getBoolean("canUseEnergy")) return;
-            if(player.getHealth() <= 10) {
+            if(player.getHealth() <= 10 && nbt.getInt("phase") == 0) {
                 nbt.putInt("phase", 1);
+                owner.sendMessage(new TranslationTextComponent("message."+"beyondto"+".shieldphase"),Util.DUMMY_UUID);
+            }
+            if(player.getHealth() > 10 && nbt.getInt("phase") == 1) {
+                nbt.putInt("phase", 0);
+                owner.sendMessage(new TranslationTextComponent("message."+"beyondto"+".normalphase"),Util.DUMMY_UUID);
+            }
+            if(player.getHealth() <= 10) {
+                
                 double step = 360/20;
                 double angle = ticks % 20;
                 double x = (double) (owner.getPosX()+Math.sin(Math.toRadians(angle*step))*1.2);
                 double z = (double) (owner.getPosZ()+Math.cos(Math.toRadians(angle*step))*1.2);
                 setPosition(x,owner.getPosY()+0.7,z);
             }
+            if(player.getHealth() <= 15) {
+                if(ticks % 60 == 59) {
+                    player.setHealth(player.getHealth()+2);
+                    energy -= 200;
+                }
+            }
+            
             else {
                 nbt.putInt("phase", 0);
                 if (distance >= 60) {
@@ -205,6 +247,10 @@ public class BeyondtoEntity extends FlyingEntity {
                         )
                     );
                 } 
+            }
+            if(ticks % 6000 == 5999) {
+                energy -= 500;
+                player.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 5000, 5, false, false, false, player.getActivePotionEffect(Effects.ABSORPTION)));
             }
         }
         if(energy >= 0 && nbt.getBoolean("canUseEnergy")) {

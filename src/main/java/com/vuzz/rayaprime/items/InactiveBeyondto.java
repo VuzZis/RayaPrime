@@ -60,7 +60,7 @@ public class InactiveBeyondto extends Item {
 
         if(context.getPlayer().isSneaking()) 
         {
-
+            
         } 
         else 
         {

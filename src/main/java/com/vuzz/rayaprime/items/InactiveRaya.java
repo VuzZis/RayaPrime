@@ -1,6 +1,7 @@
 package com.vuzz.rayaprime.items;
 
 import com.vuzz.rayaprime.RayaMod;
+import com.vuzz.rayaprime.effects.ModEffects;
 import com.vuzz.rayaprime.entities.ModEntityTypes;
 import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
 import net.minecraft.entity.Entity;
@@ -68,6 +69,7 @@ public class InactiveRaya extends Item {
                 context.getPlayer().sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".no_two_rayas"),Util.DUMMY_UUID);
             } else 
             {
+                if(context.getPlayer().isPotionActive(ModEffects.HYBERNATION.get())) return super.onItemUseFirst(stack, context);
                 if(stack.getTag().getFloat("energy") < 10) {
                     context.getPlayer().sendStatusMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".notenoughenergy"), true);
                     return super.onItemUseFirst(stack, context);

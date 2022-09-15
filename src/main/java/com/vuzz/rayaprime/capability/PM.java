@@ -14,10 +14,10 @@ import javax.annotation.Nonnull;
 
 import com.vuzz.rayaprime.networking.Networking;
 import com.vuzz.rayaprime.networking.PMUpdatePacket;
+import com.vuzz.rayaprime.networking.PMUpdatePacketClient;
 
 public class PM {
     private int pm;
-    private int maxpm = 20;
 
     public static LazyOptional<PM> get(Entity entity) {
         return entity.getCapability(CapabilityPM.INSTANCE);
@@ -28,7 +28,7 @@ public class PM {
     }
 
     public void sync(ClientPlayerEntity player) {
-        Networking.CHANNEL.send(PacketDistributor.SERVER.with(() -> null), new PMUpdatePacket(this));
+        Networking.CHANNEL.send(PacketDistributor.SERVER.with(() -> null), new PMUpdatePacketClient(this.pm,player.getUniqueID()));
     }
 
     public int getPm() {

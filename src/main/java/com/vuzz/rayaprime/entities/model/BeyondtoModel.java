@@ -155,6 +155,7 @@ public class BeyondtoModel<T extends BeyondtoEntity> extends EntityModel<T> {
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
 		int anim = entit.getPersistentData().getInt("anim");
 		int phase = entit.getPersistentData().getInt("phase");
+		System.out.println(phase);
 		switch(phase) {
 			case 0:
 				MainBody.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);

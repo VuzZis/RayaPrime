@@ -1,5 +1,6 @@
 {
-    "item.rayaprime.inactive_implant" : "Неактивный модуль П.Е.Р.С.И.К.",
+    "item.rayaprime.inactive_implant" : "Неактивный модуль Райи-Прайм",
+    "item.rayaprime.inactive_beyondto" : "Неактивный модуль Запро",
     "item.rayaprime.ai_module" : "ИИ Модуль",
     "item.rayaprime.fabricator" : "Фабрикатор",
     "item.rayaprime.battery" : "Свинцово-литиевый аккумулятор",
@@ -18,10 +19,14 @@
     "message.rayaprime.notenoughenergy" : "§cНЕДОСТАТОЧНО ЭНЕРГИИ§r",
     "message.rayaprime.lowenergy" : "§b[Райя-Прайм]§r Warning: Low Battery, please charge.",
     "message.rayaprime.lowfood" : "§b[Райя-Прайм]§r Калории почти на нуле, советую тебе поесть.",
+    "message.beyondto.lowfood" : "§d[Запро]§r Калории почти разрасходованы, можешь поесть пожалуйста?",
+    "message.beyondto.shieldphase" : "§d[Запро]§r Я помогу!",
+    "message.beyondto.disabling" : "§d[Запро]§r Принудительное отключение, простии.",
+    "message.beyondto.normalphase" : "§d[Запро]§r Возвращаюсь в привычное состояние.",
     "message.rayaprime.lowdurability" : "§b[Райя-Прайм]§r Пора сходить за обновкой!",
     "message.rayaprime.wakeup" : "§b[Райя-Прайм]§r Доброе утро!",
     "message.rayaprime.itembroke" : "§b[Райя-Прайм]§r Оу, похоже тебе нужна новая.",
-    "message.rayaprime.disabling" : "§с[Райя-Прайм]§r Критический уровень температуры внешнего модуля, отключаюсь.",
+    "message.rayaprime.disabling" : "§b[Райя-Прайм]§r Критический уровень температуры внешнего модуля, отключаюсь.",
     "warning.rayaprime.nospace" : "§cНЕДОСТАТОЧНО МЕСТА§r",
     "title.rayaprime.pm" : "ПМ",
     "effect.rayaprime.hybernation" : "Гибернация" 

@@ -24,6 +24,7 @@ public class ShopItems {
         addItem(shopItems, Items.ANDESITE, 16); //10
         addItem(shopItems, Items.NETHERITE_SCRAP, 1); //11
         addItem(shopItems, Items.REDSTONE, 16); //12
+        addItem(shopItems, ModItems.INACTIVE_BEYONDTO.get(), 1); //13
         return shopItems;
 
     }
@@ -32,18 +33,18 @@ public class ShopItems {
         
         ArrayList<Number> shopPrices = new ArrayList<Number>();
         addPrice(shopPrices,10); //1
-        addPrice(shopPrices,25); //2
-        addPrice(shopPrices,12); //3
+        addPrice(shopPrices,20); //2
+        addPrice(shopPrices,8); //3
         addPrice(shopPrices,25); //4
-        addPrice(shopPrices,8); //5
-        addPrice(shopPrices,50); //6
+        addPrice(shopPrices,25); //5
+        addPrice(shopPrices,25); //6
         addPrice(shopPrices,30); //7
-        addPrice(shopPrices,20); //8
-        addPrice(shopPrices,25); //9
-        addPrice(shopPrices,25); //10
-        addPrice(shopPrices,120); //11
+        addPrice(shopPrices,60); //8
+        addPrice(shopPrices,32); //9
+        addPrice(shopPrices,12); //10
+        addPrice(shopPrices,130); //11
         addPrice(shopPrices,30); //12
-        addPrice(shopPrices,70); //13
+        addPrice(shopPrices,100); //13
         addPrice(shopPrices,120); //14
 
         return shopPrices;

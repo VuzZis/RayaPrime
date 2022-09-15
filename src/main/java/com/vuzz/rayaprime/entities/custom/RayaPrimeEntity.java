@@ -3,6 +3,7 @@ package com.vuzz.rayaprime.entities.custom;
 import java.util.UUID;
 
 import com.vuzz.rayaprime.RayaMod;
+import com.vuzz.rayaprime.effects.ModEffects;
 import com.vuzz.rayaprime.gui.containers.RayaPrimeContainer;
 import com.vuzz.rayaprime.items.ModItems;
 
@@ -67,12 +68,13 @@ public class RayaPrimeEntity extends FlyingEntity {
 
     @Override
     public boolean attackEntityFrom(DamageSource damageSource, float damage) {
-        if(damageSource == DamageSource.OUT_OF_WORLD) return true;
-        CompoundNBT nbt = getPersistentData();
-        energy = nbt.getFloat("energy");
-        if(energy > damage*2) {
-            nbt.putFloat("energy",energy-damage*2);
-            return false;
+        if(damageSource != DamageSource.OUT_OF_WORLD) {
+            CompoundNBT nbt = getPersistentData();
+            energy = nbt.getFloat("energy");
+            if(energy > damage*2) {
+                nbt.putFloat("energy",energy-damage*2);
+                return false;
+            }
         }
         return true;
     }
@@ -93,7 +95,11 @@ public class RayaPrimeEntity extends FlyingEntity {
                     player.getPersistentData().putBoolean("hasraya", false);
                     remove();
                 } else {
-                    player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
+                    remove();
+                    item.setTag(nbt);
+                    player.dropItem(item, false);
+                    player.getPersistentData().putBoolean("hasraya", false);
+                    //player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
                 }
             } 
         } else {
@@ -137,6 +143,13 @@ public class RayaPrimeEntity extends FlyingEntity {
     }
 
     @Override
+    public void onRemovedFromWorld() {
+        if(owner != null) {
+            setWorld(owner.getEntityWorld());
+        }
+    }
+
+    @Override
     public void tick() {
         super.tick();   
         stopRiding();
@@ -145,7 +158,6 @@ public class RayaPrimeEntity extends FlyingEntity {
         if(nbt.getBoolean("canUseEnergy")) {
             owneruuid = nbt.getUniqueId("owneruuid");
         }
-        setHealth(100f);
 
         if(energy <= 0 && nbt.getBoolean("canUseEnergy")) {
             
@@ -158,7 +170,11 @@ public class RayaPrimeEntity extends FlyingEntity {
                     player.addItemStackToInventory(item);
                     player.getPersistentData().putBoolean("hasraya", false);
                 } else {
-                    player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
+                    //player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
+                    remove();
+                    item.setTag(nbt);
+                    player.dropItem(item, false);
+                    player.getPersistentData().putBoolean("hasraya", false);
                 }
                 
             }
@@ -169,6 +185,23 @@ public class RayaPrimeEntity extends FlyingEntity {
                 owner = getEntityWorld().getPlayerByUuid(owneruuid);
         }
         if(owner != null) {
+            if(owner instanceof PlayerEntity && owner.isPotionActive(ModEffects.HYBERNATION.get())) {
+                PlayerEntity player = (PlayerEntity) owner;
+                ItemStack item = new ItemStack(ModItems.INACTIVE_IMPLANT.get());
+                owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".disabling"),Util.DUMMY_UUID);
+                if(player.canPickUpItem(item)) {
+                    remove();
+                    item.setTag(nbt);
+                    player.addItemStackToInventory(item);
+                    player.getPersistentData().putBoolean("hasraya", false);
+                } else {
+                    remove();
+                    item.setTag(nbt);
+                    player.dropItem(item, false);
+                    player.getPersistentData().putBoolean("hasraya", false);
+                }
+                
+            }
             if(owner.getEntityWorld() != getEntityWorld()) setWorld(owner.getEntityWorld());
             if(getEntityWorld().isRemote) {
                 ClientPlayerEntity player = Minecraft.getInstance().player;
