@@ -13,7 +13,7 @@
             "item" : "rayaprime:lithium_ingot"
         },
         "O" : {
-            "item" : "minecraft:condensator"
+            "item" : "rayaprime:condensator"
         }
     },
     "result" : {

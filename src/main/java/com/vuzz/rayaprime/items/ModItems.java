@@ -35,7 +35,6 @@ public class ModItems {
     public static final RegistryObject<Item> TRANSISTOR_PACK = ITEMS.register("transistorpack", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> CPU = ITEMS.register("cpu", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> CONDENSATOR = ITEMS.register("condensator", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
-    public static final RegistryObject<Item> MEMORY_CARD = ITEMS.register("memory_card", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> RAYAPRIME_OS = ITEMS.register("rayaprime_os", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> BEYONDTO_OS = ITEMS.register("beyondto_os", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     //public static final RegistryObject<Item> MR_TOMATO = ITEMS.register("mrtomato", () -> new BlockItem(ModBlocks.MR_TOMATO.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
