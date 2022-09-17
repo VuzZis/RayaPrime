@@ -1,9 +1,9 @@
 {
     "type" : "minecraft:crafting_shaped",
     "pattern" : [
-        "OOO",
         "#E#",
-        "ZAZ"
+        "EAE",
+        "#E#"
     ],
     "key" : {
         "#" : {
@@ -13,16 +13,11 @@
             "item" : "minecraft:flint"
         },
         "A" : {
-            "item" : "minecraft:gold_nugget"
-        },
-        "Z" : {
-            "item" : "minecraft:glowstone_dust"
-        },
-        "O" : {
-            "item" : "minecraft:glass"
+            "item" : "minecraft:diamond"
         }
     },
     "result" : {
-        "item" : "rayaprime:screen"
+        "item" : "rayaprime:cpu",
+        "count" : 1
     }
 }

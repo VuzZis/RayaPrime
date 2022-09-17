@@ -7,13 +7,13 @@
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:microscheme"
+            "item" : "rayaprime:transistor"
         },
         "A" : {
-            "item" : "minecraft:gold_ingot"
+            "item" : "rayaprime:lithium_ingot"
         },
         "O" : {
-            "item" : "minecraft:redstone"
+            "item" : "minecraft:condensator"
         }
     },
     "result" : {

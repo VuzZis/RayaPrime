@@ -1,0 +1,23 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "###",
+        "EAE",
+        "   "
+    ],
+    "key" : {
+        "#" : {
+            "item" : "rayaprime:lithium_ingot"
+        },
+        "E" : {
+            "item" : "minecraft:gold_ingot"
+        },
+        "A" : {
+            "item" : "minecraft:redstone"
+        }
+    },
+    "result" : {
+        "item" : "rayaprime:condensator",
+        "count" : 4
+    }
+}

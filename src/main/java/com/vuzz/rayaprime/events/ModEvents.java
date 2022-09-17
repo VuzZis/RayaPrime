@@ -49,7 +49,7 @@ public class ModEvents {
             player.getPersistentData().putFloat("temperature", temperaturePlayer+useDifference);
             float temperature = temperaturePlayer+useDifference;
             if(temperaturePlayer >= 1.7 || temperaturePlayer <= -0.7) {
-                player.addPotionEffect(new EffectInstance(ModEffects.HYBERNATION.get(), 20000000, 1, false, false, false, player.getActivePotionEffect(ModEffects.HYBERNATION.get())));
+                player.addPotionEffect(new EffectInstance(ModEffects.HYBERNATION.get(), 20000000, 0, false, false, false, player.getActivePotionEffect(ModEffects.HYBERNATION.get())));
             } else {
                 player.removePotionEffect(ModEffects.HYBERNATION.get());
             }

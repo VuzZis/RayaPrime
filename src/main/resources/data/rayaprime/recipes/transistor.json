@@ -1,28 +1,26 @@
 {
     "type" : "minecraft:crafting_shaped",
     "pattern" : [
-        "OOO",
         "#E#",
-        "ZAZ"
+        "EAE",
+        "OOO"
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:transistor_pack"
-        },
-        "E" : {
             "item" : "minecraft:flint"
         },
-        "A" : {
+        "E" : {
             "item" : "minecraft:gold_nugget"
         },
-        "Z" : {
-            "item" : "minecraft:glowstone_dust"
+        "A" : {
+            "item" : "minecraft:redstone"
         },
         "O" : {
-            "item" : "minecraft:glass"
+            "item" : "minecraft:iron_nugget"
         }
     },
     "result" : {
-        "item" : "rayaprime:screen"
+        "item" : "rayaprime:transistor",
+        "count" : 4
     }
 }

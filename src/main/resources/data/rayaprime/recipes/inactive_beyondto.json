@@ -1,8 +1,8 @@
 {
     "type" : "minecraft:crafting_shaped",
     "pattern" : [
-        "XEA",
-        "M#O",
+        "EBE",
+        "MOM",
         "#B#"
     ],
     "key" : {
@@ -23,7 +23,7 @@
         }
         ,
         "O" : {
-            "item" : "rayaprime:rayaprime_os"
+            "item" : "rayaprime:beyondto_os"
         },
         "B" : {
             "item" : "rayaprime:battery"

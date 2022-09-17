@@ -1,13 +1,19 @@
 {
     "type" : "minecraft:crafting_shaped",
     "pattern" : [
-        "###",
-        "###",
-        "   "
+        "E E",
+        "#E#",
+        "OOO"
     ],
     "key" : {
         "#" : {
             "item" : "rayaprime:microscheme"
+        },
+        "E" : {
+            "item" : "rayaprime:cpu"
+        },
+        "O" : {
+            "item" : "rayaprime:resistor"
         }
     },
     "result" : {
