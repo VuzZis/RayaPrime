@@ -2,6 +2,7 @@ package com.vuzz.rayaprime.entities.render;
 
 import com.vuzz.rayaprime.RayaMod;
 import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
+import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
 import com.vuzz.rayaprime.entities.model.RayaPrimeModel;
 
 import net.minecraft.client.renderer.entity.EntityRendererManager;

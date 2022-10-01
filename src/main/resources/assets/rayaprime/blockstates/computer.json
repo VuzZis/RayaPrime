@@ -1,0 +1,23 @@
+{
+    
+    "variants" : {
+        "" : { 
+            "model": "rayaprime:block/computer"
+        },
+        "facing=east": {
+            "model": "rayaprime:block/computer",
+            "y": 270
+        },
+        "facing=north": {
+            "model": "rayaprime:block/computer",
+            "y": 180
+        },
+        "facing=south": {
+            "model": "rayaprime:block/computer"
+        },
+        "facing=west": {
+            "model": "rayaprime:block/computer",
+            "y": 90
+        }
+    }
+}

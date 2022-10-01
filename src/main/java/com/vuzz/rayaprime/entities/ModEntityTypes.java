@@ -3,6 +3,7 @@ package com.vuzz.rayaprime.entities;
 import com.vuzz.rayaprime.RayaMod;
 import com.vuzz.rayaprime.entities.custom.BeyondtoEntity;
 import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
+import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
 
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;

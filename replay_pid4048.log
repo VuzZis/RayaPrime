@@ -4722,7 +4722,7 @@ instanceKlass org/eclipse/osgi/internal/permadmin/EquinoxSecurityManager
 instanceKlass org/eclipse/osgi/internal/loader/BundleLoader$ClassContext
 instanceKlass org/eclipse/osgi/internal/framework/ContextFinder$Finder
 instanceKlass org/eclipse/osgi/internal/url/MultiplexingFactory$InternalSecurityManager
-ciInstanceKlass java/lang/SecurityManager 1 1 521 1 7 1 7 1 1 1 1 3 1 100 1 100 1 7 1 7 1 1 7 1 1 100 1 100 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 12 10 12 9 1 7 1 1 12 10 1 100 1 8 1 12 10 1 1 12 10 1 100 1 1 1 1 1 1 100 1 1 12 10 10 1 1 100 10 1 100 10 1 1 100 1 1 12 9 1 1 1 7 1 1 12 10 1 12 10 1 7 1 12 10 1 1 1 100 1 8 10 12 9 1 12 9 1 1 8 1 12 9 1 1 1 100 10 1 8 1 1 12 10 1 12 10 1 1 12 10 1 1 100 10 1 1 12 10 1 100 1 8 1 12 10 1 8 1 1 8 1 8 1 1 1 8 1 8 1 8 1 12 10 1 1 8 1 8 1 1 8 1 1 1 8 1 8 1 100 1 1 12 10 1 1 12 10 1 8 1 100 1 8 10 1 8 1 8 1 1 1 8 1 8 1 1 8 1 1 1 100 1 12 10 1 8 1 1 1 1 100 1 8 1 8 10 1 1 1 8 1 1 1 12 10 1 100 1 8 10 1 1 12 10 100 1 12 10 1 12 10 1 12 10 1 1 1 7 1 1 12 10 1 12 10 1 7 1 12 10 1 7 1 1 12 11 1 16 1 7 1 1 12 10 15 1 16 1 7 1 1 12 10 15 1 1 12 18 1 7 1 1 12 11 1 16 1 1 12 10 15 1 16 1 1 12 18 1 1 12 11 1 12 10 15 16 18 1 7 11 15 1 16 18 1 12 11 1 16 1 12 10 15 16 1 12 18 1 1 12 11 1 12 9 12 9 12 9 12 9 1 1 7 1 12 10 1 12 10 1 12 10 1 1 12 10 15 16 1 12 18 1 12 10 15 1 16 18 1 7 1 12 10 1 12 11 15 1 12 18 1 12 10 1 1 12 10 15 16 18 10 15 1 16 18 1 1 8 1 12 10 12 9 1 7 1 12 11 1 8 1 12 10 1 1 12 10 12 10 12 9 1 12 10 1 1 12 10 1 1 8 10 12 9 1 8 1 12 10 1 1 8 1 1 100 10 1 12 10 10 1 7 1 1 12 9 1 1 12 11 1 12 10 1 12 11 1 12 10 1 7 10 1 1 12 10 12 10 1 1 1 1 1 1 1 1
+ciInstanceKlass java/lang/SecurityManager 1 1 515 1 7 1 7 1 1 1 1 3 1 100 1 100 1 7 1 7 1 1 7 1 1 100 1 100 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 12 10 12 9 1 7 1 1 12 10 1 100 1 8 1 12 10 1 1 12 10 1 100 1 1 1 1 1 1 100 1 1 12 10 10 1 1 100 10 1 100 10 1 1 100 1 1 12 9 1 1 1 7 1 1 12 10 1 12 10 1 7 1 12 10 1 1 1 100 1 8 10 12 9 1 12 9 1 1 8 1 12 9 1 1 1 100 10 1 8 1 1 12 10 1 12 10 1 1 12 10 1 1 100 10 1 1 12 10 1 100 1 8 1 12 10 1 8 1 1 8 1 8 1 1 1 8 1 8 1 8 1 12 10 1 1 8 1 8 1 1 8 1 1 1 8 1 8 1 100 1 1 12 10 1 1 12 10 1 8 1 100 1 8 10 1 8 1 8 1 1 1 8 1 8 1 1 8 1 1 1 100 1 12 10 1 8 1 1 1 1 100 1 8 1 8 10 1 1 1 8 1 1 1 12 10 1 100 1 8 10 1 1 12 10 100 1 12 10 1 12 10 1 12 10 1 1 1 7 1 1 12 10 1 12 10 1 7 1 12 10 1 7 1 1 12 11 1 16 1 7 1 1 12 10 15 1 16 1 7 1 1 12 10 15 1 1 12 18 1 7 1 1 12 11 1 16 1 1 12 10 15 1 16 1 1 12 18 1 1 12 11 1 12 10 15 16 18 1 7 11 15 1 16 18 1 12 11 1 16 1 12 10 15 16 1 12 18 1 1 12 11 1 12 9 12 9 12 9 12 9 1 1 7 1 12 10 1 12 10 1 12 10 1 1 12 10 15 16 1 12 18 1 12 10 15 1 16 18 1 7 1 12 10 1 12 11 15 1 12 18 1 12 10 1 1 12 10 15 16 18 10 15 1 16 18 1 1 8 1 12 10 12 9 1 7 1 12 11 1 8 1 12 10 1 1 12 10 12 10 12 9 1 12 10 1 1 12 10 1 1 8 10 12 9 1 8 1 12 10 1 1 8 1 1 100 10 1 12 10 10 1 7 1 1 12 9 1 1 12 11 1 12 10 1 12 11 1 12 10 1 7 10 1 1 12 10 12 10 1 1 1 1 1 1 1 1
 staticfield java/lang/SecurityManager packageAccessLock Ljava/lang/Object; java/lang/Object
 staticfield java/lang/SecurityManager packageDefinitionLock Ljava/lang/Object; java/lang/Object
 staticfield java/lang/SecurityManager nonExportedPkgs Ljava/util/Map; java/util/concurrent/ConcurrentHashMap
@@ -4754,7 +4754,7 @@ instanceKlass java/lang/UnsatisfiedLinkError
 instanceKlass java/lang/IncompatibleClassChangeError
 instanceKlass java/lang/BootstrapMethodError
 instanceKlass java/lang/NoClassDefFoundError
-ciInstanceKlass java/lang/LinkageError 1 1 21 1 100 1 7 1 1 5 0 1 1 12 10 1 12 10 1 12 10 1 1
+ciInstanceKlass java/lang/LinkageError 1 1 15 1 100 1 7 1 1 5 0 1 1 12 10 1 12 10 1 12 10 1 1
 ciInstanceKlass java/lang/NoClassDefFoundError 1 1 18 1 100 1 7 1 1 5 0 1 1 12 10 1 12 10 1 1
 ciInstanceKlass java/lang/ClassCastException 1 1 18 1 100 1 7 1 1 5 0 1 1 12 10 1 12 10 1 1
 ciInstanceKlass java/lang/ArrayStoreException 1 1 18 1 100 1 100 1 1 5 0 1 1 12 10 1 12 10 1 1
@@ -4873,7 +4873,7 @@ instanceKlass jdk/internal/reflect/GeneratedConstructorAccessor25
 instanceKlass jdk/internal/reflect/GeneratedConstructorAccessor24
 instanceKlass jdk/internal/reflect/GeneratedConstructorAccessor23
 instanceKlass jdk/internal/reflect/GeneratedConstructorAccessor22
-instanceKlass jdk/internal/reflect/GeneratedConstructorAccessor21
+instanceKlass jdk/internal/reflect/GeneratedConstructorAccessor15
 instanceKlass jdk/internal/reflect/GeneratedConstructorAccessor20
 instanceKlass jdk/internal/reflect/GeneratedConstructorAccessor19
 instanceKlass jdk/internal/reflect/GeneratedConstructorAccessor18
@@ -4898,7 +4898,7 @@ instanceKlass jdk/internal/reflect/BootstrapConstructorAccessorImpl
 instanceKlass jdk/internal/reflect/GeneratedConstructorAccessor1
 instanceKlass jdk/internal/reflect/DelegatingConstructorAccessorImpl
 instanceKlass jdk/internal/reflect/NativeConstructorAccessorImpl
-ciInstanceKlass jdk/internal/reflect/ConstructorAccessorImpl 1 1 21 1 100 1 7 1 100 1 1 12 10 1 1 1 100 1 100 1 100 1 1
+ciInstanceKlass jdk/internal/reflect/ConstructorAccessorImpl 1 1 15 1 100 1 7 1 100 1 1 12 10 1 1 1 100 1 100 1 100 1 1
 ciInstanceKlass jdk/internal/reflect/DelegatingClassLoader 1 1 10 1 100 1 7 1 1 12 10 1
 ciInstanceKlass jdk/internal/reflect/ConstantPool 1 1 134 1 7 1 100 1 100 1 1 1 1 1 12 10 1 1 12 9 1 1 12 10 1 1 1 1 1 12 10 1 1 12 10 1 1 1 1 12 10 1 1 1 1 12 10 1 1 12 10 1 1 1 1 12 10 1 1 12 10 1 1 1 1 12 10 1 1 12 10 1 1 12 10 1 1 12 10 1 1 1 1 12 10 1 1 1 1 12 10 1 1 1 1 12 10 1 1 1 1 12 10 1 1 12 10 1 1 1 1 12 10 1 1 12 10 1 1 8 1 7 1 1 12 11 1 7 1 1 12 10 1 1 1 1
 instanceKlass jdk/internal/reflect/UnsafeFieldAccessorImpl
@@ -5142,7 +5142,7 @@ ciInstanceKlass java/nio/Buffer 1 1 202 1 7 1 7 1 7 1 100 1 7 1 1 1 1 1 1 1 3 1 
 staticfield java/nio/Buffer UNSAFE Ljdk/internal/misc/Unsafe; jdk/internal/misc/Unsafe
 staticfield java/nio/Buffer SCOPED_MEMORY_ACCESS Ljdk/internal/misc/ScopedMemoryAccess; jdk/internal/misc/ScopedMemoryAccess
 staticfield java/nio/Buffer $assertionsDisabled Z 1
-ciInstanceKlass java/lang/StackWalker 1 1 217 1 7 1 7 1 100 1 7 1 100 1 1 1 100 1 100 1 1 100 1 1 1 100 1 100 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 12 9 1 1 7 1 1 12 10 1 7 1 1 12 10 1 12 10 1 1 7 1 1 12 11 1 1 12 10 1 1 12 10 1 1 12 10 1 1 1 100 1 8 1 12 10 1 12 10 1 1 12 10 1 1 1 12 10 12 9 12 9 12 9 1 1 12 9 1 1 12 10 12 9 1 1 7 1 1 12 10 1 1 12 11 1 100 1 8 10 1 100 1 12 10 1 12 9 1 1 12 10 1 1 1 1 1 1 12 10 1 12 10 1 1 1 16 1 1 12 10 15 1 16 1 100 1 1 12 10 15 1 1 12 18 1 1 1 1 100 1 8 10 1 1 12 10 1 12 10 1 1 1 1 1 1 12 9 1 100 12 11 1 1 1 12 10 1 1 1 1 1 1 1
+ciInstanceKlass java/lang/StackWalker 1 1 157 1 7 1 7 1 100 1 7 1 100 1 1 1 100 1 100 1 1 100 1 1 1 100 1 100 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 12 9 1 1 7 1 1 12 10 1 7 1 1 12 10 1 12 10 1 1 7 1 1 12 11 1 1 12 10 1 1 12 10 1 1 12 10 1 1 1 100 1 8 1 12 10 1 12 10 1 1 12 10 1 1 1 12 10 12 9 12 9 12 9 1 1 12 9 1 1 12 10 12 9 1 1 7 1 1 12 10 1 1 12 11 1 100 1 8 10 1 100 1 12 10 1 12 9 1 1 12 10 1 1 1 1 1 1 12 10 1 12 10 1 1 1 16 1 1 12 10 15 1 16 1 100 1 1 12 10 15 1 1 12 18 1 1 1 1 100 1 8 10 1 1 12 10 1 12 10 1 1 1 1 1 1 12 9 1 100 12 11 1 1 1 12 10 1 1 1 1 1 1 1
 staticfield java/lang/StackWalker DEFAULT_EMPTY_OPTION Ljava/util/EnumSet; java/util/RegularEnumSet
 staticfield java/lang/StackWalker DEFAULT_WALKER Ljava/lang/StackWalker; java/lang/StackWalker
 ciInstanceKlass java/lang/StackStreamFactory$AbstractStackWalker 1 0 286 1 100 1 1 100 1 100 1 1 100 1 100 1 1 100 1 1 100 1 100 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 12 10 1 12 10 1 100 1 1 12 10 12 9 1 1 12 10 12 9 12 9 12 9 12 9 1 1 12 9 1 1 12 10 1 1 12 10 1 1 1 1 1 1 1 1 12 9 1 12 10 12 10 1 1 12 9 1 100 1 1 12 9 1 100 10 1 8 1 1 12 10 1 12 10 1 8 1 1 12 10 1 100 1 1 12 10 1 1 1 100 1 8 1 12 10 1 8 12 10 1 1 12 9 1 12 10 12 9 1 8 5 0 1 8 1 8 1 1 1 1 12 9 12 10 1 12 10 12 10 1 100 1 1 12 9 1 1 1 1 12 10 1 12 10 1 12 10 1 12 10 12 10 1 1 12 10 1 8 1 12 10 1 12 10 1 100 1 12 10 1 1 1 1 12 10 1 8 1 100 1 1 12 10 1 1 12 10 1 1 12 10 12 10 12 10 1 100 1 1 12 10 1 12 9 1 8 1 12 10 1 12 10 1 1 12 10 12 10 12 10 1 12 10 1 1 12 10 1 1 12 10 1 1 12 10 1 12 10 1 8 1 1 1 1 1 1 1

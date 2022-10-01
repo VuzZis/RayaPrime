@@ -41,5 +41,24 @@
     "message.rayaprime.disabling" : "§b[Райя-Прайм]§r Критический уровень температуры внешнего модуля, отключаюсь.",
     "warning.rayaprime.nospace" : "§cНЕДОСТАТОЧНО МЕСТА§r",
     "title.rayaprime.pm" : "ПМ",
-    "effect.rayaprime.hybernation" : "Гибернация" 
+    "effect.rayaprime.hybernation" : "Гибернация" ,
+
+    "story.rayaprime.computer_0" : "§c[§kH.A.L.O.§r§c]§r :D",
+    "story.rayaprime.computer_1" : "§c[§kH.§rA.§kL.O.§r§c]§r :D",
+    "story.rayaprime.computer_2" : "§c[H.§kA.L.O.§r§c]§r :D",
+    "story.rayaprime.computer_3" : "§c[§kH.A.§r§cL.§kO.§r§c]§r :D",
+    "story.rayaprime.computer_4" : "§c[§kH.A.L.§r§cO.§c]§r :D",
+    "story.rayaprime.achievenote" : "Записка получена: §b",
+    "story.rayaprime.chapter" : "Глава ",
+
+    "story.rayaprime.chapter.1" : "1: Катастрофа",
+
+    "note.rayaprime.chapter1.1" : "Сбои",
+    "note.rayaprime.chapter1.2" : "Перестройка",
+    "note.rayaprime.chapter1.3" : "Модернизация Запро",
+    "note.rayaprime.chapter1.4" : "Сбой причиняющий вред",
+    "note.rayaprime.chapter1.5" : "Отчёт модель Прайм 17.05.2432",
+    "note.rayaprime.chapter1.6" : "Подозрения",
+    "note.rayaprime.chapter1.7" : "Кризис",
+    "note.rayaprime.chapter1.8" : "Аластрофа"
 }

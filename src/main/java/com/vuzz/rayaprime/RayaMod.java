@@ -68,6 +68,7 @@ public class RayaMod {
     private void clientSetup(final FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(ModBlocks.MR_TOMATO.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.MR_TOMATO_GOLD.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.COMPUTER.get(), RenderType.getCutout());
     }
 
 }

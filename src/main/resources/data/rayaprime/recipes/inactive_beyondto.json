@@ -15,13 +15,6 @@
         "M" : {
             "item" : "rayaprime:main_implant"
         },
-        "X" : {
-            "item" : "rayaprime:ai_module"
-        },
-        "A" : {
-            "item" : "rayaprime:fabricator"
-        }
-        ,
         "O" : {
             "item" : "rayaprime:beyondto_os"
         },
@@ -30,6 +23,6 @@
         }
     },
     "result" : {
-        "item" : "rayaprime:inactive_implant"
+        "item" : "rayaprime:inactive_beyondto"
     }
 }

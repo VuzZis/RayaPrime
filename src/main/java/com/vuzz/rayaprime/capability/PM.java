@@ -18,6 +18,7 @@ import com.vuzz.rayaprime.networking.PMUpdatePacketClient;
 
 public class PM {
     private int pm;
+    private int progress;
 
     public static LazyOptional<PM> get(Entity entity) {
         return entity.getCapability(CapabilityPM.INSTANCE);
@@ -28,19 +29,31 @@ public class PM {
     }
 
     public void sync(ClientPlayerEntity player) {
-        Networking.CHANNEL.send(PacketDistributor.SERVER.with(() -> null), new PMUpdatePacketClient(this.pm,player.getUniqueID()));
+        Networking.CHANNEL.send(PacketDistributor.SERVER.with(() -> null), new PMUpdatePacketClient(this));
     }
 
     public int getPm() {
         return pm;
     }
 
+    public int getProgress() {
+        return progress;
+    }
+
     public void setPm(int pm) {
         this.pm = pm;
     }
 
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
+
     public boolean hasPm() {
         return pm > 0;
+    }
+
+    public boolean hasProgress() {
+        return progress > 0;
     }
 
     public static final class PMStorage implements Capability.IStorage<PM> {
@@ -49,6 +62,8 @@ public class PM {
         public INBT writeNBT(Capability<PM> capability, PM instance, Direction side) {
             CompoundNBT nbt = new CompoundNBT();
             nbt.putInt("pm", instance.pm);
+            nbt.putInt("progress",instance.progress);
+            System.out.println(nbt.getInt("pm"));
             return nbt;
         }
 
@@ -57,6 +72,8 @@ public class PM {
             if (!(nbt instanceof CompoundNBT)) return;
             CompoundNBT compound = (CompoundNBT) nbt;
             instance.pm = compound.getInt("pm");
+            instance.progress = compound.getInt("progress");
+            System.out.println(instance.pm);
         }
     }
 }

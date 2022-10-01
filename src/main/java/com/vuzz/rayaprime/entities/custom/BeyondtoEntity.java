@@ -132,7 +132,7 @@ public class BeyondtoEntity extends FlyingEntity {
     }
 
     @Override
-    public boolean canDespawn(double p_213397_1_) {
+    public boolean canDespawn(double p_153397_1_) {
         return false;
     }
 

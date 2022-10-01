@@ -17,6 +17,7 @@ public class CapabilityPMProvider implements ICapabilitySerializable<INBT> {
     private final PM pm = new PM();
     private final LazyOptional<PM> lazyOptional = LazyOptional.of(() -> pm);
 
+
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {

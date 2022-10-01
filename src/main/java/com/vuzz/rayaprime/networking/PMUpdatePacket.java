@@ -10,22 +10,27 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 public class PMUpdatePacket {
     public int pm;
+    public int progress;
 
     @SuppressWarnings("unused")
-    public PMUpdatePacket(int pm) {
+    public PMUpdatePacket(int pm,int progress) {
         this.pm = pm;
+        this.progress = progress;
     }
 
     public PMUpdatePacket(PM cap) {
         pm = cap.getPm();
+        progress = cap.getProgress();
     }
 
     public PMUpdatePacket(PacketBuffer buffer) {
         pm = buffer.readInt();
+        progress = buffer.readInt();
     }
 
     public void encode(PacketBuffer buffer) {
         buffer.writeInt(pm);
+        buffer.writeInt(progress);
     }
 
     public void handle(Supplier<NetworkEvent.Context> context) {
@@ -33,6 +38,7 @@ public class PMUpdatePacket {
             if(RayaMod.PROXY.getPlayer() == null) return;
             PM.get(RayaMod.PROXY.getPlayer()).ifPresent(cap -> {
                 cap.setPm(pm);
+                cap.setProgress(progress);
             });
             context.get().setPacketHandled(true);
         });

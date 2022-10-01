@@ -1,0 +1,29 @@
+{
+    
+    "variants" : {
+        "": {
+            "model": "rayaprime:block/laboratory_brick"
+        },
+        "variant=0": {
+            "model": "rayaprime:block/laboratory_brick"
+        },
+        "variant=1": {
+            "model": "rayaprime:block/laboratory_brick_1"
+        },
+        "variant=2": {
+            "model": "rayaprime:block/laboratory_brick_2"
+        },
+        "variant=3": {
+            "model": "rayaprime:block/laboratory_brick_3"
+        },
+        "variant=4": {
+            "model": "rayaprime:block/laboratory_brick_4"
+        },
+        "variant=5": {
+            "model": "rayaprime:block/laboratory_brick_5"
+        },
+        "variant=6": {
+            "model": "rayaprime:block/laboratory_brick_6"
+        }
+    }
+}

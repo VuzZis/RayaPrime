@@ -52,7 +52,7 @@ public class BeyondtoModel<T extends BeyondtoEntity> extends EntityModel<T> {
 		backjet_fire_r1 = new ModelRenderer(this);
 		backjet_fire_r1.setRotationPoint(0.0F, -7.0F, 5.0F);
 		MainBody.addChild(backjet_fire_r1);
-		setRotationAngle(backjet_fire_r1, -1.2217F, 0.0F, 0.0F);
+		setRotationAngle(backjet_fire_r1, -1.2157F, 0.0F, 0.0F);
 		backjet_fire_r1.setTextureOffset(24, 10).addBox(-1.5F, 0.8F, -0.5F, 3.0F, 1.0F, 3.0F, 0.0F, false);
 
 		upperbattery2_r1 = new ModelRenderer(this);
@@ -82,7 +82,7 @@ public class BeyondtoModel<T extends BeyondtoEntity> extends EntityModel<T> {
 		LeftEar = new ModelRenderer(this);
 		LeftEar.setRotationPoint(-2.5F, -9.0F, -2.0F);
 		MainBody.addChild(LeftEar);
-		setRotationAngle(LeftEar, -0.1501F, -0.2355F, -0.3121F);
+		setRotationAngle(LeftEar, -0.1501F, -0.2355F, -0.3115F);
 		LeftEar.setTextureOffset(11, 28).addBox(-0.499F, -3.5F, -0.999F, 1.0F, 3.0F, 2.0F, 0.0F, false);
 
 		RightEar = new ModelRenderer(this);
@@ -94,13 +94,13 @@ public class BeyondtoModel<T extends BeyondtoEntity> extends EntityModel<T> {
 		BottomJet = new ModelRenderer(this);
 		BottomJet.setRotationPoint(0.0F, -4.3F, -1.0F);
 		MainBody.addChild(BottomJet);
-		setRotationAngle(BottomJet, 0.2182F, 0.0F, 0.0F);
+		setRotationAngle(BottomJet, 0.1582F, 0.0F, 0.0F);
 		
 
 		holo_second_r1 = new ModelRenderer(this);
 		holo_second_r1.setRotationPoint(0.0F, 4.0F, 1.0F);
 		BottomJet.addChild(holo_second_r1);
-		setRotationAngle(holo_second_r1, 0.2182F, 0.0F, 0.0F);
+		setRotationAngle(holo_second_r1, 0.1582F, 0.0F, 0.0F);
 		holo_second_r1.setTextureOffset(18, 28).addBox(-1.0F, -1.0F, -0.25F, 2.0F, 1.0F, 2.0F, 0.0F, false);
 		holo_second_r1.setTextureOffset(13, 23).addBox(-1.5F, -3.0F, -0.75F, 3.0F, 1.0F, 3.0F, 0.0F, false);
 		holo_second_r1.setTextureOffset(19, 0).addBox(-2.0F, -4.5F, -1.3F, 4.0F, 1.0F, 4.0F, 0.0F, false);

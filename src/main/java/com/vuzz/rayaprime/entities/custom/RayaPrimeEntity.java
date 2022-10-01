@@ -1,21 +1,14 @@
 package com.vuzz.rayaprime.entities.custom;
 
-import java.util.UUID;
-
-import com.vuzz.rayaprime.RayaMod;
-import com.vuzz.rayaprime.effects.ModEffects;
-import com.vuzz.rayaprime.gui.containers.RayaPrimeContainer;
-import com.vuzz.rayaprime.items.ModItems;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.player.ClientPlayerEntity;
-import net.minecraft.command.arguments.EntityAnchorArgument.Type;
+import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.FlyingEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.controller.FlyingMovementController;
+import net.minecraft.entity.passive.IFlyingAnimal;
+import net.minecraft.entity.passive.ShoulderRidingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -23,6 +16,7 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.pathfinding.FlyingPathNavigator;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
@@ -30,89 +24,61 @@ import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class RayaPrimeEntity extends FlyingEntity {
+import java.util.UUID;
 
-    public static int animation = 0;
-    public static final float speed = 0.1f;
-    private float energy = 0;
-    private int ticks = 0;
+import com.vuzz.rayaprime.RayaMod;
+import com.vuzz.rayaprime.effects.ModEffects;
+import com.vuzz.rayaprime.gui.containers.RayaPrimeContainer;
+import com.vuzz.rayaprime.items.ModItems;
+
+import net.minecraft.command.arguments.EntityAnchorArgument.Type;
+
+public class RayaPrimeEntity extends ShoulderRidingEntity implements IFlyingAnimal {
+
+    private int ticksPast;
+    private float curEnergy = 1;
+    private LivingEntity owner;
+    private UUID ownerUuid;
+
+    private static float energyConsumtion = 0.05f;
+    private static float walkingConsumtion = 0.1f;
+    private static float flySpeed = 0.3f;
+
+    private static final int STAY_DISTANCE = 15;
+    private static final int TELEPORT_DISTANCE = 60;
+
     private int lastHungerCheck = 0;
     private int lastDurabilityCheck = 0;
 
-    public LivingEntity owner;
-    public UUID owneruuid;
-
-    public RayaPrimeEntity(EntityType<? extends FlyingEntity> type, World worldIn) {
-        super(type, worldIn);
+    public LivingEntity getOwner() {
+        return owner;
     }
 
-    public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
-        return MobEntity.func_233666_p_()
-                .createMutableAttribute(Attributes.MAX_HEALTH,100.0D)
-                .createMutableAttribute(Attributes.FLYING_SPEED, 0.35D)
-                .createMutableAttribute(Attributes.ARMOR,5000000D)
-                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS,5000000D)
-                .createMutableAttribute(Attributes.MOVEMENT_SPEED,0.35D);
-
+    public RayaPrimeEntity(EntityType<? extends ShoulderRidingEntity> entity, World world) {
+        super(entity,world);
+        this.moveController = new FlyingMovementController(this, 1, false);
     }
 
     @Override
-	public void registerGoals() {
-		super.registerGoals();
-	}
-
-    @Override
-    public boolean attackEntityFrom(DamageSource damageSource, float damage) {
-        if(damageSource != DamageSource.OUT_OF_WORLD) {
-            CompoundNBT nbt = getPersistentData();
-            energy = nbt.getFloat("energy");
-            if(energy > damage*2) {
-                nbt.putFloat("energy",energy-damage*2);
-                return false;
+    public ActionResultType getEntityInteractionResult(PlayerEntity player, Hand hand) {
+        if(player == owner) {
+            if(player.isSneaking()) {
+                System.out.println("at clicking");
+                returnAsImplant();
+            } else {
+                CompoundNBT nbt = getPersistentData(); 
+                if(owner == player && getEnergy() >= 0 && nbt.getBoolean("canUseEnergy")) {
+                    INamedContainerProvider containerProvider = createContainerProvider(player.getEntityWorld(),player.getPosition());
+                    NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider,getPosition());
+                }   
             }
         }
-        return true;
-    }
-
-    protected double clamp(double val,double min,double max) {
-        return Math.max(min,Math.min(max,val));
-    }
-
-    @Override
-    protected ActionResultType getEntityInteractionResult(PlayerEntity player, Hand hand) {
-        if(player.isSneaking()) {
-            CompoundNBT nbt = getPersistentData();
-            if(owner == player) {
-                ItemStack item = new ItemStack(ModItems.INACTIVE_IMPLANT.get());
-                if(player.canPickUpItem(item)) {
-                    item.setTag(nbt);
-                    player.addItemStackToInventory(item);
-                    player.getPersistentData().putBoolean("hasraya", false);
-                    remove();
-                } else {
-                    remove();
-                    item.setTag(nbt);
-                    player.dropItem(item, false);
-                    player.getPersistentData().putBoolean("hasraya", false);
-                    //player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
-                }
-            } 
-        } else {
-           
-            CompoundNBT nbt = getPersistentData(); 
-            energy = nbt.getFloat("energy");
-            if(owner == player && energy >= 0 && nbt.getBoolean("canUseEnergy")) {
-                INamedContainerProvider containerProvider = createContainerProvider(player.getEntityWorld(),player.getPosition());
-
-                NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider,getPosition());
-            }
-        }
-        return super.getEntityInteractionResult(player, hand);
+        return super.getEntityInteractionResult(player,hand);
     }
 
     private INamedContainerProvider createContainerProvider(World worldIn, BlockPos pos) {
@@ -132,118 +98,146 @@ public class RayaPrimeEntity extends FlyingEntity {
         };
     }
 
-    @Override
-    public boolean isInvulnerable() {
-        return true;
+    private void returnAsImplant() {
+        CompoundNBT nbt = getPersistentData();
+        if(owner instanceof PlayerEntity) {
+            System.out.println("at return");
+            PlayerEntity player = (PlayerEntity) owner;
+            ItemStack item = new ItemStack(ModItems.INACTIVE_IMPLANT.get());
+            if(player.canPickUpItem(item)) {
+                item.setTag(nbt);
+                player.addItemStackToInventory(item);
+                player.getPersistentData().putBoolean("hasraya", false);
+                remove();
+            } else {
+                remove();
+                item.setTag(nbt);
+                player.dropItem(item, false);
+                player.getPersistentData().putBoolean("hasraya", false);
+                //player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
+            }
+        } 
     }
 
-    @Override
-    public boolean canDespawn(double p_213397_1_) {
-        return false;
+    @Override public boolean canChangeDimension() {return true;}
+    @Override public boolean canDespawn(double a) {return false;}
+    @Override public boolean canBeLeashedTo(PlayerEntity player) {return false;}
+    @Override public AgeableEntity createChild(ServerWorld world, AgeableEntity arg1) {return null;}
+    @Override public boolean isNoDespawnRequired() {return true;}
+    @Override protected boolean isAdult() {return true;}
+
+    public void setOwnerUUID(UUID ownerUuid) {
+        this.ownerUuid = ownerUuid;
+    }
+    public void setOwner(LivingEntity owner) {
+        this.owner = owner;
     }
 
-    @Override
-    public void onRemovedFromWorld() {
-        if(owner != null) {
-            setWorld(owner.getEntityWorld());
+    public void setEnergy(float cuEnergy) {
+        this.curEnergy = cuEnergy;
+    }
+
+    public float getEnergy() {
+        return curEnergy;
+    }
+
+    private void performTalks(int tick) {
+        if(tick % 40 == 0 && owner instanceof PlayerEntity) {
+            //owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".disabling"),Util.DUMMY_UUID);
         }
+    }
+
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
     }
 
     @Override
     public void tick() {
-        super.tick();   
-        stopRiding();
+        super.tick();
         CompoundNBT nbt = getPersistentData();
-        energy = nbt.getFloat("energy");
-        if(nbt.getBoolean("canUseEnergy")) {
-            owneruuid = nbt.getUniqueId("owneruuid");
-        }
-
-        if(energy <= 0 && nbt.getBoolean("canUseEnergy")) {
-            
-            if(owner instanceof PlayerEntity) {
+        if(nbt.getBoolean("canUseEnergy")) setOwnerUUID(nbt.getUniqueId("owneruuid"));
+        if(getOwnerUUID() instanceof UUID) setOwner(world.getPlayerByUuid(getOwnerUUID()));
+        if(!(owner instanceof PlayerEntity)) return;
+            if(owner.isPotionActive(ModEffects.HYBERNATION.get()))
+            {    
                 PlayerEntity player = (PlayerEntity) owner;
-                ItemStack item = new ItemStack(ModItems.INACTIVE_IMPLANT.get());
-                if(player.canPickUpItem(item)) {
-                    remove();
-                    item.setTag(nbt);
-                    player.addItemStackToInventory(item);
-                    player.getPersistentData().putBoolean("hasraya", false);
-                } else {
-                    //player.sendStatusMessage(new TranslationTextComponent("warning."+RayaMod.MOD_ID+".nospace"), true);
-                    remove();
-                    item.setTag(nbt);
-                    player.dropItem(item, false);
-                    player.getPersistentData().putBoolean("hasraya", false);
-                }
-                
-            }
-        }
-        if(owneruuid instanceof UUID) {
-            
-            if(getEntityWorld().getPlayerByUuid(owneruuid) instanceof PlayerEntity)
-                owner = getEntityWorld().getPlayerByUuid(owneruuid);
-        }
-        if(owner != null) {
-            if(owner instanceof PlayerEntity && owner.isPotionActive(ModEffects.HYBERNATION.get())) {
-                PlayerEntity player = (PlayerEntity) owner;
-                ItemStack item = new ItemStack(ModItems.INACTIVE_IMPLANT.get());
                 owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".disabling"),Util.DUMMY_UUID);
-                if(player.canPickUpItem(item)) {
-                    remove();
-                    item.setTag(nbt);
-                    player.addItemStackToInventory(item);
-                    player.getPersistentData().putBoolean("hasraya", false);
-                } else {
-                    remove();
-                    item.setTag(nbt);
-                    player.dropItem(item, false);
-                    player.getPersistentData().putBoolean("hasraya", false);
-                }
+                System.out.println("at hybernation");
+                returnAsImplant();
+            }
+            if(nbt.getBoolean("canUseEnergy") && curEnergy <= 0) returnAsImplant();
+            curEnergy = nbt.getFloat("energy");
+            lookAt(Type.EYES,new Vector3d(owner.getPosX(),owner.getPosYEye(),owner.getPosZ()));
+            double distanceBetween = getDistanceSq(getOwner());
+            ((FlyingPathNavigator) getNavigator()).setCanSwim(false);
+            ((FlyingPathNavigator) getNavigator()).setCanEnterDoors(true);
+            ((FlyingPathNavigator) getNavigator()).setCanOpenDoors(true);
+            setNoGravity(true);
+            if (distanceBetween > TELEPORT_DISTANCE) 
+                setPosition(owner.getPosX(), owner.getPosY(), owner.getPosZ());
+            else
+            if(distanceBetween > STAY_DISTANCE) {
+                curEnergy -= walkingConsumtion;
+                getNavigator().tryMoveToXYZ(getOwner().getPosX()-2d, getOwner().getPosYEye(), getOwner().getPosZ()-2d, 1.3);
+            }
+            else {
+                setMotion(0, clamp(getOwner().getPosYEye()-getPosY(),-0.2,0.2), 0);
+                getNavigator().clearPath();
+            }
                 
-            }
-            if(owner.getEntityWorld() != getEntityWorld()) setWorld(owner.getEntityWorld());
-            if(getEntityWorld().isRemote) {
-                ClientPlayerEntity player = Minecraft.getInstance().player;
-                player.getPersistentData().putInt("pm", owner.getPersistentData().getInt("pm"));
-            }
-            double distance = getDistanceSq(owner);
-            lookAt(Type.EYES, owner.getPositionVec());
-            if(energy == 60 || energy == 59) {
-                owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".lowbattery"),Util.DUMMY_UUID);
-            }
+
             PlayerEntity player = (PlayerEntity) owner;
-            if((ticks - lastHungerCheck >= 600) && player.getFoodStats().getFoodLevel() < 10) {
+            if((ticksPast - lastHungerCheck >= 600) && player.getFoodStats().getFoodLevel() < 10) {
                 owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".lowfood"),Util.DUMMY_UUID);
-                lastHungerCheck = ticks;
+                lastHungerCheck = ticksPast;
             }
             ItemStack stackForCheck = player.getHeldItemMainhand();
             
-            if((ticks - lastDurabilityCheck >= 300) && (stackForCheck.getDamage()*100/(stackForCheck.getMaxDamage()+1)) >= 90) {
+            if((ticksPast - lastDurabilityCheck >= 300) && (stackForCheck.getDamage()*100/(stackForCheck.getMaxDamage()+1)) >= 90) {
                 owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".lowdurability"),Util.DUMMY_UUID);
-                lastDurabilityCheck = ticks;
+                lastDurabilityCheck = ticksPast;
             }
 
+            performTalks(ticksPast);
+            curEnergy -= energyConsumtion;
+            nbt.putFloat("energy",curEnergy);
+            ticksPast++;
+    }
 
-            if(energy <= 0 && nbt.getBoolean("canUseEnergy")) return;
-            if (distance >= 30) {
-                setPosition(owner.getPosX(), owner.getPosY()+1.1, owner.getPosZ());
+    private UUID getOwnerUUID() {
+        return ownerUuid;
+    }
+
+    @Override
+    protected FlyingPathNavigator createNavigator(World worldIn) {
+        return new FlyingPathNavigator(this, worldIn);
+    }
+
+    @Override
+    public boolean attackEntityFrom(DamageSource damageSource, float damage) {
+        if(damageSource != DamageSource.OUT_OF_WORLD) {
+            CompoundNBT nbt = getPersistentData();
+            curEnergy = nbt.getFloat("energy");
+            if(curEnergy > damage*2) {
+                curEnergy -= damage*2;
+                System.out.println("at damage");
+                return false;
             }
-            else if(distance >= 10) {
-                setMotion(
-                    new Vector3d(
-                        -clamp(getPosX()-owner.getPosX(),-speed,speed), 
-                        -clamp(getPosY()-(owner.getPosY()+1.1+Math.sin(ticks/20)*3),-speed,speed), 
-                        -clamp(getPosZ()-owner.getPosZ(),-speed,speed)
-                    )
-                );
-            } 
         }
-        if(energy >= 0 && nbt.getBoolean("canUseEnergy")) {
-            energy -= 0.1f;
-            
-        }
-        nbt.putFloat("energy", energy);
-        ticks++;
+        return true;
+    }
+
+    public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
+        return MobEntity.func_233666_p_()
+                .createMutableAttribute(Attributes.MAX_HEALTH,100.0D)
+                .createMutableAttribute(Attributes.FLYING_SPEED, flySpeed)
+                .createMutableAttribute(Attributes.ARMOR,5000000D)
+                .createMutableAttribute(Attributes.ARMOR_TOUGHNESS,5000000D)
+                .createMutableAttribute(Attributes.MOVEMENT_SPEED,flySpeed);
+    }
+
+    protected double clamp(double val,double min,double max) {
+        return Math.max(min,Math.min(max,val));
     }
 }

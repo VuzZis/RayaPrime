@@ -7,10 +7,10 @@
     ],
     "key" : {
         "#" : {
-            "item" : "rayaprime:microscheme"
+            "item" : "rayaprime:cpu"
         },
         "E" : {
-            "item" : "minecraft:flint"
+            "item" : "rayaprime:condensator"
         },
         "A" : {
             "item" : "minecraft:crafting_table"

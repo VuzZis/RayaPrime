@@ -42,5 +42,24 @@
     "warning.rayaprime.nospace" : "§cNOT ENOUGH SPACE§r",
     "title.rayaprime.pm" : "OM",
     "title.rayaprime.ablob" : "§b+",
-    "effect.rayaprime.hybernation" : "Hybernation"      
+    "effect.rayaprime.hybernation" : "Hybernation",
+    
+    "story.rayaprime.computer_0" : "§c[§kH.A.L.O.§r§c]§r :D",
+    "story.rayaprime.computer_1" : "§c[§kH.§r§cA.L.O.§r§c]§r :D",
+    "story.rayaprime.computer_2" : "§c[H.§kA.L.O.§r§c]§r :D",
+    "story.rayaprime.computer_3" : "§c[§kH.A.§r§cL.§kO.§r§c]§r :D",
+    "story.rayaprime.computer_4" : "§c[§kH.A.L.§r§cO.]§r :D",
+    "story.rayaprime.achievenote" : "Note achieved: §b",
+    "story.rayaprime.chapter" : "Chapter ",
+
+    "story.rayaprime.chapter.1" : "1: Crisis",
+
+    "note.rayaprime.chapter1.1" : "Error",
+    "note.rayaprime.chapter1.2" : "Redesigning",
+    "note.rayaprime.chapter1.3" : "BeyondTo Modernisation",
+    "note.rayaprime.chapter1.4" : "Death Error",
+    "note.rayaprime.chapter1.5" : "Prime Logs 17.05.2432",
+    "note.rayaprime.chapter1.6" : "Suspect",
+    "note.rayaprime.chapter1.7" : "Crisis",
+    "note.rayaprime.chapter1.8" : "HALOstrophic"
 }

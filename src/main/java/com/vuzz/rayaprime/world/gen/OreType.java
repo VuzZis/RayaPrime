@@ -8,7 +8,8 @@ import net.minecraftforge.common.util.Lazy;
 public enum OreType {
     
     
-    LEAD(Lazy.of(ModBlocks.LEAD_ORE),7,10,30);
+    LEAD(Lazy.of(ModBlocks.LEAD_ORE),7,10,30),
+    LITHIUM(Lazy.of(ModBlocks.LITHIUM_ORE),4,5,20);
 
     private final Lazy<Block> block;
     private final int maxVeinSize;

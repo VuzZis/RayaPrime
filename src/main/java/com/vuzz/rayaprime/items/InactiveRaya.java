@@ -4,6 +4,7 @@ import com.vuzz.rayaprime.RayaMod;
 import com.vuzz.rayaprime.effects.ModEffects;
 import com.vuzz.rayaprime.entities.ModEntityTypes;
 import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
+import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -81,8 +82,6 @@ public class InactiveRaya extends Item {
                 context.getPlayer().getPersistentData().putBoolean("hasraya", true);
                 rayaEntity.getPersistentData().putFloat("energy", stack.getTag().getFloat("energy"));
                 rayaEntity.getPersistentData().putFloat("max_energy", stack.getTag().getFloat("max_energy"));
-                rayaEntity.owner = context.getPlayer();
-                rayaEntity.owneruuid = context.getPlayer().getUniqueID();
                 rayaEntity.getPersistentData().putUniqueId("owneruuid", context.getPlayer().getUniqueID());
                 rayaEntity.getPersistentData().putBoolean("canUseEnergy", true);
                 stack.shrink(1);

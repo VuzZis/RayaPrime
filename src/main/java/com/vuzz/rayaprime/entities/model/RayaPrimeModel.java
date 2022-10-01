@@ -3,6 +3,7 @@ package com.vuzz.rayaprime.entities.model;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
+import com.vuzz.rayaprime.entities.custom.RayaPrimeEntity;
 
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
@@ -64,27 +65,27 @@ public class RayaPrimeModel<T extends RayaPrimeEntity> extends EntityModel<T> {
 
 		MainBody = new ModelRenderer(this);
 		MainBody.setRotationPoint(0.0F, 14.2929F, -1.0779F);
-		MainBody.setTextureOffset(81, 39).addBox(-2.0F, -5.2929F, -4.9221F, 4.0F, 1.0F, 5.0F, 0.0F, false);
-		MainBody.setTextureOffset(0, 0).addBox(-5.0F, -3.2929F, -4.9221F, 10.0F, 10.0F, 11.0F, 0.0F, false);
-		MainBody.setTextureOffset(45, 8).addBox(-6.0F, 6.7071F, -5.9221F, 12.0F, 1.0F, 12.0F, 0.0F, false);
-		MainBody.setTextureOffset(102, 0).addBox(-6.0F, -3.2929F, -5.9221F, 1.0F, 10.0F, 12.0F, 0.0F, false);
-		MainBody.setTextureOffset(102, 23).addBox(5.0F, -3.2929F, -5.9221F, 1.0F, 10.0F, 12.0F, 0.0F, false);
-		MainBody.setTextureOffset(29, 31).addBox(-6.0F, -4.2929F, -5.9221F, 12.0F, 1.0F, 12.0F, 0.0F, false);
+		MainBody.setTextureOffset(81, 39).addBox(-2.0F, -5.2929F, -4.9215F, 4.0F, 1.0F, 5.0F, 0.0F, false);
+		MainBody.setTextureOffset(0, 0).addBox(-5.0F, -3.2929F, -4.9215F, 10.0F, 10.0F, 11.0F, 0.0F, false);
+		MainBody.setTextureOffset(45, 8).addBox(-6.0F, 6.7071F, -5.9215F, 12.0F, 1.0F, 12.0F, 0.0F, false);
+		MainBody.setTextureOffset(102, 0).addBox(-6.0F, -3.2929F, -5.9215F, 1.0F, 10.0F, 12.0F, 0.0F, false);
+		MainBody.setTextureOffset(102, 23).addBox(5.0F, -3.2929F, -5.9215F, 1.0F, 10.0F, 12.0F, 0.0F, false);
+		MainBody.setTextureOffset(29, 31).addBox(-6.0F, -4.2929F, -5.9215F, 12.0F, 1.0F, 12.0F, 0.0F, false);
 
 		UpperAC_r1 = new ModelRenderer(this);
 		UpperAC_r1.setRotationPoint(0.0F, -5.7929F, 1.0779F);
 		MainBody.addChild(UpperAC_r1);
-		setRotationAngle(UpperAC_r1, 0.2182F, 0.0F, 0.0F);
+		setRotationAngle(UpperAC_r1, 0.1582F, 0.0F, 0.0F);
 		UpperAC_r1.setTextureOffset(92, 71).addBox(-5.0F, 0.6F, -4.0F, 10.0F, 3.0F, 8.0F, 0.0F, false);
 
 		LeftEar = new ModelRenderer(this);
-		LeftEar.setRotationPoint(3.0F, -3.9929F, -2.9721F);
+		LeftEar.setRotationPoint(3.0F, -3.9929F, -2.9715F);
 		MainBody.addChild(LeftEar);
 		LeftEar.setTextureOffset(6, 27).addBox(-1.0F, -5.3F, 0.05F, 4.0F, 5.0F, 2.0F, 0.0F, false);
 		LeftEar.setTextureOffset(0, 28).addBox(-1.0F, -9.3F, 1.05F, 2.0F, 4.0F, 1.0F, 0.0F, false);
 
 		RightEar = new ModelRenderer(this);
-		RightEar.setRotationPoint(-3.0F, -4.2929F, -2.9221F);
+		RightEar.setRotationPoint(-3.0F, -4.2929F, -2.9215F);
 		MainBody.addChild(RightEar);
 		RightEar.setTextureOffset(6, 35).addBox(-3.0F, -5.0F, 0.0F, 4.0F, 5.0F, 2.0F, 0.0F, false);
 		RightEar.setTextureOffset(0, 36).addBox(-1.0F, -9.0F, 1.0F, 2.0F, 5.0F, 1.0F, 0.0F, false);
@@ -102,7 +103,7 @@ public class RayaPrimeModel<T extends RayaPrimeEntity> extends EntityModel<T> {
 		BackJettyFire_r1.setTextureOffset(108, 60).addBox(-4.0F, -4.0F, -1.9F, 8.0F, 8.0F, 2.0F, 0.0F, false);
 
 		BottomJet = new ModelRenderer(this);
-		BottomJet.setRotationPoint(0.0F, 7.6071F, -0.9221F);
+		BottomJet.setRotationPoint(0.0F, 7.6071F, -0.9215F);
 		MainBody.addChild(BottomJet);
 		setRotationAngle(BottomJet, 0.6545F, 0.0F, 0.0F);
 		BottomJet.setTextureOffset(75, 61).addBox(-2.0F, -1.0F, -1.0F, 4.0F, 4.0F, 4.0F, 0.0F, false);
@@ -172,7 +173,7 @@ public class RayaPrimeModel<T extends RayaPrimeEntity> extends EntityModel<T> {
 		eyebrow2_r2 = new ModelRenderer(this);
 		eyebrow2_r2.setRotationPoint(-2.4F, -2.1F, 3.998F);
 		SadFace.addChild(eyebrow2_r2);
-		setRotationAngle(eyebrow2_r2, 0.0F, 0.0F, -0.2182F);
+		setRotationAngle(eyebrow2_r2, 0.0F, 0.0F, -0.1582F);
 		eyebrow2_r2.setTextureOffset(122, 96).addBox(-1.3F, 0.8F, 0.0F, 3.0F, 1.0F, 0.0F, 0.0F, false);
 		eyebrow2_r2.setTextureOffset(122, 96).addBox(-2.7F, 0.8F, 0.0F, 3.0F, 1.0F, 0.0F, 0.0F, false);
 
@@ -190,12 +191,12 @@ public class RayaPrimeModel<T extends RayaPrimeEntity> extends EntityModel<T> {
 		AngryFace.addChild(eyebrow2_r3);
 		setRotationAngle(eyebrow2_r3, 3.1416F, 0.0F, 2.8362F);
 		eyebrow2_r3.setTextureOffset(120, 96).addBox(-4.0878F, 0.2F, 0.0F, 3.0F, 1.0F, 0.0F, 0.0F, false);
-		eyebrow2_r3.setTextureOffset(121, 95).addBox(-3.7878F, 0.2F, 0.0F, 3.0F, 1.0F, 0.0F, 0.0F, false);
+		eyebrow2_r3.setTextureOffset(115, 95).addBox(-3.7878F, 0.2F, 0.0F, 3.0F, 1.0F, 0.0F, 0.0F, false);
 
 		eyebrow2_r4 = new ModelRenderer(this);
 		eyebrow2_r4.setRotationPoint(-2.4F, -2.1F, 3.998F);
 		AngryFace.addChild(eyebrow2_r4);
-		setRotationAngle(eyebrow2_r4, 0.0F, 0.0F, 0.2182F);
+		setRotationAngle(eyebrow2_r4, 0.0F, 0.0F, 0.1582F);
 		eyebrow2_r4.setTextureOffset(120, 96).addBox(-1.6F, -0.1F, 0.0F, 3.0F, 1.0F, 0.0F, 0.0F, false);
 		eyebrow2_r4.setTextureOffset(120, 97).addBox(-1.3F, -0.1F, 0.0F, 3.0F, 1.0F, 0.0F, 0.0F, false);
 

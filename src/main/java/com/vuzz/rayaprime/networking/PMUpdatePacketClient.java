@@ -17,27 +17,27 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 public class PMUpdatePacketClient {
     public int pm;
-    public UUID uuid;
+    public int progress;
 
     @SuppressWarnings("unused")
-    public PMUpdatePacketClient(int pm, UUID uuid) {
+    public PMUpdatePacketClient(int pm,int progress) {
         this.pm = pm;
-        this.uuid = uuid;
+        this.progress = progress;
     }
 
-    public PMUpdatePacketClient(PM cap, UUID uuid) {
-        this.pm = cap.getPm();
-        this.uuid = uuid;
+    public PMUpdatePacketClient(PM cap) {
+        pm = cap.getPm();
+        progress = cap.getProgress();
     }
 
     public PMUpdatePacketClient(PacketBuffer buffer) {
-        this.pm = buffer.readInt();
-        this.uuid = buffer.readUniqueId();
+        pm = buffer.readInt();
+        progress = buffer.readInt();
     }
 
     public void encode(PacketBuffer buffer) {
         buffer.writeInt(pm);
-        buffer.writeUniqueId(uuid);
+        buffer.writeInt(progress);
     }
 
     public void handle(Supplier<NetworkEvent.Context> context) {
@@ -46,6 +46,7 @@ public class PMUpdatePacketClient {
             if(context.get().getSender() == null) return;
             PM.get(context.get().getSender()).ifPresent(cap -> {
                 cap.setPm(pm);
+                cap.setProgress(progress);
             });;
             context.get().setPacketHandled(true);
         });

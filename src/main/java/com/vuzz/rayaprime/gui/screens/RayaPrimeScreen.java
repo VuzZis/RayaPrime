@@ -6,6 +6,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.vuzz.rayaprime.RayaMod;
 import com.vuzz.rayaprime.capability.PM;
+import com.vuzz.rayaprime.gui.PageButton;
 import com.vuzz.rayaprime.gui.ShopButton;
 import com.vuzz.rayaprime.gui.containers.RayaPrimeContainer;
 import com.vuzz.rayaprime.networking.Networking;
@@ -22,6 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.network.PacketDistributor;
@@ -47,13 +49,24 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
         int j = this.guiTop - 83;
         Minecraft mc = Minecraft.getInstance();
         ClientPlayerEntity player = mc.player;
+        int pagesMax = (int) Math.ceil(shopItems.size()/16);
+        PageButton pageBtnLeft = new PageButton(24,21,b+6-40-5+192-1,j+6-5+146-1,player,$ -> {
+            if(page-1 > 0)
+                page--;
+        },0,true);
+        PageButton pageBtnRight = new PageButton(24,21,b+6-40-5+219-1,j+6-5+146-1,player,$ -> {
+            if(page-1 < pagesMax)
+                page++;
+        },1,false);
+        addButton(pageBtnLeft);
+        addButton(pageBtnRight);
         for(int i = 0; i < 15; i++) {
-            int xBox = i % 8;
-            int yBox = (int) Math.floor(i/8);
+            int xBox = i % 5;
+            int yBox = (int) Math.floor(i/5);
             xBox = (int) xBox * 47;
             yBox = (int) yBox * 46;
             int e = i;
-            ShopButton btn = new ShopButton(46, 44, b+6+xBox-90, j+6+yBox, player, $ -> {
+            ShopButton btn = new ShopButton(46, 44, b+6+xBox-40, j+6+yBox, player, $ -> {
                 Minecraft mca = Minecraft.getInstance();
                 int a = e;
                 ClientPlayerEntity playera = mca.player;
@@ -86,7 +99,7 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         this.renderHoveredTooltip(matrixStack, mouseX, mouseY);
         Minecraft mc = Minecraft.getInstance();
-        for(int i = 0; i < Math.min(shopItems.size()-(15*(page-1)),15); i++) {
+        for(int i = 0; i < 15; i++) {
             int a = i;
             int pageMultiplier = (15*(page-1));
             if(shopItems.size() > pageMultiplier+a) {
@@ -107,8 +120,8 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
             int j = (this.height) / 2;
             //int b = x - 88;
             //int j = y - 83;
-            int xBox = i % 8;
-            int yBox = (int) Math.floor(i/8);
+            int xBox = i % 5;
+            int yBox = (int) Math.floor(i/5);
             xBox = (int) xBox * 47;
             yBox = (int) yBox * 46;
             int pageMultiplier = (15*(page-1));
@@ -116,13 +129,15 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
             int price = (int) shopPrices.get(pageMultiplier+a);
             drawString(matrixStack, Minecraft.getInstance().fontRenderer, 
             new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+price, 
-            xBox-31-40, yBox+38, Integer.parseInt("FFFFFF",16));
+            xBox-40+9, yBox+38, Integer.parseInt("FFFFFF",16));
         }
         LazyOptional<PM> capability =  PM.get(player);
         if(capability.resolve().isPresent()) {
             PM cap = capability.resolve().get();
-            drawString(matrixStack, Minecraft.getInstance().fontRenderer, new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+cap.getPm(), -64, 124, Integer.parseInt("FFFFFF",16));
+            drawString(matrixStack, Minecraft.getInstance().fontRenderer, new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()+": "+cap.getPm(), -64+30, 124+20, Integer.parseInt("FFFFFF",16));
         }
+        int pagesMax = (int) Math.ceil(shopItems.size()/16);
+        drawString(matrixStack, Minecraft.getInstance().fontRenderer, new StringTextComponent((page)+"/"+(pagesMax+1)), -64+30, 124+20+10, Integer.parseInt("FFFFFF",16));
 	}
 
     @Override
@@ -131,13 +146,13 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
         this.minecraft.getTextureManager().bindTexture(GUI);
         int i = this.guiLeft;
         int j = this.guiTop;
-        this.blit(arg0,i-90,j,0,0,356,168);
+        this.blit(arg0,i-40,j,0,0,256,168);
         for(int q = 0; q < 15; q++) {
-            int xBox = q % 8;
-            int yBox = (int) Math.floor(q/8);
+            int xBox = q % 5;
+            int yBox = (int) Math.floor(q/5);
             xBox = (int) xBox * 47;
             yBox = (int) yBox * 46;
-            this.blit(arg0,i+6+xBox-90,j+6+yBox,0,170,46,44);
+            this.blit(arg0,i+6+xBox-40,j+6+yBox,0,170,46,44);
         }
     }
     
