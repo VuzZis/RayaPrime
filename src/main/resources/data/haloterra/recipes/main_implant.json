@@ -1,0 +1,22 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "E E",
+        "#E#",
+        "OOO"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:microscheme"
+        },
+        "E" : {
+            "item" : "haloterra:cpu"
+        },
+        "O" : {
+            "item" : "haloterra:resistor"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:main_implant"
+    }
+}

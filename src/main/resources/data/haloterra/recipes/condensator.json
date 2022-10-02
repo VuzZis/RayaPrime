@@ -1,0 +1,23 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "###",
+        "EAE",
+        "   "
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:lithium_ingot"
+        },
+        "E" : {
+            "item" : "minecraft:gold_ingot"
+        },
+        "A" : {
+            "item" : "minecraft:redstone"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:condensator",
+        "count" : 4
+    }
+}

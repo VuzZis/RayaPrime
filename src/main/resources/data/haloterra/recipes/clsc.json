@@ -1,0 +1,22 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "#AE",
+        "#AE",
+        "#AE"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:coal_plate"
+        },
+        "A" : {
+            "item" : "haloterra:iron_plate"
+        },
+        "E" : {
+            "item" : "haloterra:lead_plate"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:clsc"
+    }
+}

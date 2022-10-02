@@ -1,0 +1,9 @@
+{
+    "type" : "minecraft:smelting",
+    "ingredient" : {
+        "item" : "haloterra:lithium_ore"
+    },
+    "result" : "haloterra:lithium_ingot",
+    "experience" : 2.0,
+    "cookingtime" : 220
+}

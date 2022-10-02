@@ -1,0 +1,28 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "EBE",
+        "MOM",
+        "#B#"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:clsc"
+        },
+        "E" : {
+            "item" : "haloterra:screen"
+        },
+        "M" : {
+            "item" : "haloterra:main_implant"
+        },
+        "O" : {
+            "item" : "haloterra:beyondto_os"
+        },
+        "B" : {
+            "item" : "haloterra:battery"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:inactive_beyondto"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "###",
+        "OEO",
+        "EEE"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:beyondto_os"
+        },
+        "E" : {
+            "item" : "minecraft:diamond"
+        },
+        "O" : {
+            "item" : "minecraft:crafting_table"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:rayaprime_os"
+    }
+}

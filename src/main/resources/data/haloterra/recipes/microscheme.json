@@ -1,0 +1,19 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "##E",
+        "   ",
+        "   "
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:coal_plate"
+        },
+        "E" : {
+            "item" : "minecraft:green_dye"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:microscheme"
+    }
+}

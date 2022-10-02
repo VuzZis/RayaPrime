@@ -1,0 +1,22 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "OOO",
+        "AAA",
+        "O#O"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:transistor"
+        },
+        "A" : {
+            "item" : "haloterra:lithium_ingot"
+        },
+        "O" : {
+            "item" : "haloterra:condensator"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:battery"
+    }
+}

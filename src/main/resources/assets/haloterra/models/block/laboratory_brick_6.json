@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "haloterra:block/laboratory_brick_6"
+    }
+}

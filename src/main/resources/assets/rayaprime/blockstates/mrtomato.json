@@ -1,9 +1,0 @@
-{
-    "variants" : {
-        "" : { "model" : "rayaprime:block/mrtomato" },
-        "facing=north": { "model" : "rayaprime:block/mrtomato" },
-        "facing=east": { "model" : "rayaprime:block/mrtomato", "y" : 90 },
-        "facing=south": { "model" : "rayaprime:block/mrtomato", "y" : 180 },
-        "facing=west": { "model" : "rayaprime:block/mrtomato", "y" : 270 }
-    }
-}

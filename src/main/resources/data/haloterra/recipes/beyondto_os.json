@@ -1,0 +1,19 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "AAA",
+        "AEA",
+        " A "
+    ],
+    "key" : {
+        "A" : {
+            "item" : "haloterra:iron_plate"
+        },
+        "E" : {
+            "item" : "minecraft:diamond"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:beyondto_os"
+    }
+}

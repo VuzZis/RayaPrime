@@ -13,8 +13,8 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '0.1.0.1'
-group = 'com.vuzz.rayaprime' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'rayaprime'
+group = 'com.vuzz.haloterra' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'haloterra'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
@@ -55,7 +55,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                rayaprime {
+                haloterra {
                     source sourceSets.main
                 }
             }
@@ -77,7 +77,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                rayaprime {
+                haloterra {
                     source sourceSets.main
                 }
             }
@@ -98,11 +98,11 @@ minecraft {
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
 
-            // Specify the rayaprime for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'rayaprime', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            // Specify the haloterra for data generation, where to output the resulting resource, and where to look for existing resources.
+            args '--mod', 'haloterra', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                rayaprime {
+                haloterra {
                     source sourceSets.main
                 }
             }
@@ -143,7 +143,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "rayaprime",
+            "Specification-Title": "haloterra",
             "Specification-Vendor": "rayaprimesareus",
             "Specification-Version": "1", // We are version 1 of ourselves
             "Implementation-Title": project.name,

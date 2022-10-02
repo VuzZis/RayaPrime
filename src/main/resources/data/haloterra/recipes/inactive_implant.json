@@ -1,0 +1,35 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "XEA",
+        "M#O",
+        "#B#"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:clsc"
+        },
+        "E" : {
+            "item" : "haloterra:screen"
+        },
+        "M" : {
+            "item" : "haloterra:main_implant"
+        },
+        "X" : {
+            "item" : "haloterra:ai_module"
+        },
+        "A" : {
+            "item" : "haloterra:fabricator"
+        }
+        ,
+        "O" : {
+            "item" : "haloterra:rayaprime_os"
+        },
+        "B" : {
+            "item" : "haloterra:battery"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:inactive_implant"
+    }
+}

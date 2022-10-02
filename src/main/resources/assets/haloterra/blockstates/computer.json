@@ -1,0 +1,23 @@
+{
+    
+    "variants" : {
+        "" : { 
+            "model": "haloterra:block/computer"
+        },
+        "facing=east": {
+            "model": "haloterra:block/computer",
+            "y": 270
+        },
+        "facing=north": {
+            "model": "haloterra:block/computer",
+            "y": 180
+        },
+        "facing=south": {
+            "model": "haloterra:block/computer"
+        },
+        "facing=west": {
+            "model": "haloterra:block/computer",
+            "y": 90
+        }
+    }
+}

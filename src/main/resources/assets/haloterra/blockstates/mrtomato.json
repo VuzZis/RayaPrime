@@ -1,0 +1,9 @@
+{
+    "variants" : {
+        "" : { "model" : "haloterra:block/mrtomato" },
+        "facing=north": { "model" : "haloterra:block/mrtomato" },
+        "facing=east": { "model" : "haloterra:block/mrtomato", "y" : 90 },
+        "facing=south": { "model" : "haloterra:block/mrtomato", "y" : 180 },
+        "facing=west": { "model" : "haloterra:block/mrtomato", "y" : 270 }
+    }
+}

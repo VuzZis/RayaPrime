@@ -1,0 +1,5 @@
+{
+    "variants" : {
+        "": { "model" : "haloterra:block/lead_ore" }
+    }
+}

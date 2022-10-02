@@ -1,0 +1,23 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "#E#",
+        "EAE",
+        "#E#"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:transistorpack"
+        },
+        "E" : {
+            "item" : "minecraft:flint"
+        },
+        "A" : {
+            "item" : "minecraft:diamond"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:cpu",
+        "count" : 1
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "#E#",
+        "EAE",
+        "OOO"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "minecraft:flint"
+        },
+        "E" : {
+            "item" : "minecraft:gold_nugget"
+        },
+        "A" : {
+            "item" : "minecraft:redstone"
+        },
+        "O" : {
+            "item" : "minecraft:iron_nugget"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:transistor",
+        "count" : 4
+    }
+}

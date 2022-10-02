@@ -1,0 +1,14 @@
+{
+    
+    "variants" : {
+        "": {
+            "model": "haloterra:block/laboratory_floor"
+        },
+        "paper=true": {
+            "model": "haloterra:block/laboratory_floor_variant"
+        },
+        "paper=false": {
+            "model": "haloterra:block/laboratory_floor"
+        }
+    }
+}

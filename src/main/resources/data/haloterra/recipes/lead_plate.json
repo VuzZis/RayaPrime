@@ -1,0 +1,16 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "###",
+        "###",
+        "## "
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:lead_ingot"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:lead_plate"
+    }
+}

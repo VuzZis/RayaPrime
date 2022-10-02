@@ -1,0 +1,9 @@
+{
+    "type" : "minecraft:smelting",
+    "ingredient" : {
+        "item" : "haloterra:lead_ore"
+    },
+    "result" : "haloterra:lead_ingot",
+    "experience" : 1.0,
+    "cookingtime" : 200
+}
