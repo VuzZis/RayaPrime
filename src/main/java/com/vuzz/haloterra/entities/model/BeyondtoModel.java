@@ -98,6 +98,8 @@ public class BeyondtoModel<T extends BeyondtoEntity> extends EntityModel<T> {
 		int anim = entit.getPersistentData().getInt("anim");
 		int phase = entit.getPersistentData().getInt("phase");
 		System.out.println(phase);
+		LeftWing.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+		RightWing.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 		switch(phase) {
 			case 0:
 				Body.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);

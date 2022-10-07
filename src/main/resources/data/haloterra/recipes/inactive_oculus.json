@@ -1,0 +1,31 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "#M#",
+        "AXA",
+        "BEB"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:gmnc"
+        },
+        "E" : {
+            "item" : "haloterra:screen"
+        },
+        "M" : {
+            "item" : "haloterra:main_implant"
+        },
+        "X" : {
+            "item" : "haloterra:ai_module"
+        },
+        "B" : {
+            "item" : "haloterra:battery"
+        },
+        "A" : {
+            "item" : "haloterra:cpu"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:inactive_oculus"
+    }
+}

@@ -3,6 +3,7 @@ package com.vuzz.haloterra.entities;
 import com.vuzz.haloterra.RayaMod;
 import com.vuzz.haloterra.entities.custom.BeyondtoEntity;
 import com.vuzz.haloterra.entities.custom.RayaPrimeEntity;
+import com.vuzz.haloterra.entities.custom.OcubladeEntity;
 import com.vuzz.haloterra.entities.custom.OculusEntity;
 
 import net.minecraft.entity.EntityClassification;
@@ -26,7 +27,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<OculusEntity>> OCULUS =
         ENTITY_TYPES.register("oculus",
             () -> EntityType.Builder.create(OculusEntity::new,
-                    EntityClassification.AMBIENT).size(0.8f,0.8f)
+                    EntityClassification.AMBIENT).size(0.8f,1.3f)
                 .build(new ResourceLocation(RayaMod.MOD_ID, "oculus").toString()));
 
     public static final RegistryObject<EntityType<BeyondtoEntity>> BEYONDTO =
@@ -34,6 +35,12 @@ public class ModEntityTypes {
         () -> EntityType.Builder.create(BeyondtoEntity::new,
                 EntityClassification.AMBIENT).size(0.55f,1.5f)
             .build(new ResourceLocation(RayaMod.MOD_ID, "beyondto").toString()));
+
+    public static final RegistryObject<EntityType<OcubladeEntity>> OCUBLADE =
+    ENTITY_TYPES.register("ocublade",
+        () -> EntityType.Builder.create(OcubladeEntity::new,
+                EntityClassification.MISC).size(0.1f,0.1f)
+            .build(new ResourceLocation(RayaMod.MOD_ID, "ocublade").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

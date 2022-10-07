@@ -1,12 +1,17 @@
 package com.vuzz.haloterra.entities.custom;
 
 import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.controller.FlyingMovementController;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.IFlyingAnimal;
 import net.minecraft.entity.passive.ShoulderRidingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,10 +34,12 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkHooks;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.vuzz.haloterra.RayaMod;
 import com.vuzz.haloterra.effects.ModEffects;
+import com.vuzz.haloterra.entities.ModEntityTypes;
 import com.vuzz.haloterra.gui.containers.RayaPrimeContainer;
 import com.vuzz.haloterra.items.ModItems;
 
@@ -164,6 +171,22 @@ public class OculusEntity extends ShoulderRidingEntity implements IFlyingAnimal 
                 getNavigator().clearPath();
             }
                 
+            if(ticksPast % 80 == 79) {
+                List<Entity> entitiesClose = world.getEntitiesWithinAABBExcludingEntity(this,getBoundingBox().expand(20,20,20));
+                for(int i = 0; i < entitiesClose.size(); i++) {
+                    if(!(entitiesClose.get(i) instanceof LivingEntity)) continue;
+                    LivingEntity entityToBeat = (LivingEntity) entitiesClose.get(i);
+                    if(entityToBeat.getClassification(true) == EntityClassification.MONSTER) {
+                        EntityType<OcubladeEntity> raya = ModEntityTypes.OCUBLADE.get();
+                        OcubladeEntity rayaEntity = (OcubladeEntity) raya.spawn((ServerWorld) getEntityWorld(), null, null, getPosition(), 
+                        SpawnReason.DISPENSER, false, false);
+                        rayaEntity.targetX = entityToBeat.getPosX();
+                        rayaEntity.targetY = entityToBeat.getPosY();
+                        rayaEntity.targetZ = entityToBeat.getPosZ();
+                        break;
+                    }
+                }
+            }
 
             PlayerEntity player = (PlayerEntity) owner;
             if((ticksPast - lastHungerCheck >= 600) && player.getFoodStats().getFoodLevel() < 10) {

@@ -1,6 +1,0 @@
-JvmtiExport can_access_local_variables 0
-JvmtiExport can_hotswap_or_post_breakpoint 0
-JvmtiExport can_post_on_exceptions 0
-# 112 ciObject found
-ciMethod java/lang/String equals (Ljava/lang/Object;)Z 2193 11121 2608 1 -1
-ciMethodData java/lang/String equals (Ljava/lang/Object;)Z 0 0 orig 264 104 147 45 118 0 0 0 0 208 69 59 25 0 0 0 0 104 2 0 0 32 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 110 5 0 0 241 72 0 0 145 41 2 0 0 0 0 0 0 0 0 0 2 0 0 0 1 0 15 0 2 0 0 0 24 1 0 0 255 255 255 255 7 0 2 0 0 0 0 0 data 35 0x20007 0x5c5 0x20 0x359 0x87104 0x0 0x2bb9730 0x5c4 0x28 0x1 0xb0007 0x1 0xc8 0x5c4 0xf0004 0x0 0x7c00016d0 0x5c4 0x0 0x0 0x1f0007 0x257 0x78 0x36d 0x350007 0x354 0x58 0x454b 0x420007 0x4532 0x20 0x19 0x4a0003 0x4532 0xffffffffffffffc0 oops 3 6 java/lang/String

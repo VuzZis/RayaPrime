@@ -1,0 +1,19 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "#A#",
+        "#A#",
+        "#A#"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "minecraft:gold_ingot"
+        },
+        "A" : {
+            "item" : "haloterra:clsc"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:gmnc"
+    }
+}

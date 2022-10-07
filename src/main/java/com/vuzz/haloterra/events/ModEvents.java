@@ -44,6 +44,7 @@ import com.vuzz.haloterra.capability.CapabilityPM;
 import com.vuzz.haloterra.capability.CapabilityPMProvider;
 import com.vuzz.haloterra.capability.PM;
 import com.vuzz.haloterra.effects.ModEffects;
+import com.vuzz.haloterra.entities.custom.OcubladeEntity;
 import com.vuzz.haloterra.items.ModItems;
 import com.vuzz.haloterra.world.gen.ModOreGeneration;
 

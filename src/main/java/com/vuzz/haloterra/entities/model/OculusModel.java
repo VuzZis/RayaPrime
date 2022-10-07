@@ -4,6 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import com.vuzz.haloterra.entities.custom.OculusEntity;
 
+import net.minecraft.advancements.criterion.PlayerPredicate.Default;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 
@@ -186,11 +187,15 @@ public class OculusModel<T extends OculusEntity> extends EntityModel<T> {
 	@Override
 	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
 		entit = entity;
+		setRotationAngle(Body,(float) ((float) 0.1396F+(Math.sin(ageInTicks/8)/8)),0,0);
+		setRotationAngle(DefaultFace,0,0,(float) (Math.sin(ageInTicks/16)/24));
+		setRotationAngle(LeftWing,0.6109F, (float) (-0.6109F-(Math.sin(ageInTicks/8)/4)), -0.5236F);
+		setRotationAngle(RightWing,0.4363F, (float) (0.6109F+(Math.sin(ageInTicks/8)/4)), 0.5236F);
 	}
 
 	@Override
 	public void render(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		DefaultFace.render(matrixStack, buffer, 15, packedOverlay, red, green, blue, alpha);
+		DefaultFace.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 		//SadFace.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 		MainBody.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 		//HappyFace.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
