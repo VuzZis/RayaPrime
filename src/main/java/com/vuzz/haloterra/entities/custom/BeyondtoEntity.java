@@ -226,7 +226,7 @@ public class BeyondtoEntity extends FlyingEntity {
                 double z = (double) (owner.getPosZ()+Math.cos(Math.toRadians(angle*step))*1.2);
                 setPosition(x,owner.getPosY()+0.7,z);
             }
-            if(player.getHealth() <= 15) {
+            if(player.getHealth() <= 15 && player.getHealth() > 0) {
                 if(ticks % 80 == 79) {
                     player.setHealth(player.getHealth()+1);
                     energy -= 500;

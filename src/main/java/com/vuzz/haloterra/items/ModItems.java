@@ -44,6 +44,8 @@ public class ModItems {
     public static final RegistryObject<Item> OCULUS_OS = ITEMS.register("oculus_os", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     //public static final RegistryObject<Item> MR_TOMATO = ITEMS.register("mrtomato", () -> new BlockItem(ModBlocks.MR_TOMATO.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
     //public static final RegistryObject<Item> MR_TOMATO_GOLD = ITEMS.register("mrtomato_gold", () -> new BlockItem(ModBlocks.MR_TOMATO_GOLD.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
+    public static final RegistryObject<Item> GRAPE_SEEDS = ITEMS.register("grape_seeds", () -> new BlockItem(ModBlocks.GRAPES.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
+    
     public static final RegistryObject<Item> VODKA = ITEMS.register("vodka", () -> new DrinkBase(5,600));
     public static final RegistryObject<Item> WINE = ITEMS.register("wine", () -> new DrinkBase(2,700));
     public static final RegistryObject<Item> BEER = ITEMS.register("beer", () -> new DrinkBase(7,1200));

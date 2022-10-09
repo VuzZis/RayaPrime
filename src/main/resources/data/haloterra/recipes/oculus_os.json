@@ -1,9 +1,9 @@
 {
     "type" : "minecraft:crafting_shaped",
     "pattern" : [
-        "###",
+        "#Z#",
         "OEA",
-        "EEE"
+        "ZEZ"
     ],
     "key" : {
         "#" : {
@@ -17,6 +17,9 @@
         },
         "A" : {
             "item" : "minecraft:shield"
+        },
+        "Z" : {
+            "item" : "haloterra:projector_module"
         }
     },
     "result" : {

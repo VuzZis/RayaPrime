@@ -76,7 +76,6 @@ public class OcubladeEntity extends ShoulderRidingEntity implements IFlyingAnima
     public void tick() {
         super.tick();
         if(ticksPast > 40) remove();
-        setGlowing(true);
         List<LivingEntity> targetList = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(getPosX() - 0.8, getPosY() - 0.1, getPosZ() - 0.8, getPosX() + 0.8, getPosY() + 0.1, getPosZ() + 0.8));
         List<LivingEntity> followList = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(getPosX() - 10, getPosY() - 10, getPosZ() - 10, getPosX() + 10, getPosY() + 10, getPosZ() + 10));
         followList.forEach((f) -> {

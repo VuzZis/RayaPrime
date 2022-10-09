@@ -201,10 +201,15 @@ public class ModEvents {
         PlayerEntity old = event.getOriginal();
         PlayerEntity newP = event.getPlayer();
         old.revive();
+        System.out.println(
+            String.format(
+                "Player is cloning! Old present: %s,New present: %s",
+                PM.get(old).isPresent(),
+                PM.get(newP).isPresent()
+            )
+        );
         PM.get(old).ifPresent(oldPm -> {
-            System.out.println(oldPm.getPm());
             PM.get(newP).ifPresent(newPm -> {
-                System.out.println(newPm.getPm());
                 newPm.setPm(oldPm.getPm());
                 newPm.setProgress(oldPm.getProgress());
             });

@@ -30,7 +30,7 @@ import net.minecraftforge.fml.network.PacketDistributor;
 
 public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
 
-    private final ResourceLocation GUI = new ResourceLocation(RayaMod.MOD_ID,"textures/gui/haloterra/shop_fullt.png");
+    private final ResourceLocation GUI = new ResourceLocation(RayaMod.MOD_ID,"textures/gui/rayaprime/shop_fullt.png");
     public final ArrayList<ItemStack> shopItems = ShopItems.getItems();
     public final ArrayList<Number> shopPrices = ShopItems.getPrices();
     private final ArrayList<ShopButton> shopButtons = new ArrayList<ShopButton>();

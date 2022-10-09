@@ -5,6 +5,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import com.vuzz.haloterra.RayaMod;
+import com.vuzz.haloterra.blocks.crops.GrapeBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.AbstractBlock.Properties;
@@ -19,10 +20,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> LITHIUM_ORE = BLOCKS.register("lithium_ore", () -> new Block(Properties.create(Material.ROCK).harvestLevel(3).harvestTool(ToolType.PICKAXE).setRequiresTool().hardnessAndResistance(4f)));
     public static final RegistryObject<Block> MR_TOMATO = BLOCKS.register("mrtomato", () -> new Block(Properties.create(Material.BAMBOO).hardnessAndResistance(2f).notSolid()));
     public static final RegistryObject<Block> MR_TOMATO_GOLD = BLOCKS.register("mrtomato_gold", () -> new Block(Properties.create(Material.BAMBOO).hardnessAndResistance(2f).notSolid()));
-    public static final RegistryObject<Block> COMPUTER = BLOCKS.register("computer", () -> new HaloComputer());
+    public static final RegistryObject<Block> COMPUTER = BLOCKS.register("computer", HaloComputer::new);
 
     public static final RegistryObject<Block> LABORATORY_BRICK = BLOCKS.register("laboratory_brick", () -> new Block(Properties.create(Material.ROCK).harvestLevel(3).harvestTool(ToolType.PICKAXE).setRequiresTool().hardnessAndResistance(10f)));
     public static final RegistryObject<Block> LABORATORY_FLOOR = BLOCKS.register("laboratory_floor", () -> new Block(Properties.create(Material.ROCK).harvestLevel(3).harvestTool(ToolType.PICKAXE).setRequiresTool().hardnessAndResistance(10f)));
+
+    public static final RegistryObject<Block> GRAPES = BLOCKS.register("grapes_crop",GrapeBlock::new);
 
     public static void register(IEventBus eventbus) {
         BLOCKS.register(eventbus);

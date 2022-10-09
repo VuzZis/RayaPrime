@@ -69,6 +69,7 @@ public class RayaMod {
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.OCULUS.get(), OculusRender::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.OCUBLADE.get(), OcubladeRenderer::new);
         event.enqueueWork(() -> {
+            clientSetup(event);
             ScreenManager.registerFactory(ModContainers.RAYA_PRIME_CONTAINER.get(), RayaPrimeScreen::new);
         });
     }
@@ -77,6 +78,7 @@ public class RayaMod {
         RenderTypeLookup.setRenderLayer(ModBlocks.MR_TOMATO.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.MR_TOMATO_GOLD.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.COMPUTER.get(), RenderType.getCutout());
+        RenderTypeLookup.setRenderLayer(ModBlocks.GRAPES.get(), RenderType.getCutout());
     }
 
 }
