@@ -3,13 +3,11 @@ package com.vuzz.haloterra.networking;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-import com.vuzz.haloterra.RayaMod;
 import com.vuzz.haloterra.capability.PM;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.ForgeConfig.Server;

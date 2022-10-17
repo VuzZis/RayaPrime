@@ -5,6 +5,7 @@ import com.vuzz.haloterra.entities.custom.BeyondtoEntity;
 import com.vuzz.haloterra.entities.custom.RayaPrimeEntity;
 import com.vuzz.haloterra.entities.custom.OcubladeEntity;
 import com.vuzz.haloterra.entities.custom.OculusEntity;
+import com.vuzz.haloterra.entities.custom.PlauntEntity;
 
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -29,6 +30,12 @@ public class ModEntityTypes {
             () -> EntityType.Builder.create(OculusEntity::new,
                     EntityClassification.AMBIENT).size(0.8f,1.3f)
                 .build(new ResourceLocation(RayaMod.MOD_ID, "oculus").toString()));
+
+    public static final RegistryObject<EntityType<PlauntEntity>> PLAUNT =
+        ENTITY_TYPES.register("plaunt",
+            () -> EntityType.Builder.create(PlauntEntity::new,
+                    EntityClassification.AMBIENT).size(0.8f,1.3f)
+                .build(new ResourceLocation(RayaMod.MOD_ID, "plaunt").toString()));
 
     public static final RegistryObject<EntityType<BeyondtoEntity>> BEYONDTO =
     ENTITY_TYPES.register("beyondto",

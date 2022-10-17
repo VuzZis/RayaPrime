@@ -7,12 +7,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.CropsBlock;
-import net.minecraft.block.material.Material;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 public class GrapeBlock extends CropsBlock {
 
@@ -34,7 +34,12 @@ public class GrapeBlock extends CropsBlock {
 
     @Override
     public int getMaxAge() {
-        return 4;
+        return 3;
+    }
+
+    @Override
+    protected int getBonemealAgeIncrease(World worldIn) {
+        return 1;
     }
     
 }

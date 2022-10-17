@@ -1,48 +1,22 @@
 package com.vuzz.haloterra.entities.custom;
 
 import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntityPredicate;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.controller.FlyingMovementController;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.IFlyingAnimal;
 import net.minecraft.entity.passive.ShoulderRidingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.pathfinding.FlyingPathNavigator;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.fml.network.NetworkHooks;
 
 import java.util.List;
-import java.util.UUID;
-
-import com.vuzz.haloterra.RayaMod;
-import com.vuzz.haloterra.effects.ModEffects;
-import com.vuzz.haloterra.gui.containers.RayaPrimeContainer;
-import com.vuzz.haloterra.items.ModItems;
-
-import net.minecraft.command.arguments.EntityAnchorArgument.Type;
 
 public class OcubladeEntity extends ShoulderRidingEntity implements IFlyingAnimal {
 

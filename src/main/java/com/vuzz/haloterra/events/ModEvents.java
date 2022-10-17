@@ -1,17 +1,11 @@
 package com.vuzz.haloterra.events;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -19,7 +13,6 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -32,20 +25,13 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
-import net.minecraftforge.event.TickEvent.RenderTickEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-
 import java.util.ArrayList;
-import java.util.Random;
-
 import com.vuzz.haloterra.RayaMod;
-import com.vuzz.haloterra.blocks.ModBlocks;
 import com.vuzz.haloterra.capability.CapabilityPM;
 import com.vuzz.haloterra.capability.CapabilityPMProvider;
 import com.vuzz.haloterra.capability.PM;
 import com.vuzz.haloterra.effects.ModEffects;
-import com.vuzz.haloterra.entities.custom.OcubladeEntity;
-import com.vuzz.haloterra.items.ModItems;
 import com.vuzz.haloterra.world.gen.ModOreGeneration;
 
 @Mod.EventBusSubscriber(modid = RayaMod.MOD_ID)

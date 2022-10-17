@@ -1,7 +1,6 @@
 package com.vuzz.haloterra.config;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
@@ -39,6 +38,8 @@ public class HaloTerraCommonConfig {
         addItem(items,"minecraft:obsidian","2","20");
         addItem(items,"minecraft:netherite_scrap","1","200");
         addItem(items,"minecraft:andesite","15","10");
+        addItem(items,"haloterra:mrtomato","1","60");
+        addItem(items,"haloterra:mrtomato_gold","1","120");
             BUILDER.push("Configs for RayaPrime Shop");
                 RAYAPRIME_SHOP = BUILDER.comment("Put your items here")
                     .define("Items", 

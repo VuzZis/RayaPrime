@@ -1,0 +1,12 @@
+{
+    "type" : "minecraft:crafting_shapeless",
+    "ingredients" : [
+        {
+            "item" : "haloterra:grapes"
+        }
+    ],
+    "result" : {
+        "item" : "haloterra:grape_seeds",
+        "count" : 4
+    }
+}

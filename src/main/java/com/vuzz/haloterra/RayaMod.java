@@ -8,6 +8,7 @@ import com.vuzz.haloterra.entities.render.RayaPrimeRenderer;
 import com.vuzz.haloterra.entities.render.BeyondtoRenderer;
 import com.vuzz.haloterra.entities.render.OcubladeRenderer;
 import com.vuzz.haloterra.entities.render.OculusRender;
+import com.vuzz.haloterra.entities.render.PlauntRenderer;
 import com.vuzz.haloterra.gui.containers.ModContainers;
 import com.vuzz.haloterra.gui.screens.RayaPrimeScreen;
 import com.vuzz.haloterra.items.ModItems;
@@ -22,6 +23,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -68,6 +70,7 @@ public class RayaMod {
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.BEYONDTO.get(), BeyondtoRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.OCULUS.get(), OculusRender::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.OCUBLADE.get(), OcubladeRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.PLAUNT.get(), PlauntRenderer::new);
         event.enqueueWork(() -> {
             clientSetup(event);
             ScreenManager.registerFactory(ModContainers.RAYA_PRIME_CONTAINER.get(), RayaPrimeScreen::new);

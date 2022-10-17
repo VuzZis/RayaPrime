@@ -16,7 +16,7 @@ public class PageButton extends Button {
     private int widthIn;
     private int heightIn;
     public int ind;
-    private final ResourceLocation GUI = new ResourceLocation(RayaMod.MOD_ID,"textures/gui/haloterra/shop_fullt.png");
+    private final ResourceLocation GUI = new ResourceLocation(RayaMod.MOD_ID,"textures/gui/rayaprime/shop_fullt.png");
     private int xIn;
     private int yIn;
     private boolean isLeft;

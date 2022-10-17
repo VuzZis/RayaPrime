@@ -14,7 +14,7 @@
             "model": "haloterra:block/grape/age3"
         },
         "age=4": {
-            "model": "haloterra:block/grape/age3"
+            "model": "haloterra:block/grape/age1"
         }
     }
 }

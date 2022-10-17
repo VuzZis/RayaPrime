@@ -9,7 +9,8 @@ public enum OreType {
     
     
     LEAD(Lazy.of(ModBlocks.LEAD_ORE),7,10,30),
-    LITHIUM(Lazy.of(ModBlocks.LITHIUM_ORE),4,5,20);
+    LITHIUM(Lazy.of(ModBlocks.LITHIUM_ORE),4,5,20),
+    ENERGY(Lazy.of(ModBlocks.ENERGY_ORE),2,1,15);
 
     private final Lazy<Block> block;
     private final int maxVeinSize;
