@@ -1,0 +1,18 @@
+{
+    "type" : "minecraft:crafting_shapeless",
+    "ingredients" : [
+        {
+            "item" : "haloterra:cup"
+        },
+        {
+            "item" : "minecraft:cocoa_beans"
+        },
+        {
+            "item" : "minecraft:milk_bucket"
+        }
+    ],
+    "result" : {
+        "item" : "haloterra:cocoa",
+        "count" : 1
+    }
+}

@@ -9,7 +9,7 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "haloterra:active_energy_shard"
+              "name": "haloterra:energy_shard"
             }
           ]
         }
@@ -26,12 +26,12 @@
               "enchantment": "minecraft:fortune",
               "formula": "minecraft:binomial_with_bonus_count",
               "parameters": {
-                "extra": 2,
-                "probability": 0.5714286
+                "extra": 1,
+                "probability": 0.2714286
               }
             }
           ],
-          "name": "haloterra:energy_shard"
+          "name": "haloterra:active_energy_shard"
         }
       ]
     }

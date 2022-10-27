@@ -1,0 +1,8 @@
+{
+    "variants" : {
+        "facing=north": { "model" : "haloterra:block/plush/plush_tima" },
+        "facing=east": { "model" : "haloterra:block/plush/plush_tima", "y" : 90 },
+        "facing=south": { "model" : "haloterra:block/plush/plush_tima", "y" : 180 },
+        "facing=west": { "model" : "haloterra:block/plush/plush_tima", "y" : 270 }
+    }
+}

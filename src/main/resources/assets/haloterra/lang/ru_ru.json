@@ -16,9 +16,11 @@
     "item.haloterra.microscheme" : "Микросхема",
     "block.haloterra.lead_ore" : "Свинцовая руда",
     "block.haloterra.lithium_ore" : "Литиевая руда",
-    "item.haloterra.wine" : "Вино",
-    "item.haloterra.beer" : "Пиво",
-    "item.haloterra.vodka" : "Водка",
+    "item.haloterra.fresh_soda" : "Свежая газировка",
+    "item.haloterra.berry_soda" : "Ягодная газировка",
+    "item.haloterra.sea_soda" : "Морская газировка",
+    "item.haloterra.gepard_soda" : "Газировка \"Гепард\"",
+    "item.haloterra.can" : "Банка",
     "item.haloterra.transistor" : "Транзистор",
     "item.haloterra.transistorpack" : "Пачка транзисторов",
     "item.haloterra.cpu" : "Ц.П.У.",
@@ -54,6 +56,7 @@
     "message.oculus.disabling" : "§6[Окулус]§r Прости мне нужно отключиться. Я вернусь как смогу!",
     "message.plaunt.lowfood" : "§a[Плаунт]§r Oй, ты голодный. Может у меня что-то найдётся?",
     "message.plaunt.disabling" : "§a[Плаунт]§r Оу...",
+    "message.plaunt.found" : "§a[Плаунт]§r Смотри что я нашёл!",
     "warning.haloterra.nospace" : "§cНЕДОСТАТОЧНО МЕСТА§r",
     "title.haloterra.pm" : "ПМ",
     "effect.haloterra.hybernation" : "Гибернация" ,
@@ -62,7 +65,19 @@
     "item.haloterra.inactive_plaunt" : "Неактивный Плаунт",
     "block.haloterra.energy_ore" : "Энергетическая руда",
 
+    "item.haloterra.avian_abundance" : "Авианское изобилие",
+    "item.haloterra.cocoa" : "Какао",
+    "item.haloterra.cup" : "Чашка",
+    "item.haloterra.lemon_tea" : "Лимонный чай",
+    "item.haloterra.mochito" : "Мохито",
+    "item.haloterra.revivus_tea" : "Напиток Возрождения",
+    "item.haloterra.tea_la_graf" : "Чай-Ля-Граф",
+    "item.haloterra.vuzz_grande" : "Вузз-Гранде",
+
+    "message.revivus_tea.achieved" : "§c[Возродитель]§r Используй это с умом. У тебя лишь §c1 попытка.§r",
+
     "tooltip.haloterra.energy" : "§6[Энергии за каждую]:§r",
+    "tooltip.haloterra.energyuse" : "Для использования, положите это в левую руку и имплант в правую. Удерживайте §6SHIFT§r",
 
     "story.haloterra.computer_0" : "§c[]§r :D",
     "story.haloterra.computer_1" : "§c[]§r :D",
@@ -81,5 +96,10 @@
     "note.haloterra.chapter1.5" : "Отчёт модель Прайм 17.05.2432",
     "note.haloterra.chapter1.6" : "Подозрения",
     "note.haloterra.chapter1.7" : "Кризис",
-    "note.haloterra.chapter1.8" : "Аластрофа"
+    "note.haloterra.chapter1.8" : "Аластрофа",
+
+    "block.haloterra.plush_vuzz" : "Плюшевый VuzZ",
+    "block.haloterra.plush_black" : "Плюшевый DeadBlack1",
+    "block.haloterra.plush_hunter" : "Плюшевый HunterKsen",
+    "block.haloterra.plush_tima" : "Плюшевый Korol"
 }

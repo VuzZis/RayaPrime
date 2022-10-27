@@ -1,0 +1,18 @@
+{
+    "type" : "minecraft:crafting_shapeless",
+    "ingredients" : [
+        {
+            "item" : "haloterra:cup"
+        },
+        {
+            "item" : "minecraft:lime_dye"
+        },
+        {
+            "item" : "minecraft:apple"
+        }
+    ],
+    "result" : {
+        "item" : "haloterra:mochito",
+        "count" : 1
+    }
+}

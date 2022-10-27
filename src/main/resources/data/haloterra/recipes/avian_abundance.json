@@ -1,0 +1,18 @@
+{
+    "type" : "minecraft:crafting_shapeless",
+    "ingredients" : [
+        {
+            "item" : "haloterra:cup"
+        },
+        {
+            "item" : "minecraft:feather"
+        },
+        {
+            "item" : "minecraft:gold_ingot"
+        }
+    ],
+    "result" : {
+        "item" : "haloterra:avian_abundance",
+        "count" : 1
+    }
+}

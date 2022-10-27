@@ -10,6 +10,7 @@ import com.vuzz.haloterra.entities.render.OcubladeRenderer;
 import com.vuzz.haloterra.entities.render.OculusRender;
 import com.vuzz.haloterra.entities.render.PlauntRenderer;
 import com.vuzz.haloterra.gui.containers.ModContainers;
+import com.vuzz.haloterra.gui.screens.ChargePadScreen;
 import com.vuzz.haloterra.gui.screens.RayaPrimeScreen;
 import com.vuzz.haloterra.items.ModItems;
 import com.vuzz.haloterra.networking.ClientProxy;
@@ -74,6 +75,7 @@ public class RayaMod {
         event.enqueueWork(() -> {
             clientSetup(event);
             ScreenManager.registerFactory(ModContainers.RAYA_PRIME_CONTAINER.get(), RayaPrimeScreen::new);
+            ScreenManager.registerFactory(ModContainers.CHARGE_PAD_CONTAINER.get(), ChargePadScreen::new);
         });
     }
 

@@ -1,0 +1,18 @@
+{
+    "type" : "minecraft:crafting_shapeless",
+    "ingredients" : [
+        {
+            "item" : "haloterra:cup"
+        },
+        {
+            "item" : "minecraft:cookie"
+        },
+        {
+            "item" : "minecraft:purple_wool"
+        }
+    ],
+    "result" : {
+        "item" : "haloterra:tea_la_graf",
+        "count" : 1
+    }
+}

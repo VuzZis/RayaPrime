@@ -1,0 +1,18 @@
+{
+    "type" : "minecraft:crafting_shapeless",
+    "ingredients" : [
+        {
+            "item" : "haloterra:cup"
+        },
+        {
+            "item" : "minecraft:golden_carrot"
+        },
+        {
+            "item" : "minecraft:melon_slice"
+        }
+    ],
+    "result" : {
+        "item" : "haloterra:vuzz_grande",
+        "count" : 1
+    }
+}

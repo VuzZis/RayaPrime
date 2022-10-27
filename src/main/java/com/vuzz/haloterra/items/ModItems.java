@@ -7,6 +7,7 @@ import com.vuzz.haloterra.items.armor.ModArmors;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -20,7 +21,7 @@ public class ModItems {
     public static final RegistryObject<Item> INACTIVE_OCULUS = ITEMS.register("inactive_oculus", InactiveOculus::new);
     public static final RegistryObject<Item> INACTIVE_PLAUNT = ITEMS.register("inactive_plaunt", InactivePlaunt::new);
     public static final RegistryObject<Item> MAIN_IMPLANT = ITEMS.register("main_implant", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
-    public static final RegistryObject<Item> ENERGY_PAD = ITEMS.register("energy_pad", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
+    //public static final RegistryObject<Item> ENERGY_PAD = ITEMS.register("energy_pad", ChargePad::new);
     public static final RegistryObject<Item> AI_MODULE = ITEMS.register("ai_module", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> BATTERY = ITEMS.register("battery", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> FABRICATOR = ITEMS.register("fabricator", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
@@ -53,9 +54,26 @@ public class ModItems {
     public static final RegistryObject<Item> GRAPE_SEEDS = ITEMS.register("grape_seeds", () -> new BlockItem(ModBlocks.GRAPES.get(), new Item.Properties().group(RayaMod.MOD_GROUP).food(new Food.Builder().hunger(1).saturation(0).fastToEat().build())));
     public static final RegistryObject<Item> GRAPES = ITEMS.register("grapes", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP).maxStackSize(16).food(new Food.Builder().hunger(5).saturation(10).build())));
     
-    public static final RegistryObject<Item> VODKA = ITEMS.register("vodka", () -> new DrinkBase(5,600));
-    public static final RegistryObject<Item> WINE = ITEMS.register("wine", () -> new DrinkBase(2,700));
-    public static final RegistryObject<Item> BEER = ITEMS.register("beer", () -> new DrinkBase(7,1200));
+    public static final RegistryObject<Item> CAN = ITEMS.register("can", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP).maxStackSize(16)));
+    public static final RegistryObject<Item> BERRY_SODA = ITEMS.register("berry_soda", () -> new DrinkBase(3,600));
+    public static final RegistryObject<Item> GEPARD_SODA = ITEMS.register("gepard_soda", () -> new DrinkBase(2,700));
+    public static final RegistryObject<Item> FRESH_SODA = ITEMS.register("fresh_soda", () -> new DrinkBase(4,1200));
+    public static final RegistryObject<Item> SEA_SODA = ITEMS.register("sea_soda", () -> new DrinkBase(3,1200));
+    
+
+    public static final RegistryObject<Item> CUP = ITEMS.register("cup", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP).maxStackSize(16)));
+    public static final RegistryObject<Item> VUZZ_GRANDE = ITEMS.register("vuzz_grande", () -> new SimpleEffectDrink(Effects.INVISIBILITY, 1200, 0));
+    public static final RegistryObject<Item> AVIAN_ABUNDANCE = ITEMS.register("avian_abundance", () -> new SimpleEffectDrink(Effects.SLOW_FALLING, 600, 1));
+    public static final RegistryObject<Item> COCOA = ITEMS.register("cocoa", () -> new SimpleEffectDrink(Effects.HASTE, 2400, 1));
+    public static final RegistryObject<Item> LEMON_TEA = ITEMS.register("lemon_tea", () -> new SimpleEffectDrink(Effects.REGENERATION, 1200, 2));
+    public static final RegistryObject<Item> MOCHITO = ITEMS.register("mochito", () -> new SimpleEffectDrink(Effects.SPEED, 1200, 2));
+    public static final RegistryObject<Item> TEA_LA_GRAF = ITEMS.register("tea_la_graf", () -> new SimpleEffectDrink(Effects.JUMP_BOOST, 1200, 3));
+    public static final RegistryObject<Item> REVIVUS_TEA = ITEMS.register("revivus_tea", () -> new SimpleEffectDrink(Effects.STRENGTH, 2400, 10,true));
+
+    public static final RegistryObject<Item> PLUSH_BLACK = ITEMS.register("plush_black", () -> new BlockItem(ModBlocks.PLUSH_BLACK.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
+    public static final RegistryObject<Item> PLUSH_TIMA = ITEMS.register("plush_tima", () -> new BlockItem(ModBlocks.PLUSH_TIMA.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
+    public static final RegistryObject<Item> PLUSH_VUZZ = ITEMS.register("plush_vuzz", () -> new BlockItem(ModBlocks.PLUSH_VUZZ.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
+    public static final RegistryObject<Item> PLUSH_HUNTER = ITEMS.register("plush_hunter", () -> new BlockItem(ModBlocks.PLUSH_HUNTER.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
 
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);

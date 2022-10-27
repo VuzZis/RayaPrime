@@ -4,6 +4,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ResourceLocation;
@@ -17,6 +18,7 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.client.event.ClientChatEvent;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -26,12 +28,14 @@ import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.ServerChatEvent;
 import java.util.ArrayList;
 import com.vuzz.haloterra.RayaMod;
 import com.vuzz.haloterra.capability.CapabilityPM;
 import com.vuzz.haloterra.capability.CapabilityPMProvider;
 import com.vuzz.haloterra.capability.PM;
 import com.vuzz.haloterra.effects.ModEffects;
+import com.vuzz.haloterra.items.ModItems;
 import com.vuzz.haloterra.world.gen.ModOreGeneration;
 
 @Mod.EventBusSubscriber(modid = RayaMod.MOD_ID)
@@ -149,6 +153,19 @@ public class ModEvents {
                 world.removeBlock(lookingAtPos(player, false), false);
             }
         }*/
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerChat(ServerChatEvent event) {
+        String message = event.getMessage().toLowerCase();
+        PlayerEntity player = (PlayerEntity) event.getPlayer();
+        if(message.contains("ave revivus") && !player.getTags().contains("averevs")) {
+            player.addTag("averevs");
+            player.dropItem(new ItemStack(ModItems.REVIVUS_TEA.get()), false);
+            player.dropItem(new ItemStack(ModItems.REVIVUS_TEA.get()), false);
+            player.dropItem(new ItemStack(ModItems.REVIVUS_TEA.get()), false);
+            player.sendMessage(new TranslationTextComponent("message.revivus_tea.achieved"),Util.DUMMY_UUID);
         }
     }
 

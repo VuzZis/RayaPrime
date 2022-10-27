@@ -30,7 +30,9 @@ public class DrinkBase extends Item {
                         .hunger(0)
                         .saturation(5)
                         .build()
-                ).group(RayaMod.MOD_GROUP)
+                ).maxStackSize(1)
+                .group(RayaMod.MOD_GROUP)
+                
         );
         this.power = power;
         this.time = time;
@@ -46,9 +48,9 @@ public class DrinkBase extends Item {
 
     @Override
     public ItemStack onItemUseFinish(ItemStack stack, World world, LivingEntity entity) {
-        entity.addPotionEffect(new EffectInstance(Effects.NAUSEA,time,power));
+        entity.addPotionEffect(new EffectInstance(Effects.SPEED,time,power));
         stack.shrink(1);
-        return stack.isEmpty() ? new ItemStack(Items.GLASS_BOTTLE): stack;
+        return stack.isEmpty() ? new ItemStack(ModItems.CAN.get()): stack;
     }
 
     @Override

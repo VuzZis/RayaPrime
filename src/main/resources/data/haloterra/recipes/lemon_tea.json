@@ -1,0 +1,18 @@
+{
+    "type" : "minecraft:crafting_shapeless",
+    "ingredients" : [
+        {
+            "item" : "haloterra:cup"
+        },
+        {
+            "item" : "minecraft:oak_leaves"
+        },
+        {
+            "item" : "minecraft:apple"
+        }
+    ],
+    "result" : {
+        "item" : "haloterra:lemon_tea",
+        "count" : 1
+    }
+}

@@ -5,6 +5,7 @@ import com.vuzz.haloterra.effects.ModEffects;
 import com.vuzz.haloterra.entities.ModEntityTypes;
 import com.vuzz.haloterra.entities.custom.OculusEntity;
 import com.vuzz.haloterra.entities.custom.RayaPrimeEntity;
+import com.vuzz.haloterra.items.marker.Implant;
 import com.vuzz.haloterra.entities.custom.RayaPrimeEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -21,7 +22,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class InactiveOculus extends Item {
+public class InactiveOculus extends Item implements Implant {
 
     public int ticks = 0;
 

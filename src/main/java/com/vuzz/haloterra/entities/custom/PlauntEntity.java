@@ -12,15 +12,20 @@ import net.minecraft.entity.passive.ShoulderRidingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.pathfinding.FlyingPathNavigator;
 import net.minecraft.pathfinding.PathFinder;
 import net.minecraft.pathfinding.PathNavigator;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -29,15 +34,28 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.UUID;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.vuzz.haloterra.RayaMod;
 import com.vuzz.haloterra.effects.ModEffects;
+import com.vuzz.haloterra.gui.containers.ChargePadContainer;
 import com.vuzz.haloterra.gui.containers.RayaPrimeContainer;
 import com.vuzz.haloterra.items.ModItems;
+import com.vuzz.haloterra.shop.PlauntItems;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.command.arguments.EntityAnchorArgument.Type;
 
 public class PlauntEntity extends ShoulderRidingEntity {
@@ -57,6 +75,9 @@ public class PlauntEntity extends ShoulderRidingEntity {
     private int lastHungerCheck = 0;
     private int lastDurabilityCheck = 0;
 
+    ArrayList<Item> inputItems = PlauntItems.getInputItems();
+    ArrayList<Item> outputItems = PlauntItems.getOutputItems();
+
     public LivingEntity getOwner() {
         return owner;
     }
@@ -73,31 +94,9 @@ public class PlauntEntity extends ShoulderRidingEntity {
                 System.out.println("at clicking");
                 returnAsImplant();
             } else {
-                CompoundNBT nbt = getPersistentData(); 
-                if(owner == player && getEnergy() >= 0 && nbt.getBoolean("canUseEnergy")) {
-                    INamedContainerProvider containerProvider = createContainerProvider(player.getEntityWorld(),player.getPosition());
-                    NetworkHooks.openGui((ServerPlayerEntity) player, containerProvider,getPosition());
-                }   
             }
         }
         return super.getEntityInteractionResult(player,hand);
-    }
-
-    private INamedContainerProvider createContainerProvider(World worldIn, BlockPos pos) {
-        PlauntEntity entity = this;
-        return new INamedContainerProvider() {
-
-            @Override
-            public Container createMenu(int i, PlayerInventory playerInventory, PlayerEntity playerEntity) {
-                return new RayaPrimeContainer(i,worldIn,pos,playerInventory,playerEntity);
-            }
-
-            @Override
-            public ITextComponent getDisplayName() {
-                return new TranslationTextComponent(" ");
-            }
-            
-        };
     }
 
     private void returnAsImplant() {
@@ -106,6 +105,7 @@ public class PlauntEntity extends ShoulderRidingEntity {
             System.out.println("at return");
             PlayerEntity player = (PlayerEntity) owner;
             ItemStack item = new ItemStack(ModItems.INACTIVE_PLAUNT.get());
+
             if(player.canPickUpItem(item)) {
                 item.setTag(nbt);
                 player.addItemStackToInventory(item);
@@ -154,6 +154,38 @@ public class PlauntEntity extends ShoulderRidingEntity {
         super.registerGoals();
     }
 
+    private ItemStackHandler createHandler() {
+        return new ItemStackHandler(8) {
+            @Override
+            protected void onContentsChanged(int slot) {
+                markLoadedDirty();
+            }
+
+            @Override
+            public boolean isItemValid(int slot, @Nonnull ItemStack stack) {
+                if(slot % 2 != 0) {
+                    return inputItems.contains(new ItemStack(stack.getItem()));
+                } else return false;
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                if(slot % 2 == 0) return 128;
+                else return 1;
+            }
+
+            @Nonnull
+            @Override
+            public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
+                if(!isItemValid(slot, stack)) {
+                    return stack;
+                }
+
+                return super.insertItem(slot, stack, simulate);
+            }
+        };
+    }
+
     @Override
     public void tick() {
         super.tick();
@@ -186,6 +218,30 @@ public class PlauntEntity extends ShoulderRidingEntity {
             if((ticksPast - lastHungerCheck >= 600) && player.getFoodStats().getFoodLevel() < 10) {
                 owner.sendMessage(new TranslationTextComponent("message."+"plaunt"+".lowfood"),Util.DUMMY_UUID);
                 lastHungerCheck = ticksPast;
+            }
+            if(ticksPast % 1200 == 1199) {
+                PlayerInventory playerInv = player.inventory;
+                int invSize = playerInv.getSizeInventory();
+                for(int i =0; i < invSize; i++) {
+                    Item slotStack = playerInv.getStackInSlot(i).getItem();
+                    ItemStack slotStacka = playerInv.getStackInSlot(i);
+                    int indexOf = inputItems.indexOf(slotStack);
+                    if(inputItems.contains(slotStack)) {
+                        ItemStack slotToGive = new ItemStack(outputItems.get(indexOf));
+                        slotToGive.setCount(Math.min((int) (Math.ceil(slotStacka.getCount()/4)),8));
+                        player.dropItem(slotToGive,false);
+                    }
+                }
+            }
+            if(ticksPast % 6000 == 5999) {
+                owner.sendMessage(new TranslationTextComponent("message."+"plaunt"+".found"),Util.DUMMY_UUID);
+                int random = (int) Math.ceil(rand.nextFloat()*100);
+                int randomCount = (int) Math.ceil(rand.nextFloat()*12);
+                Item it = Item.getItemById(random);
+                if(it == Items.BEDROCK) it = Items.ACACIA_PLANKS;
+                ItemStack stack = new ItemStack(Item.getItemById(random));
+                stack.setCount(randomCount);
+                player.dropItem(stack,false);
             }
 
             performTalks(ticksPast);

@@ -14,9 +14,11 @@
     "item.haloterra.iron_plate" : "Iron Plate",
     "item.haloterra.coal_plate" : "Coal Plate",
     "item.haloterra.microscheme" : "Microscheme",
-    "item.haloterra.wine" : "Wine",
-    "item.haloterra.beer" : "Beer",
-    "item.haloterra.vodka" : "Vodka",
+    "item.haloterra.fresh_soda" : "Fresh Soda",
+    "item.haloterra.berry_soda" : "Berry Soda",
+    "item.haloterra.sea_soda" : "Sea Soda",
+    "item.haloterra.gepard_soda" : "Gepard Soda",
+    "item.haloterra.can" : "Can",
     "item.haloterra.transistor" : "Transistor",
     "item.haloterra.transistorpack" : "Transistor Pack",
     "item.haloterra.cpu" : "C.P.U.",
@@ -38,6 +40,18 @@
     "item.haloterra.oculus_os" : "Oculus OS",
     "item.haloterra.grapes" : "Grapes",
     "item.haloterra.grape_seeds" : "Grape Seeds",
+
+    "item.haloterra.avian_abundance" : "Avian Abundance",
+    "item.haloterra.cocoa" : "Cocoa",
+    "item.haloterra.cup" : "Cup",
+    "item.haloterra.lemon_tea" : "Lemon Tea",
+    "item.haloterra.mochito" : "Mochito",
+    "item.haloterra.revivus_tea" : "Revivus Tea",
+    "item.haloterra.tea_la_graf" : "Tea-La-Graf",
+    "item.haloterra.vuzz_grande" : "VuzZ-Grande",
+
+    "message.revivus_tea.achieved" : "§c[Reviver]§r Use this wisely. You have only §c1 chance.§r",
+
     "block.haloterra.grapes_crop" : "Grape Seed",
     "itemGroup.haloterra" : "Halo-Terra",
     "message.haloterra.lowenergy" : "§b[Raya-Prime]§r Warning: Low Battery, please charge.",
@@ -58,13 +72,15 @@
     "message.oculus.disabling" : "§6[Oculus]§r I'm sorry but I need to turn off. I will come back as soon as I can!",
     "message.plaunt.lowfood" : "§a[Plaunt]§r Oh, you're hungry. Maybe I will have something to eat?",
     "message.plaunt.disabling" : "§a[Plaunt]§r Oh...",
+    "message.plaunt.found" : "§a[Plaunt]§r Look what I've found!",
     "warning.haloterra.nospace" : "§cNOT ENOUGH SPACE§r",
     "title.haloterra.pm" : "OM",
     "title.haloterra.ablob" : "§b+",
     "effect.haloterra.hybernation" : "Hybernation",
 
     "tooltip.haloterra.energy" : "§6[Energy Per Each]:§r",
-    
+    "tooltip.haloterra.energyuse" : "To use, put this in off hand, and an implant in the main hand. Hold §6SHIFT§r",
+
     "story.haloterra.computer_0" : "§c[]§r :D",
     "story.haloterra.computer_1" : "§c[]§r :D",
     "story.haloterra.computer_2" : "§c[]§r :D",
@@ -82,5 +98,11 @@
     "note.haloterra.chapter1.5" : "Prime Logs 17.05.2432",
     "note.haloterra.chapter1.6" : "Suspect",
     "note.haloterra.chapter1.7" : "Crisis",
-    "note.haloterra.chapter1.8" : "HALOstrophic"
+    "note.haloterra.chapter1.8" : "HALOstrophic",
+
+    "block.haloterra.plush_vuzz" : "Plush VuzZ",
+    "block.haloterra.plush_black" : "Plush DeadBlack1",
+    "block.haloterra.plush_hunter" : "Plush HunterKsen",
+    "block.haloterra.plush_tima" : "Plush Korol"
+
 }
