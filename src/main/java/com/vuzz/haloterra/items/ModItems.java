@@ -20,6 +20,10 @@ public class ModItems {
     public static final RegistryObject<Item> INACTIVE_BEYONDTO = ITEMS.register("inactive_beyondto", InactiveBeyondto::new);
     public static final RegistryObject<Item> INACTIVE_OCULUS = ITEMS.register("inactive_oculus", InactiveOculus::new);
     public static final RegistryObject<Item> INACTIVE_PLAUNT = ITEMS.register("inactive_plaunt", InactivePlaunt::new);
+    public static final RegistryObject<Item> INACTIVE_REHOBOAM = ITEMS.register("inactive_rehoboam", InactiveRehoboam::new);
+    public static final RegistryObject<Item> GCU = ITEMS.register("gcu", Gcu::new);
+    public static final RegistryObject<Item> DECODER = ITEMS.register("decoder", () -> new Item(new Item.Properties().defaultMaxDamage(15).maxDamage(15).group(RayaMod.MOD_GROUP)));
+    public static final RegistryObject<Item> OM_CAN = ITEMS.register("om_can", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> MAIN_IMPLANT = ITEMS.register("main_implant", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     //public static final RegistryObject<Item> ENERGY_PAD = ITEMS.register("energy_pad", ChargePad::new);
     public static final RegistryObject<Item> AI_MODULE = ITEMS.register("ai_module", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
@@ -32,8 +36,10 @@ public class ModItems {
     public static final RegistryObject<Item> SCREEN = ITEMS.register("screen", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> LEAD_ORE = ITEMS.register("lead_ore", () -> new BlockItem(ModBlocks.LEAD_ORE.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> LITHIUM_ORE = ITEMS.register("lithium_ore", () -> new BlockItem(ModBlocks.LITHIUM_ORE.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
+    public static final RegistryObject<Item> LABORATORY_BRICK = ITEMS.register("laboratory_brick", () -> new BlockItem(ModBlocks.LABORATORY_BRICK.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
+    public static final RegistryObject<Item> LABORATORY_FLOOR = ITEMS.register("laboratory_floor", () -> new BlockItem(ModBlocks.LABORATORY_FLOOR.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> ENERGY_ORE = ITEMS.register("energy_ore", () -> new BlockItem(ModBlocks.ENERGY_ORE.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
-    //public static final RegistryObject<Item> COMPUTER = ITEMS.register("computer", () -> new BlockItem(ModBlocks.COMPUTER.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
+    public static final RegistryObject<Item> COMPUTER = ITEMS.register("computer", () -> new BlockItem(ModBlocks.COMPUTER.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> CLSC = ITEMS.register("clsc", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> GMNC = ITEMS.register("gmnc", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> COAL_PLATE = ITEMS.register("coal_plate", () -> new Item(new Item.Properties().group(RayaMod.MOD_GROUP)));
@@ -74,6 +80,7 @@ public class ModItems {
     public static final RegistryObject<Item> PLUSH_TIMA = ITEMS.register("plush_tima", () -> new BlockItem(ModBlocks.PLUSH_TIMA.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> PLUSH_VUZZ = ITEMS.register("plush_vuzz", () -> new BlockItem(ModBlocks.PLUSH_VUZZ.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
     public static final RegistryObject<Item> PLUSH_HUNTER = ITEMS.register("plush_hunter", () -> new BlockItem(ModBlocks.PLUSH_HUNTER.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
+    public static final RegistryObject<Item> PLUSH_LADDEP = ITEMS.register("plush_laddep", () -> new BlockItem(ModBlocks.PLUSH_LADDEP.get(), new Item.Properties().group(RayaMod.MOD_GROUP)));
 
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);

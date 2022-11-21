@@ -2,12 +2,15 @@
     "item.haloterra.inactive_implant" : "Неактивный модуль Райи-Прайм",
     "item.haloterra.inactive_beyondto" : "Неактивный модуль Запро",
     "item.haloterra.inactive_oculus" : "Неактивный модуль Окулус",
+    "item.haloterra.inactive_rehoboam" : "Неактивный модуль Рехобоам",
     "item.haloterra.ai_module" : "ИИ Модуль",
     "item.haloterra.fabricator" : "Фабрикатор",
+    "item.haloterra.decoder" : "Дешифратор",
     "item.haloterra.battery" : "Свинцово-литиевый аккумулятор",
     "item.haloterra.lead_ingot" : "Свинцовый слиток",
     "item.haloterra.main_implant" : "Главный имплант",
     "item.haloterra.screen" : "Экран",
+    "item.haloterra.gcu" : "УГК",
     "item.haloterra.lead_plate" : "Свинцовая пластина",
     "item.haloterra.iron_plate" : "Железная пластина",
     "item.haloterra.coal_plate" : "Угольная пластина",
@@ -38,9 +41,10 @@
     "item.haloterra.grapes" : "Виноград",
     "item.haloterra.grape_seeds" : "Семя винограда",
     "block.haloterra.grapes_crop" : "Семя винограда",
-    "message.haloterra.notenoughenergy" : "§cНЕДОСТАТОЧНО ЭНЕРГИИ§r",
+    "message.haloterra.nogen" : "§cУГК НЕ НАЙДЕН§r",
     "message.haloterra.lowenergy" : "§b[Райя-Прайм]§r Warning: Low Battery, please charge.",
     "message.haloterra.lowfood" : "§b[Райя-Прайм]§r Калории почти на нуле, советую тебе поесть.",
+    "message.haloterra.adrenaline" : "§b[Райя-Прайм]§r Низкий уровень здоровья, ввожу адреналин.",
     "message.beyondto.lowfood" : "§d[Запро]§r Калории почти разрасходованы, можешь поесть пожалуйста?",
     "message.beyondto.shieldphase" : "§d[Запро]§r Я помогу!",
     "message.beyondto.disabling" : "§d[Запро]§r Принудительное отключение, простии.",
@@ -74,16 +78,23 @@
     "item.haloterra.tea_la_graf" : "Чай-Ля-Граф",
     "item.haloterra.vuzz_grande" : "Вузз-Гранде",
 
-    "message.revivus_tea.achieved" : "§c[Возродитель]§r Используй это с умом. У тебя лишь §c1 попытка.§r",
+    "tooltip.haloterra.name" : "§c[Создатель]:§r ",
+
+    "tooltip.haloterra.beyondto" : "§dЗапро§r - профессиональный медик и уклонитель.\n Потихоньку лечит тебя когда ты ранен.\n Даёт Поглощение иногда.",
+    "tooltip.haloterra.rayaprime" : "§bРайя-Прайм§r - высокотехнологичный ИИ компаньон способный создавать любые вещи с помощью ПМ. Ну и немного хирург.",
+    "tooltip.haloterra.oculus" : "§6Окулус§r - настоящий джентельмен. Он всегда уважает тебя.\n Он будет атаковать враждебных мобов рядом с самоноводящимся диском.",
+    "tooltip.haloterra.plaunt" : "§aПлаунт§r - дружелюбный робот-фермер который всегда находит интересное!\n Он выращивает растения у тебя в инвентаре, и иногда находит интересные вещи.",
+
+    "message.revivus_tea.achieved" : "§c[Возродитель]§r Используй это с умом. У тебя лишь §c1 попытка.§r\n Получен 3x §cнапиток Возрождения§r. Эффект: §cСила X§r",
 
     "tooltip.haloterra.energy" : "§6[Энергии за каждую]:§r",
     "tooltip.haloterra.energyuse" : "Для использования, положите это в левую руку и имплант в правую. Удерживайте §6SHIFT§r",
 
-    "story.haloterra.computer_0" : "§c[]§r :D",
-    "story.haloterra.computer_1" : "§c[]§r :D",
-    "story.haloterra.computer_2" : "§c[]§r :D",
-    "story.haloterra.computer_3" : "§c[]§r :D",
-    "story.haloterra.computer_4" : "§c[]§r :D",
+    "story.haloterra.computer_0" : "§c[----]§r :D",
+    "story.haloterra.computer_1" : "§c[-А--]§r :D",
+    "story.haloterra.computer_2" : "§c[---О]§r :D",
+    "story.haloterra.computer_3" : "§c[Х---]§r :D",
+    "story.haloterra.computer_4" : "§c[--Л-]§r :D",
     "story.haloterra.achievenote" : "Записка получена: §b",
     "story.haloterra.chapter" : "Глава ",
 
@@ -101,5 +112,7 @@
     "block.haloterra.plush_vuzz" : "Плюшевый VuzZ",
     "block.haloterra.plush_black" : "Плюшевый DeadBlack1",
     "block.haloterra.plush_hunter" : "Плюшевый HunterKsen",
-    "block.haloterra.plush_tima" : "Плюшевый Korol"
+    "block.haloterra.plush_tima" : "Плюшевый Korol",
+    "block.haloterra.plush_laddep" : "Плюшевый LaDDep",
+    "block.haloterra.computer" : ":D"
 }

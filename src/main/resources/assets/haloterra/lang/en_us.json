@@ -3,13 +3,16 @@
     "item.haloterra.inactive_beyondto" : "Inactive BeyondTo",
     "item.haloterra.inactive_oculus" : "Inactive Oculus",
     "item.haloterra.inactive_plaunt" : "Inactive Plaunt",
+    "item.haloterra.inactive_rehoboam" : "Inactive Rehoboam",
     "item.haloterra.energy_pad" : "Energy Pad",
+    "item.haloterra.decoder" : "Decoder",
     "item.haloterra.ai_module" : "AI-Module",
     "item.haloterra.fabricator" : "Fabricator",
     "item.haloterra.battery" : "Lead-Lithium Accumulator",
     "item.haloterra.lead_ingot" : "Lead Ingot",
     "item.haloterra.main_implant" : "Main Implant",
     "item.haloterra.screen" : "Screen",
+    "item.haloterra.gcu" : "GCU",
     "item.haloterra.lead_plate" : "Lead Plate",
     "item.haloterra.iron_plate" : "Iron Plate",
     "item.haloterra.coal_plate" : "Coal Plate",
@@ -28,6 +31,7 @@
     "item.haloterra.resistor" : "Resistor",
     "item.haloterra.condensator" : "Condensator",
     "item.haloterra.projector_module" : "Projector Module",
+    "block.haloterra.computer" : ":D",
     "block.haloterra.lead_ore" : "Lead Ore",
     "block.haloterra.lithium_ore" : "Lithium Ore",
     "block.haloterra.energy_ore" : "Energy Ore",
@@ -50,11 +54,12 @@
     "item.haloterra.tea_la_graf" : "Tea-La-Graf",
     "item.haloterra.vuzz_grande" : "VuzZ-Grande",
 
-    "message.revivus_tea.achieved" : "§c[Reviver]§r Use this wisely. You have only §c1 chance.§r",
+    "message.revivus_tea.achieved" : "§c[Reviver]§r Use this wisely. You have only §c1 chance.§r\n 3x §cReviving Tea§r acquired§r. Effect: §cStrength X§r",
 
     "block.haloterra.grapes_crop" : "Grape Seed",
     "itemGroup.haloterra" : "Halo-Terra",
     "message.haloterra.lowenergy" : "§b[Raya-Prime]§r Warning: Low Battery, please charge.",
+    "message.haloterra.adrenaline" : "§b[Raya-Prime]§r Low health level, injecting adrenaline.",
     "message.beyondto.lowfood" : "§d[Beyondto]§r Your calories are almost used up, can you eat please?",
     "message.beyondto.shieldphase" : "§d[Beyondto]§r I'll help!",
     "message.beyondto.normalphase" : "§d[Beyondto]§r Back to normal status.",
@@ -63,7 +68,7 @@
     "message.haloterra.lowdurability" : "§b[Raya-Prime]§r Time for an update!",
     "message.haloterra.wakeup" : "§b[Raya-Prime]§r Good morning!",
     "message.haloterra.itembroke" : "§b[Raya-Prime]§r Oh well, I guess you need to get a new one.",
-    "message.haloterra.notenoughenergy" : "§cNOT ENOUGH ENERGY§r",
+    "message.haloterra.nogen" : "§cGCU NOT FOUND§r",
     "message.haloterra.disabling" : "§b[Rаya-Prime]§r Cannot run anymore, disabling.",
     "message.oculus.lowfood" : "§6[Oculus]§r Hey, you're hungry. You really need to eat.",
     "message.oculus.lowdurability" : "§6[Oculus]§r Look, your tool is almost broken!",
@@ -78,14 +83,23 @@
     "title.haloterra.ablob" : "§b+",
     "effect.haloterra.hybernation" : "Hybernation",
 
+    "tooltip.haloterra.name" : "§c[Creator]:§r ",
+
+    "tooltip.haloterra.beyondto" : "BeyondTo - professional healer and dodger.\n Heals you for a bit if you are damaged.\n Gives you Absorption sometimes.",
+    "tooltip.haloterra.rayaprime" : "RayaPrime - high-tech AI robot that can use OM to create almost everything. Also kind of a surgeon.",
+    "tooltip.haloterra.oculus" : "Oculus - a true gentlemen. He always respects you.\n He will attack nearest hostile mobs with his following blade.",
+    "tooltip.haloterra.plaunt" : "Plaunt - friendly farmer-robot that always finds something cool!\n He will grow crops that in your inventory, and find interesting items sometimes.",
+
     "tooltip.haloterra.energy" : "§6[Energy Per Each]:§r",
     "tooltip.haloterra.energyuse" : "To use, put this in off hand, and an implant in the main hand. Hold §6SHIFT§r",
 
-    "story.haloterra.computer_0" : "§c[]§r :D",
-    "story.haloterra.computer_1" : "§c[]§r :D",
-    "story.haloterra.computer_2" : "§c[]§r :D",
-    "story.haloterra.computer_3" : "§c[]§r :D",
-    "story.haloterra.computer_4" : "§c[]§r :D",
+    
+
+    "story.haloterra.computer_0" : "§c[----]§r :D",
+    "story.haloterra.computer_1" : "§c[-A--]§r :D",
+    "story.haloterra.computer_2" : "§c[---O]§r :D",
+    "story.haloterra.computer_3" : "§c[--L-]§r :D",
+    "story.haloterra.computer_4" : "§c[H---]§r :D",
     "story.haloterra.achievenote" : "Note achieved: §b",
     "story.haloterra.chapter" : "Chapter ",
 
@@ -103,6 +117,7 @@
     "block.haloterra.plush_vuzz" : "Plush VuzZ",
     "block.haloterra.plush_black" : "Plush DeadBlack1",
     "block.haloterra.plush_hunter" : "Plush HunterKsen",
-    "block.haloterra.plush_tima" : "Plush Korol"
+    "block.haloterra.plush_tima" : "Plush Korol",
+    "block.haloterra.plush_laddep" : "Plush LaDDep"
 
 }

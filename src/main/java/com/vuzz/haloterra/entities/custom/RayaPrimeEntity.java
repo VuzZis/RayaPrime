@@ -17,6 +17,8 @@ import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.pathfinding.FlyingPathNavigator;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
@@ -54,6 +56,7 @@ public class RayaPrimeEntity extends ShoulderRidingEntity implements IFlyingAnim
 
     private int lastHungerCheck = 0;
     private int lastDurabilityCheck = 0;
+    private int lastHealthCheck = 0;
 
     public LivingEntity getOwner() {
         return owner;
@@ -182,7 +185,7 @@ public class RayaPrimeEntity extends ShoulderRidingEntity implements IFlyingAnim
                 getNavigator().tryMoveToXYZ(getOwner().getPosX()-2d, getOwner().getPosYEye(), getOwner().getPosZ()-2d, 1.3);
             }
             else {
-                setMotion(0, clamp(getOwner().getPosYEye()-getPosY(),-0.2,0.2), 0);
+                setMotion(0, clamp((getOwner().getPosYEye()-getPosY()-0.4)*1.1,-0.2,0.2)*1.1+Math.sin(ticksPast/4)/5, 0);
                 getNavigator().clearPath();
             }
                 
@@ -197,6 +200,12 @@ public class RayaPrimeEntity extends ShoulderRidingEntity implements IFlyingAnim
             if((ticksPast - lastDurabilityCheck >= 300) && (stackForCheck.getDamage()*100/(stackForCheck.getMaxDamage()+1)) >= 90) {
                 owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".lowdurability"),Util.DUMMY_UUID);
                 lastDurabilityCheck = ticksPast;
+            }
+
+            if((ticksPast - lastHealthCheck >= 600) && (player.getHealth()<=4)) {
+                player.addPotionEffect(new EffectInstance(Effects.SPEED,300,1));
+                owner.sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".adrenaline"),Util.DUMMY_UUID);
+                lastHealthCheck = ticksPast;
             }
 
             performTalks(ticksPast);

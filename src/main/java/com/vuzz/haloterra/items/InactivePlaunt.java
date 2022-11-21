@@ -1,11 +1,17 @@
 package com.vuzz.haloterra.items;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.vuzz.haloterra.RayaMod;
 import com.vuzz.haloterra.effects.ModEffects;
 import com.vuzz.haloterra.entities.ModEntityTypes;
 import com.vuzz.haloterra.entities.custom.PlauntEntity;
 import com.vuzz.haloterra.entities.custom.RayaPrimeEntity;
 import com.vuzz.haloterra.entities.custom.RayaPrimeEntity;
+
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
@@ -18,6 +24,8 @@ import net.minecraft.item.Rarity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Util;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -68,8 +76,8 @@ public class InactivePlaunt extends Item implements Implant {
         else 
         {
             if(!stack.hasTag()) stack.setTag(new CompoundNBT());
-            if(/*context.getPlayer().getPersistentData().getBoolean("hasraya")*/false) {
-                context.getPlayer().sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".no_two_rayas"),Util.DUMMY_UUID);
+            if(!context.getPlayer().getTags().contains("uniquegen")) {
+                context.getPlayer().sendMessage(new TranslationTextComponent("message."+RayaMod.MOD_ID+".nogen"),Util.DUMMY_UUID);
             } else 
             {
                 if(context.getPlayer().isPotionActive(ModEffects.HYBERNATION.get())) return super.onItemUseFirst(stack, context);
@@ -90,6 +98,19 @@ public class InactivePlaunt extends Item implements Implant {
             }
         }
         return super.onItemUseFirst(stack, context);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World world, List<ITextComponent> text,
+            ITooltipFlag tooltip) {
+        text.add(
+            new StringTextComponent(
+                new TranslationTextComponent("tooltip.haloterra.name")
+                    .getString()
+                +"Plau F. Gard"+"\n"+new TranslationTextComponent("tooltip.haloterra.plaunt").getString()
+            )
+        );
+        super.addInformation(stack, world, text, tooltip);
     }
 
     

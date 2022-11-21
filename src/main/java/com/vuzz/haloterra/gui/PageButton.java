@@ -41,7 +41,7 @@ public class PageButton extends Button {
     @Override
     public void renderWidget(MatrixStack ms, int a, int b, float c) {
         Minecraft mc = Minecraft.getInstance();
-        mc.textureManager.bindTexture(GUI);
+        /*mc.textureManager.bindTexture(GUI);
         if(isLeft) {
             if(isHovered) {
                 mc.ingameGUI.blit(ms, xIn, yIn, 48, 192, width, height);
@@ -51,7 +51,7 @@ public class PageButton extends Button {
             if(isHovered) {
                 mc.ingameGUI.blit(ms, xIn, yIn, 75, 192, width, height);
             } else 
-                mc.ingameGUI.blit(ms, xIn, yIn, 75, 170, width, height);
+                mc.ingameGUI.blit(ms, xIn, yIn, 75, 170, width, height);*/
         //super.renderWidget(ms,a,b,c);
     }
     

@@ -1,0 +1,19 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        " E ",
+        "E#E",
+        " E "
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:cpu"
+        },
+        "E" : {
+            "item" : "haloterra:condensator"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:gcu"
+    }
+}

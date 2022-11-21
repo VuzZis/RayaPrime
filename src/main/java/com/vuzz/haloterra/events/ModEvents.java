@@ -1,12 +1,16 @@
 package com.vuzz.haloterra.events;
 
+import net.minecraft.advancements.Advancement;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.potion.EffectInstance;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -14,6 +18,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -26,11 +31,15 @@ import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.AdvancementEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickItem;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.ServerChatEvent;
 import java.util.ArrayList;
+import java.util.Random;
+
 import com.vuzz.haloterra.RayaMod;
+import com.vuzz.haloterra.blocks.ModBlocks;
 import com.vuzz.haloterra.capability.CapabilityPM;
 import com.vuzz.haloterra.capability.CapabilityPMProvider;
 import com.vuzz.haloterra.capability.PM;
@@ -69,7 +78,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onRightClickItem(RightClickItem event) {
-        {/* Halo
+        {// Halo
         if(!event.getEntity().getEntityWorld().isRemote)
         if(event.getEntity() instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) event.getEntity();
@@ -79,7 +88,7 @@ public class ModEvents {
             BlockState blockState = lookingAt(player,false);
             Block block = blockState.getBlock();
 
-            if(block == ModBlocks.COMPUTER.get() && stack.getItem() == Items.DIAMOND_SWORD) {
+            if(block == ModBlocks.COMPUTER.get() && stack.getItem() == ModItems.DECODER.get()) {
                 Random random = new Random();
                 int percentage = (int) (random.nextFloat() * 100);
                 if(percentage <= 10) {
@@ -150,9 +159,10 @@ public class ModEvents {
                     player.attackEntityFrom(DamageSource.MAGIC, 6f);
                     player.sendMessage(new TranslationTextComponent("story."+RayaMod.MOD_ID+".computer_0"), Util.DUMMY_UUID);
                 }
+                stack.setDamage(stack.getDamage()+1);
                 world.removeBlock(lookingAtPos(player, false), false);
             }
-        }*/
+        }
         }
     }
 
@@ -175,6 +185,18 @@ public class ModEvents {
         if(event.getEntity() instanceof PlayerEntity) {
             CompoundNBT nbt = event.getEntity().getPersistentData();
             PlayerEntity player = (PlayerEntity) event.getEntity();
+            if(event.getEntity().getEntityWorld().getRandom().nextFloat() < 0.0001f) {
+                int pmToGive = Math.round(20f);
+                LazyOptional<PM> capability =  PM.get(player);
+                if(capability.resolve().isPresent()) {
+                    PM cap = capability.resolve().get();
+                    cap.setPm(cap.getPm()+pmToGive);
+                    cap.sync((ServerPlayerEntity) player);
+                }
+                //player.sendMessage(new StringTextComponent("pm give "+pmToGive+" "+cap.pm),Util.DUMMY_UUID);
+                String ablob = new TranslationTextComponent("title."+RayaMod.MOD_ID+".ablob").getString();
+                player.sendStatusMessage(new StringTextComponent(ablob+pmToGive+" "+new TranslationTextComponent("title."+RayaMod.MOD_ID+".pm").getString()), true);
+            }
             Biome biome = player.getEntityWorld().getBiome(player.getPosition());
             float temperaturePlayer = nbt.getFloat("temperature");
             float difference = biome.getTemperature() - temperaturePlayer;
@@ -200,7 +222,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event) {
-        if(!event.getPlayer().getEntityWorld().isRemote) return;
+        if(event.getPlayer().getEntityWorld().isRemote) return;
         PlayerEntity old = event.getOriginal();
         PlayerEntity newP = event.getPlayer();
         old.revive();

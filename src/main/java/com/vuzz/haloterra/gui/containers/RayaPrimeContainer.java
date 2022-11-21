@@ -16,7 +16,7 @@ public class RayaPrimeContainer extends Container {
 
     public final PlayerEntity playerEntity;
     private final PlayerInventory playerInventory;
-    private final IInventory shopInv = new Inventory(15);
+    private final IInventory shopInv = new Inventory(30);
     public final ArrayList<ItemStack> shopItems = ShopItems.getItems();
     public final ArrayList<Number> shopPrices = ShopItems.getPrices();
 
@@ -25,12 +25,13 @@ public class RayaPrimeContainer extends Container {
         this.playerEntity = player;
         this.playerInventory = playerInventory;
 
-        for(int i = 0; i < 15; i++) {
-            int xBox = i % 5;
-            int yBox = (int) Math.floor(i/5);
-            xBox = (int) xBox * 47;
-            yBox = (int) yBox * 46;
-            SlotLocked slot = new SlotLocked(shopInv,i,11+xBox-40+1,6+yBox+6);
+        for(int i = 0; i < 30; i++) {
+            int xBox = i % 6;
+            int yBox = (int) Math.floor(i/6);
+            xBox = (int) xBox * 40;
+            
+            yBox = (int) yBox * 38;
+            SlotLocked slot = new SlotLocked(shopInv,i,xBox+5-53+2,yBox+5-22+18);
             if(i < shopItems.size()) {
                 ItemStack stackForShop = shopItems.get(i);
                 slot.putStack(stackForShop);

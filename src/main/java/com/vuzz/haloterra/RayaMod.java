@@ -5,6 +5,7 @@ import com.vuzz.haloterra.config.HaloTerraCommonConfig;
 import com.vuzz.haloterra.effects.ModEffects;
 import com.vuzz.haloterra.entities.ModEntityTypes;
 import com.vuzz.haloterra.entities.render.RayaPrimeRenderer;
+import com.vuzz.haloterra.entities.render.RehoboamRenderer;
 import com.vuzz.haloterra.entities.render.BeyondtoRenderer;
 import com.vuzz.haloterra.entities.render.OcubladeRenderer;
 import com.vuzz.haloterra.entities.render.OculusRender;
@@ -12,6 +13,7 @@ import com.vuzz.haloterra.entities.render.PlauntRenderer;
 import com.vuzz.haloterra.gui.containers.ModContainers;
 import com.vuzz.haloterra.gui.screens.ChargePadScreen;
 import com.vuzz.haloterra.gui.screens.RayaPrimeScreen;
+import com.vuzz.haloterra.gui.screens.ShopScreen;
 import com.vuzz.haloterra.items.ModItems;
 import com.vuzz.haloterra.networking.ClientProxy;
 import com.vuzz.haloterra.networking.ServerProxy;
@@ -72,9 +74,10 @@ public class RayaMod {
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.OCULUS.get(), OculusRender::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.OCUBLADE.get(), OcubladeRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.PLAUNT.get(), PlauntRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.REHOBOAM.get(), RehoboamRenderer::new);
         event.enqueueWork(() -> {
             clientSetup(event);
-            ScreenManager.registerFactory(ModContainers.RAYA_PRIME_CONTAINER.get(), RayaPrimeScreen::new);
+            ScreenManager.registerFactory(ModContainers.RAYA_PRIME_CONTAINER.get(), ShopScreen::new);
             ScreenManager.registerFactory(ModContainers.CHARGE_PAD_CONTAINER.get(), ChargePadScreen::new);
         });
     }

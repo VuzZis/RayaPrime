@@ -99,9 +99,9 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         this.renderHoveredTooltip(matrixStack, mouseX, mouseY);
         Minecraft mc = Minecraft.getInstance();
-        for(int i = 0; i < 15; i++) {
+        for(int i = 0; i < 30; i++) {
             int a = i;
-            int pageMultiplier = (15*(page-1));
+            int pageMultiplier = (30*(page-1));
             if(shopItems.size() > pageMultiplier+a) {
                 ItemStack stack = shopItems.get(pageMultiplier+a);    
                 container.putStackInSlot(a, stack);          
@@ -115,16 +115,16 @@ public class RayaPrimeScreen extends ContainerScreen<RayaPrimeContainer> {
 	protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int x, int y) {
         Minecraft mc = Minecraft.getInstance();
         ClientPlayerEntity player = mc.player;
-        for(int i = 0; i < Math.min(shopItems.size()-(15*(page-1)),15); i++) {
+        for(int i = 0; i < Math.min(shopItems.size()-(30*(page-1)),30); i++) {
             int b = (this.width) / 2;
             int j = (this.height) / 2;
             //int b = x - 88;
             //int j = y - 83;
-            int xBox = i % 5;
-            int yBox = (int) Math.floor(i/5);
+            int xBox = i % 6;
+            int yBox = (int) Math.floor(i/6);
             xBox = (int) xBox * 47;
             yBox = (int) yBox * 46;
-            int pageMultiplier = (15*(page-1));
+            int pageMultiplier = (30*(page-1));
             int a = i;
             int price = (int) shopPrices.get(pageMultiplier+a);
             drawString(matrixStack, Minecraft.getInstance().fontRenderer, 

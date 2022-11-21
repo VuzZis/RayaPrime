@@ -1,0 +1,8 @@
+{
+    "variants" : {
+        "facing=north": { "model" : "haloterra:block/plush/plush_laddep" },
+        "facing=east": { "model" : "haloterra:block/plush/plush_laddep", "y" : 90 },
+        "facing=south": { "model" : "haloterra:block/plush/plush_laddep", "y" : 180 },
+        "facing=west": { "model" : "haloterra:block/plush/plush_laddep", "y" : 270 }
+    }
+}

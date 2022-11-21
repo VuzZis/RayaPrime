@@ -165,7 +165,7 @@ public class OculusEntity extends ShoulderRidingEntity implements IFlyingAnimal 
                 getNavigator().clearPath();
             }
                 
-            if(ticksPast % 80 == 79) {
+            if(ticksPast % 50 == 49) {
                 List<Entity> entitiesClose = world.getEntitiesWithinAABBExcludingEntity(this,getBoundingBox().expand(20,20,20));
                 for(int i = 0; i < entitiesClose.size(); i++) {
                     if(!(entitiesClose.get(i) instanceof LivingEntity)) continue;

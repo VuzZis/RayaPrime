@@ -1,0 +1,28 @@
+{
+    "type" : "minecraft:crafting_shaped",
+    "pattern" : [
+        "AAA",
+        "B#B",
+        "EOE"
+    ],
+    "key" : {
+        "#" : {
+            "item" : "haloterra:main_implant"
+        },
+        "A" : {
+            "item" : "minecraft:glass"
+        },
+        "E" : {
+            "item" : "minecraft:dirt"
+        },
+        "O" : {
+            "item" : "haloterra:beyondto_os"
+        },
+        "B" : {
+            "item" : "haloterra:clsc"
+        }
+    },
+    "result" : {
+        "item" : "haloterra:inactive_plaunt"
+    }
+}

@@ -10,6 +10,8 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.passive.IFlyingAnimal;
 import net.minecraft.entity.passive.ShoulderRidingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.vector.Vector3d;
@@ -68,6 +70,7 @@ public class OcubladeEntity extends ShoulderRidingEntity implements IFlyingAnima
         });
         targetList.forEach((e) -> {
             if(e.getClassification(true) == EntityClassification.MONSTER) {
+                e.addPotionEffect(new EffectInstance(Effects.WITHER,20,2));
                 e.attackEntityFrom(DamageSource.GENERIC, 2);
                 e.attackEntityAsMob(this);
             }

@@ -3,6 +3,7 @@ package com.vuzz.haloterra.entities;
 import com.vuzz.haloterra.RayaMod;
 import com.vuzz.haloterra.entities.custom.BeyondtoEntity;
 import com.vuzz.haloterra.entities.custom.RayaPrimeEntity;
+import com.vuzz.haloterra.entities.custom.RehoboamEntity;
 import com.vuzz.haloterra.entities.custom.OcubladeEntity;
 import com.vuzz.haloterra.entities.custom.OculusEntity;
 import com.vuzz.haloterra.entities.custom.PlauntEntity;
@@ -30,6 +31,12 @@ public class ModEntityTypes {
             () -> EntityType.Builder.create(OculusEntity::new,
                     EntityClassification.AMBIENT).size(0.8f,1.3f)
                 .build(new ResourceLocation(RayaMod.MOD_ID, "oculus").toString()));
+
+    public static final RegistryObject<EntityType<RehoboamEntity>> REHOBOAM =
+        ENTITY_TYPES.register("rehoboam",
+            () -> EntityType.Builder.create(RehoboamEntity::new,
+                    EntityClassification.AMBIENT).size(1.3f,1.3f)
+                .build(new ResourceLocation(RayaMod.MOD_ID, "rehoboam").toString()));
 
     public static final RegistryObject<EntityType<PlauntEntity>> PLAUNT =
         ENTITY_TYPES.register("plaunt",

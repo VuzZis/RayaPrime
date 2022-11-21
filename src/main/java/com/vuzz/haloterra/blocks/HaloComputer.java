@@ -9,6 +9,7 @@ public class HaloComputer extends DirectionalBlock {
         super(
             Properties.create(Material.IRON)
                 .hardnessAndResistance(2f)
+                .notSolid()
         );
     }
 

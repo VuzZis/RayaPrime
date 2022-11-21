@@ -7,6 +7,7 @@ import com.vuzz.haloterra.RayaMod;
 import com.vuzz.haloterra.entities.ModEntityTypes;
 import com.vuzz.haloterra.entities.custom.BeyondtoEntity;
 import com.vuzz.haloterra.entities.custom.RayaPrimeEntity;
+import com.vuzz.haloterra.entities.custom.RehoboamEntity;
 import com.vuzz.haloterra.entities.custom.OculusEntity;
 import com.vuzz.haloterra.entities.custom.PlauntEntity;
 import com.vuzz.haloterra.entities.custom.OcubladeEntity;
@@ -19,5 +20,6 @@ public class ModEventBusEvents {
         event.put(ModEntityTypes.OCULUS.get(), OculusEntity.setCustomAttributes().create());
         event.put(ModEntityTypes.OCUBLADE.get(), OcubladeEntity.setCustomAttributes().create());
         event.put(ModEntityTypes.PLAUNT.get(), PlauntEntity.setCustomAttributes().create());
+        event.put(ModEntityTypes.REHOBOAM.get(), RehoboamEntity.setCustomAttributes().create());
     }
 }

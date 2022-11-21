@@ -40,7 +40,7 @@ public class ShopButton extends Button {
     public void renderWidget(MatrixStack ms, int a, int b, float c) {
         Minecraft mc = Minecraft.getInstance();
         mc.textureManager.bindTexture(GUI);
-        mc.ingameGUI.blit(ms, xIn, yIn, 0, 170, width, height);
+        //mc.ingameGUI.blit(ms, xIn, yIn, 0, 170, widthIn, heightIn);
         //super.renderWidget(ms,a,b,c);
     }
     
