@@ -10,6 +10,7 @@ import com.vuzz.haloterra.entities.ModEntityTypes;
 import com.vuzz.haloterra.entities.custom.RayaPrimeEntity;
 import com.vuzz.haloterra.entities.custom.RayaPrimeEntity;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -67,10 +68,36 @@ public class InactiveRaya extends Item implements Implant {
     @Override
     public ActionResultType onItemUseFirst(ItemStack stack, ItemUseContext context) {
         if(context.getWorld().isRemote) return super.onItemUseFirst(stack, context);
-
         if(context.getPlayer().isSneaking()) 
         {
-
+            if(!stack.hasTag()) stack.setTag(new CompoundNBT());
+            CompoundNBT nbt = stack.getTag();
+            int anim = nbt.getInt("anim");
+            String[] faces = new String[] {
+                "anims.haloterra.default",
+                "anims.haloterra.uwu",
+                "anims.haloterra.error",
+                "anims.haloterra.done",
+                "anims.haloterra.loading",
+                "anims.haloterra.attention",
+                "anims.haloterra.sad",
+                "anims.haloterra.smug",
+                "anims.haloterra.angry",
+                "anims.haloterra.wtf",
+                "anims.haloterra.happy",
+                "anims.haloterra.thinking",
+                "anims.haloterra.sad2"
+            };
+            anim++;
+            if(anim >= faces.length) anim = 0;
+            nbt.putInt("anim",anim);
+            context.getPlayer().sendStatusMessage(
+                new StringTextComponent(
+                    new TranslationTextComponent("anims.haloterra.anim").getString() + 
+                    new TranslationTextComponent(faces[anim]).getString()
+                ),
+                true
+            );
         } 
         else 
         {
@@ -93,6 +120,8 @@ public class InactiveRaya extends Item implements Implant {
                 rayaEntity.getPersistentData().putFloat("max_energy", stack.getTag().getFloat("max_energy"));
                 rayaEntity.getPersistentData().putUniqueId("owneruuid", context.getPlayer().getUniqueID());
                 rayaEntity.getPersistentData().putBoolean("canUseEnergy", true);
+                rayaEntity.getPersistentData().putInt("anim", stack.getTag().getInt("anim"));
+                Minecraft.getInstance().world.getEntityByID(rayaEntity.getEntityId()).getPersistentData().putInt("anim", stack.getTag().getInt("anim"));
                 stack.shrink(1);
             }
         }

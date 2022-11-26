@@ -341,10 +341,9 @@ public class RayaPrimeModel<T extends RayaPrimeEntity> extends EntityModel<T> {
 	@Override
 	public void setRotationAngles(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch){
 		entit = entity;
-		int curAnim = entity.getPersistentData().getInt("anim");
+		anim = entity.getPersistentData().getInt("anim");
+
 		ticks = (int) ageInTicks;
-		if(curAnim == 0) 
-		{
 			setRotationAngle(BottomWingR, -0.393f, 0f, 0f);
 			setRotationAngle(UpperWingR, 0.349f, 0f, 0f);
 			setRotationAngle(RightWing, (float) (0.26f+(-0.349f+Math.sin(ageInTicks/5)/24)), (float) (-0.349f-Math.sin(ageInTicks/5)/6), 0f);
@@ -358,8 +357,6 @@ public class RayaPrimeModel<T extends RayaPrimeEntity> extends EntityModel<T> {
 			setRotationAngle(LeftEar, (float) (-0.749f+Math.sin(ageInTicks/5)/16), (float) (-0.26f+(0.349f+Math.sin(ageInTicks/5)/24)), 0.26f);
 
 			setRotationAngle(RightEar, (float) (-0.749f+Math.sin(ageInTicks/5)/16), (float) (0.26f+(-0.349f+Math.sin(ageInTicks/5)/24)), -0.26f);
-
-		}
 	}
 
 	@Override
@@ -380,6 +377,7 @@ public class RayaPrimeModel<T extends RayaPrimeEntity> extends EntityModel<T> {
 			StruggleFace,
 			SadFace2
 		};
+
 		int curAnim = entit.getPersistentData().getInt("anim");
 		RightWing.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 		LeftWing.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
@@ -401,7 +399,7 @@ public class RayaPrimeModel<T extends RayaPrimeEntity> extends EntityModel<T> {
 			break;
 		}
 		if(ticks % 60 > 3)
-			faces[curAnim].render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+			faces[anim].render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 		matrixStack.pop();
 
 	}

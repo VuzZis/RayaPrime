@@ -38,6 +38,7 @@ import com.vuzz.haloterra.effects.ModEffects;
 import com.vuzz.haloterra.gui.containers.RayaPrimeContainer;
 import com.vuzz.haloterra.items.ModItems;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.command.arguments.EntityAnchorArgument.Type;
 
 public class RayaPrimeEntity extends ShoulderRidingEntity implements IFlyingAnimal {
@@ -57,6 +58,8 @@ public class RayaPrimeEntity extends ShoulderRidingEntity implements IFlyingAnim
     private int lastHungerCheck = 0;
     private int lastDurabilityCheck = 0;
     private int lastHealthCheck = 0;
+
+    public int anim = 0;
 
     public LivingEntity getOwner() {
         return owner;
@@ -162,6 +165,13 @@ public class RayaPrimeEntity extends ShoulderRidingEntity implements IFlyingAnim
         if(nbt.getBoolean("canUseEnergy")) setOwnerUUID(nbt.getUniqueId("owneruuid"));
         if(getOwnerUUID() instanceof UUID) setOwner(world.getPlayerByUuid(getOwnerUUID()));
         if(!(owner instanceof PlayerEntity)) return;
+            if(getEntityWorld().isRemote) {
+                nbt.putInt("anim",anim);
+            } else {
+                anim = nbt.getInt("anim");
+                if(Minecraft.getInstance().world.getEntityByID(getEntityId()) != null)
+                    Minecraft.getInstance().world.getEntityByID(getEntityId()).getPersistentData().putInt("anim", anim);
+            }
             if(owner.isPotionActive(ModEffects.HYBERNATION.get()))
             {    
                 PlayerEntity player = (PlayerEntity) owner;
@@ -188,7 +198,6 @@ public class RayaPrimeEntity extends ShoulderRidingEntity implements IFlyingAnim
                 setMotion(0, clamp((getOwner().getPosYEye()-getPosY()-0.4)*1.1,-0.2,0.2)*1.1+Math.sin(ticksPast/4)/5, 0);
                 getNavigator().clearPath();
             }
-                
 
             PlayerEntity player = (PlayerEntity) owner;
             if((ticksPast - lastHungerCheck >= 600) && player.getFoodStats().getFoodLevel() < 10) {

@@ -69,6 +69,21 @@
     "item.haloterra.inactive_plaunt" : "Неактивный Плаунт",
     "block.haloterra.energy_ore" : "Энергетическая руда",
 
+    "anims.haloterra.default" : "Стандартная",
+    "anims.haloterra.uwu" : "OwO",
+    "anims.haloterra.error" : "Ошибка (X)",
+    "anims.haloterra.done" : "Готово (V)",
+    "anims.haloterra.loading" : "Загрузка (...)",
+    "anims.haloterra.attention" : "Внимание (!)",
+    "anims.haloterra.sad" : "Грустная /_\\",
+    "anims.haloterra.smug" : "Серьёзная -_-",
+    "anims.haloterra.angry" : "Злая \\_/",
+    "anims.haloterra.wtf" : "Шокированная O.O",
+    "anims.haloterra.happy" : "Радостная ^ ^",
+    "anims.haloterra.thinking" : "Задумчивая/Объясняющая o o",
+    "anims.haloterra.sad2" : "Грустная2 /_\\",
+    "anims.haloterra.anim" : "Анимация: §b",
+
     "item.haloterra.avian_abundance" : "Авианское изобилие",
     "item.haloterra.cocoa" : "Какао",
     "item.haloterra.cup" : "Чашка",
@@ -81,7 +96,7 @@
     "tooltip.haloterra.name" : "§c[Создатель]:§r ",
 
     "tooltip.haloterra.beyondto" : "§dЗапро§r - профессиональный медик и уклонитель.\n Потихоньку лечит тебя когда ты ранен.\n Даёт Поглощение иногда.",
-    "tooltip.haloterra.rayaprime" : "§bРайя-Прайм§r - высокотехнологичный ИИ компаньон способный создавать любые вещи с помощью ПМ. Ну и немного хирург.",
+    "tooltip.haloterra.rayaprime" : "§bРайя-Прайм§r - высокотехнологичный ИИ компаньон способный создавать любые вещи с помощью ПМ. Ну и немного хирург.\n SHIFT+ПКМ чтобы изменить лица",
     "tooltip.haloterra.oculus" : "§6Окулус§r - настоящий джентельмен. Он всегда уважает тебя.\n Он будет атаковать враждебных мобов рядом с самоноводящимся диском.",
     "tooltip.haloterra.plaunt" : "§aПлаунт§r - дружелюбный робот-фермер который всегда находит интересное!\n Он выращивает растения у тебя в инвентаре, и иногда находит интересные вещи.",
 

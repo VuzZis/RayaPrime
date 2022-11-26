@@ -56,6 +56,21 @@
 
     "message.revivus_tea.achieved" : "§c[Reviver]§r Use this wisely. You have only §c1 chance.§r\n 3x §cReviving Tea§r acquired§r. Effect: §cStrength X§r",
 
+    "anims.haloterra.default" : "Default",
+    "anims.haloterra.uwu" : "OwO",
+    "anims.haloterra.error" : "Error (X)",
+    "anims.haloterra.done" : "Done (V)",
+    "anims.haloterra.loading" : "Loading (...)",
+    "anims.haloterra.attention" : "Attention (!)",
+    "anims.haloterra.sad" : "Sad /_\\",
+    "anims.haloterra.smug" : "Smug/Serious -_-",
+    "anims.haloterra.angry" : "Angry \\_/",
+    "anims.haloterra.wtf" : "Shocked O.O",
+    "anims.haloterra.happy" : "Happy ^ ^",
+    "anims.haloterra.thinking" : "Thinking o o",
+    "anims.haloterra.sad2" : "Sad2 /_\\",
+    "anims.haloterra.anim" : "Animation: §b",
+
     "block.haloterra.grapes_crop" : "Grape Seed",
     "itemGroup.haloterra" : "Halo-Terra",
     "message.haloterra.lowenergy" : "§b[Raya-Prime]§r Warning: Low Battery, please charge.",
@@ -85,7 +100,7 @@
 
     "tooltip.haloterra.name" : "§c[Creator]:§r ",
 
-    "tooltip.haloterra.beyondto" : "BeyondTo - professional healer and dodger.\n Heals you for a bit if you are damaged.\n Gives you Absorption sometimes.",
+    "tooltip.haloterra.beyondto" : "BeyondTo - professional healer and dodger.\n Heals you for a bit if you are damaged.\n Gives you Absorption sometimes.\n SHIFT+RMB to change faces",
     "tooltip.haloterra.rayaprime" : "RayaPrime - high-tech AI robot that can use OM to create almost everything. Also kind of a surgeon.",
     "tooltip.haloterra.oculus" : "Oculus - a true gentlemen. He always respects you.\n He will attack nearest hostile mobs with his following blade.",
     "tooltip.haloterra.plaunt" : "Plaunt - friendly farmer-robot that always finds something cool!\n He will grow crops that in your inventory, and find interesting items sometimes.",
